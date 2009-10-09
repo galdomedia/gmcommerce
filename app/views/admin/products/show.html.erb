@@ -1,0 +1,32 @@
+<% title "Product" %>
+
+<p>
+  <strong>Name:</strong>
+  <%=h @product.name %>
+</p>
+<p>
+  <strong>Sku:</strong>
+  <%=h @product.sku %>
+</p>
+<p>
+  <strong>Price:</strong>
+  <%=h @product.price %>
+</p>
+<p>
+  <strong>Description:</strong>
+  <%=h @product.description %>
+</p>
+<p>
+  <strong>Meta Keywords:</strong>
+  <%=h @product.meta_keywords %>
+</p>
+<p>
+  <strong>Meta Description:</strong>
+  <%=h @product.meta_description %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_admin_product_path(@product) %> |
+  <%= link_to "Destroy", admin_product_path(@product), :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", admin_products_path %>
+</p>

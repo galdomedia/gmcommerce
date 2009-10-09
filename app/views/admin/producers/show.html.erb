@@ -1,0 +1,12 @@
+<% title "Producer" %>
+
+<p>
+  <strong>Name:</strong>
+  <%=h @producer.name %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_admin_producer_path(@producer) %> |
+  <%= link_to "Destroy", admin_producer_url(@producer), :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", admin_producers_path %>
+</p>

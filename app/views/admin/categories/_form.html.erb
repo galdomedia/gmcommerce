@@ -1,0 +1,6 @@
+<% semantic_form_for [:admin, @category] do |f| %>
+  <%= f.error_messages %>
+  <%= f.input :name %>
+  <%= f.input :parent %>
+  <%= f.buttons %>
+<% end %>

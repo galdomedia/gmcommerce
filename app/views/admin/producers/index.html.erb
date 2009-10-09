@@ -1,0 +1,17 @@
+<% title "Producers" %>
+
+<table>
+  <tr>
+    <th>Name</th>
+  </tr>
+  <% for producer in @producers %>
+    <tr>
+      <td><%=h producer.name %></td>
+      <td><%= link_to "Show", admin_producer_url(producer) %></td>
+      <td><%= link_to "Edit", edit_admin_producer_path(producer) %></td>
+      <td><%= link_to "Destroy", admin_producer_url(producer), :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Producer", new_admin_producer_path %></p>

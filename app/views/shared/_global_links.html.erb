@@ -1,0 +1,10 @@
+<% if current_user %>
+ 	<strong><%= current_user.login %></strong> | 
+	<%= link_to "Dashboard", root_url %> | 
+	<%= link_to "Moje konto", profile_url(current_user) %> | 
+	<% if admin? -%><%= link_to "Administracja", admin_root_url %> | <% end -%>
+	<%= link_to "Wyloguj", logout_url, :method => :delete %>
+<% else %>
+	<%= link_to "Zarejestruj", signup_url %> | 
+	<%= link_to "Zaloguj", login_url %>
+<% end %>

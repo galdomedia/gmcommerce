@@ -19,12 +19,14 @@ Rails::Initializer.run do |config|
   # config.gem "hpricot", :version => '0.6', :source => "http://code.whytheluckystiff.net"
   # config.gem "sqlite3-ruby", :lib => "sqlite3"
   # config.gem "aws-s3", :lib => "aws/s3"
-  config.gem "rspec", :lib => false, :version => ">= 1.2.0"
-  config.gem "rspec-rails", :lib => false, :version => ">= 1.2.0"
+  config.gem "rspec", :lib => false, :version => ">= 1.2.9"
+  config.gem "rspec-rails", :lib => false, :version => ">= 1.2.9"
   config.gem "searchlogic"
   config.gem "authlogic"
   config.gem "paperclip"
   config.gem "thoughtbot-factory_girl", :lib => "factory_girl", :version => ">= 1.2.1"
+  config.gem "justinfrench-formtastic", :lib => 'formtastic', :source => 'http://gems.github.com'
+
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named
   # config.plugins = [ :exception_notification, :ssl_requirement, :all ]
@@ -42,5 +44,5 @@ Rails::Initializer.run do |config|
 
   # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
   # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
-  # config.i18n.default_locale = :de
+  config.i18n.default_locale = :pl
 end

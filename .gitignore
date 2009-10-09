@@ -3,3 +3,4 @@ config/database.yml
 config/gmcommerce.yml
 .idea/
 tmp/
+db/schema.rb

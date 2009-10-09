@@ -1,0 +1,12 @@
+root:
+  name: Root
+
+child:
+  name: Child
+  parent: :root
+
+subchild:
+  name: SubSub
+  parent: :child
+
+
