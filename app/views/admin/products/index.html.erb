@@ -25,3 +25,16 @@
 </table>
 
 <p><%= link_to "New Product", new_admin_product_path %></p>
+
+<% content_for :sidebar do %>
+  <%= link_to "Property types", admin_property_types_path %> <br />
+  <%= link_to "Product templates", admin_product_templates_path %> <br />
+    <br />
+  <strong>Create product from template:</strong>
+  <ul>
+    <% # I know, that below line is evil, but it can be like this for a while %>
+    <% for pt in ProductTemplate.all %>
+      <li><%= link_to h(pt.template_name), new_admin_product_path(:template=>pt.id)%></li>
+    <% end %>
+  </ul>
+<% end %>

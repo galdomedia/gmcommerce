@@ -1,9 +1,0 @@
-one:
-  name: MyString
-  identifier: MyString
-  field_type: 1
-
-two:
-  name: MyString
-  identifier: MyString
-  field_type: 1

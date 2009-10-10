@@ -9,17 +9,15 @@ describe PropertyType do
   end
   it "should not be valid" do
     @property = Factory.build(:valid_property_type)
-    @property.field_type = 123
+    @property.name = nil
     @property.should_not be_valid
     @property = Factory.build(:valid_property_type)
-    @property.name = ""
-    @property.should_not be_valid
-    @property = Factory.build(:valid_property_type)
+    @property.field_type = "test"
+    @property.should_not be_valid  
   end
 
   it "should not allow duplicated identifiers" do
-    Factory.create(:valid_property_type)
-    @property = Factory.build(:valid_property_type)
+    Factory(:valid_property_type)
     @property.should_not be_valid
   end
 end

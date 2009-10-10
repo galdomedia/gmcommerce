@@ -27,9 +27,13 @@
      <% f.semantic_fields_for :images do |fp| %>
          <%= render :partial=>"image", :locals=>{:f=>fp}%>
      <% end %>
-  </div>
+    </div>
   <a name="price"></a>
   <%= link_to 'Add image', '#image', :class => "add_nested_item", :rel => "image" %><br />
-
+  <div id="properties">
+    <% f.semantic_fields_for :properties do |fp| %>
+      <%= render :partial=>"property", :locals=>{:f=>fp}%>
+    <% end %>
+  </div>
   <%= f.buttons %>
 <% end %>

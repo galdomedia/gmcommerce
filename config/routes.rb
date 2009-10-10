@@ -1,7 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
 
-
-
   map.resources :products, :only=>[:show]
   map.resources :categories, :only=>[:index, :show]
 
@@ -12,7 +10,8 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :producers
     admin.resources :products
     admin.resources :property_types
-    admin.root :controller=>"admin/admin", :action=>"index"
+    admin.resources :product_templates
+    admin.root :controller=>"admin/products", :action=>"index"
   end
 
 

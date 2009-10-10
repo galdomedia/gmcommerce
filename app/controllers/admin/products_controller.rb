@@ -9,6 +9,9 @@ class Admin::ProductsController < Admin::AdminController
   
   def new
     @product = Product.new
+    unless params[:template].blank?
+      @product.fill_values_from_template(ProductTemplate.find(params[:template]))
+    end
   end
   
   def create

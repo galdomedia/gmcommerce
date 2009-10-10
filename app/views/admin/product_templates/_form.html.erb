@@ -1,0 +1,13 @@
+<% semantic_form_for [:admin, @product_template] do |f| %>
+  <%= f.error_messages %>
+  <%= f.input :template_name %>
+  <%= f.input :name %>
+  <%#= f.input :producer %>
+  <%= f.input :sku %>
+  <%= f.input :price %>
+  <%= f.input :description %>
+  <%= f.input :meta_keywords, :hint=>"This tag should not contain no more than 30-35 words separated by comma [,] (e.g. house,home, etc.), use lower case for all keywords and pluralize all keywords id possible." %>
+  <%= f.input :meta_description, :hint=>"The length of this tag should contain approx. 20-25 words and should not exceed more than 150-160 characters (including white spaces)." %>
+  <%= f.input :property_types, :as=>:check_boxes, :collection=>PropertyType.all.map{|pt|[h(pt.name), pt.id]} %>
+  <%= f.buttons %>
+<% end %>

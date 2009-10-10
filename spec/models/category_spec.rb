@@ -7,7 +7,7 @@ describe Category do
 
   it "should not be valid" do
     # this failing test is passing when run via rake spec:models. WTF?
-    Factory.build(:invalid_category).should_not be_valid 
+    Factory.build(:invalid_category).should_not be_valid
   end
 
 end

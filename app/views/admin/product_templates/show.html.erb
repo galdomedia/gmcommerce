@@ -1,0 +1,36 @@
+<% title "Product Template" %>
+
+<p>
+  <strong>Template Name:</strong>
+  <%=h @product_template.template_name %>
+</p>
+<p>
+  <strong>Name:</strong>
+  <%=h @product_template.name %>
+</p>
+<p>
+  <strong>Sku:</strong>
+  <%=h @product_template.sku %>
+</p>
+<p>
+  <strong>Description:</strong>
+  <%=h @product_template.description %>
+</p>
+<p>
+  <strong>Price:</strong>
+  <%=h @product_template.price %>
+</p>
+<p>
+  <strong>Meta Keywords:</strong>
+  <%=h @product_template.meta_keywords %>
+</p>
+<p>
+  <strong>Meta Description:</strong>
+  <%=h @product_template.meta_description %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_admin_product_template_path(@product_template) %> |
+  <%= link_to "Destroy", admin_product_template_path(@product_template), :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", admin_product_templates_path %>
+</p>

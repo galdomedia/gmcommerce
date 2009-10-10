@@ -1,0 +1,29 @@
+<% title "Product Templates" %>
+
+<table>
+  <tr>
+    <th>Template Name</th>
+    <th>Name</th>
+    <th>Sku</th>
+    <th>Description</th>
+    <th>Price</th>
+    <th>Meta Keywords</th>
+    <th>Meta Description</th>
+  </tr>
+  <% for product_template in @product_templates %>
+    <tr>
+      <td><%=h product_template.template_name %></td>
+      <td><%=h product_template.name %></td>
+      <td><%=h product_template.sku %></td>
+      <td><%=h product_template.description %></td>
+      <td><%=h product_template.price %></td>
+      <td><%=h product_template.meta_keywords %></td>
+      <td><%=h product_template.meta_description %></td>
+      <td><%= link_to "Show", admin_product_template_path(product_template) %></td>
+      <td><%= link_to "Edit", edit_admin_product_template_path(product_template) %></td>
+      <td><%= link_to "Destroy", admin_product_template_path(product_template), :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Product Template", new_admin_product_template_path %></p>

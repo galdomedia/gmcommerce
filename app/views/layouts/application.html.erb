@@ -9,6 +9,7 @@
   </head>
   <body>
     <div id="container">
+      <%= link_to "Administration (no log-in required... currently)", admin_products_path %> |
        <%= link_to "Categories", categories_path %> |
       <% if !current_user %>
         <%= link_to "Register", new_account_path %> |
