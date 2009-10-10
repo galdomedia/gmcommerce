@@ -7,9 +7,10 @@
     
     <title>gmCommerce<%#= s(:site_name) %></title>
     
-    <%= stylesheet_link_tag 'default' %>
-    <%= stylesheet_link_tag 'admin' %>
-    <%= javascript_include_tag :all %>
+    <%= javascript_include_merged :admin %>
+    <%= stylesheet_link_merged :admin %>
+
+
     <%= yield(:head) || ''%>
     
     <script type="text/javascript">
@@ -41,15 +42,15 @@
       
       <div id="left">
         <% if flash[:notice] %>
-          <div id="notice"><%= flash[:notice] %></div>
+          <div id="notice"><%=h flash[:notice] %></div>
         <% end %>
         
         <% if flash[:warning] %>
-          <div id="warning"><%= flash[:warning] %></div>
+          <div id="warning"><%=h flash[:warning] %></div>
         <% end %>
         
         <% if flash[:error] %>
-          <div id="error"><%= flash[:error] %></div>
+          <div id="error"><%=h flash[:error] %></div>
         <% end %>
         
         <h2 class="head"><%= yield_or_default yield(:header), "Use 'content_for :header do; end' in your view to set this title" %></h2>

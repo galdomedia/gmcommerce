@@ -1,10 +1,11 @@
 class Producer < ActiveRecord::Base
-  attr_accessible :name
+
+  has_many :products
 
   validates_presence_of :name
   validates_length_of :name, :minimum=>1
 
-  has_many :products
+  attr_accessible :name  
 
   def to_s
     self.name

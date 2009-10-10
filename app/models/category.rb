@@ -1,10 +1,14 @@
 class Category < ActiveRecord::Base
   acts_as_category
-  
-  attr_accessible :name, :parent_id
-  validates_presence_of :name
 
   has_and_belongs_to_many :products
+
+  validates_presence_of :name
+
+  attr_accessible :name, :parent_id
+
+
+
 
   def to_s
     self.name

@@ -1,0 +1,21 @@
+javascripts:
+- base:
+  - jquery
+  - jquery-ui
+  - jrails
+  - application
+- admin:
+  - jquery
+  - jquery-ui
+  - jrails
+  - admin
+stylesheets:
+- base:
+  - application
+  - header
+- admin:
+  - default
+  - admin
+  - formtastic
+  - formtastic_changes_admin
+

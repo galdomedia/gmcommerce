@@ -24,6 +24,16 @@
   <strong>Meta Description:</strong>
   <%=h @product.meta_description %>
 </p>
+<p>
+  <strong>Images:</strong>
+  <% unless @product.images.empty? %>
+    <ul>
+    <% for i in @product.images %>
+      <li><%= image_tag i.attachment.url(:list) %> <%=h i.attachment_file_name %></li>
+    <% end %>
+    </ul>
+  <% end %>
+</p>
 
 <p>
   <%= link_to "Edit", edit_admin_product_path(@product) %> |

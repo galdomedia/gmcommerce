@@ -1,12 +1,35 @@
-<% semantic_form_for [:admin, @product] do |f| %>
+<% semantic_form_for [:admin, @product], :html=>{:multipart=>true} do |f| %>
+  <% content_for :head do %>
+     <script type="text/javascript">
+       var nested_forms = new Array();
+       $(document).ready(function(){
+         <%= "nested_forms['image'] = '#{generate_template(f, :images)}';" %>
+         $('.add_nested_item').click(function(){
+           var app = nested_forms[this.rel];
+           app = replace_ids(app, this.rel);
+           $('#'+this.rel+'s_fields').append(app);
+         });
+       });
+     </script>
+  <% end %>
+
+
   <%= f.error_messages %>
   <%= f.input :name %>
   <%= f.input :producer %>
   <%= f.input :sku %>
   <%= f.input :price %>
   <%= f.input :description %>
-  <%= f.input :meta_keywords %>
-  <%= f.input :meta_description %>
+  <%= f.input :meta_keywords, :hint=>"This tag should not contain no more than 30-35 words separated by comma [,] (e.g. house,home, etc.), use lower case for all keywords and pluralize all keywords id possible." %>
+  <%= f.input :meta_description, :hint=>"The length of this tag should contain approx. 20-25 words and should not exceed more than 150-160 characters (including white spaces)." %>
   <%= f.input :categories, :collection=>options_for_category_tree(Category.roots), :as=>:select, :multiple=>true %>
+    <div id="images_fields">
+     <% f.semantic_fields_for :images do |fp| %>
+         <%= render :partial=>"image", :locals=>{:f=>fp}%>
+     <% end %>
+  </div>
+  <a name="price"></a>
+  <%= link_to 'Add image', '#image', :class => "add_nested_item", :rel => "image" %><br />
+
   <%= f.buttons %>
 <% end %>
