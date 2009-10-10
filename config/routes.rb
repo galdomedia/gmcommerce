@@ -1,7 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
 
-
-
+  map.resources :products, :only=>[:show]
+  map.resources :categories, :only=>[:index, :show]
 
   
   map.namespace :admin do |admin|
@@ -20,7 +20,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users
   map.resources :password_resets
 
-  map.root :controller => "user_sessions", :action => "new" # optional, this just sets the root route
+  map.root :controller => "categories", :action => "index" # optional, this just sets the root route
 
 
   map.connect ':controller/:action/:id'

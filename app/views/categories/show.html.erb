@@ -1,0 +1,8 @@
+<h1>Category: <%=h @category.name %></h1>
+
+Products in this category:<br />
+<ul>
+<% for p in @category.products.available %>
+  <li><%= link_to h(p.name), p %></li>
+<% end %>
+</ul>

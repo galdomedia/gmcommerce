@@ -1,0 +1,4 @@
+<h1>Categories</h1>
+<% category_tree.each do |depth,category| %>
+  <%= "&nbsp;"*4*depth %> <%= link_to h(category), category %><br />
+<% end %>
