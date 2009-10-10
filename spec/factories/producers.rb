@@ -1,6 +1,6 @@
-Factory.define :valid_producer , :class => Producer do |c|
-  c.name "test"
+Factory.define :valid_producer , :class => Producer do |p|
+  p.name "test"
 end
 
-Factory.define :invalid_producer , :class => Producer do |u|
+Factory.define :invalid_producer , :class => Producer do |p|
 end

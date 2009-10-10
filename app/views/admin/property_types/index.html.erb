@@ -1,0 +1,21 @@
+<% title "Property Types" %>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Identifier</th>
+    <th>Field Type</th>
+  </tr>
+  <% for property_type in @property_types %>
+    <tr>
+      <td><%=h property_type.name %></td>
+      <td><%=h property_type.identifier %></td>
+      <td><%=h property_type.field_type %></td>
+      <td><%= link_to "Show", admin_property_type_path(property_type) %></td>
+      <td><%= link_to "Edit", edit_admin_property_type_path(property_type) %></td>
+      <td><%= link_to "Destroy", admin_property_type_path(property_type), :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Property Type", new_admin_property_type_path %></p>

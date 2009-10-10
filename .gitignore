@@ -4,3 +4,4 @@ config/gmcommerce_config.yml
 .idea/
 tmp/
 db/schema.rb
+public/attachments/
