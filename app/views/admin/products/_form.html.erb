@@ -7,5 +7,6 @@
   <%= f.input :description %>
   <%= f.input :meta_keywords %>
   <%= f.input :meta_description %>
+  <%= f.input :categories, :collection=>options_for_category_tree(Category.roots), :as=>:select, :multiple=>true %>
   <%= f.buttons %>
 <% end %>

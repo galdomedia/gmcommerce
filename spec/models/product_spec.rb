@@ -3,7 +3,7 @@ require File.dirname(__FILE__) + '/../spec_helper'
 describe Product do
 
   before(:each) do
-    @product = Product.new({:name=>"test", :price=>1})
+    @product = Factory.build(:valid_product)
   end
 
   it "should be valid" do
@@ -11,10 +11,13 @@ describe Product do
   end
 
   it "should not be valid" do
-    @product.price = "abc"
+    # this failing test is passing when run via rake spec:models. rspec fails to test model with validates_presence_of :name
+    @product = Factory.build(:invalid_product)
     @product.should_not be_valid
-    @product.name = ""
+    @product = Factory.build(:product_with_wrong_price)
     @product.should_not be_valid
   end
+
+
   
 end

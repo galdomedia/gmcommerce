@@ -10,7 +10,7 @@ describe Admin::ProducersController do
   end
   
   it "show action should render show template" do
-    get :show, :id => Producer.first
+    get :show, :id => Factory.create(:valid_producer)
     response.should render_template(:show)
   end
   
@@ -32,24 +32,25 @@ describe Admin::ProducersController do
   end
   
   it "edit action should render edit template" do
-    get :edit, :id => Producer.first
+    get :edit, :id => Factory.create(:valid_producer)
     response.should render_template(:edit)
   end
   
   it "update action should render edit template when model is invalid" do
+    p = Factory.create(:invalid_producer)
     Producer.any_instance.stubs(:valid?).returns(false)
-    put :update, :id => Producer.first
+    put :update, :id => p
     response.should render_template(:edit)
   end
   
   it "update action should redirect when model is valid" do
     Producer.any_instance.stubs(:valid?).returns(true)
-    put :update, :id => Producer.first
+    put :update, :id => Factory.create(:valid_producer)
     response.should redirect_to(admin_producer_url(assigns[:producer]))
   end
   
   it "destroy action should destroy model and redirect to index action" do
-    producer = Producer.first
+    producer = Factory.create(:valid_producer)
     delete :destroy, :id => producer
     response.should redirect_to(admin_producers_url)
     Producer.exists?(producer.id).should be_false

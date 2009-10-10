@@ -4,7 +4,7 @@ class Category < ActiveRecord::Base
   attr_accessible :name, :parent_id
   validates_presence_of :name
 
-
+  has_and_belongs_to_many :products
 
   def to_s
     self.name
