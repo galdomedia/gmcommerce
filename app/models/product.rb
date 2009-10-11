@@ -10,9 +10,9 @@ class Product < ActiveRecord::Base
   named_scope :available, :conditions=>[]
 
   validates_presence_of :name
-  validates_numericality_of :price, :float=>true
-  validates_length_of :meta_description, :within=>0..255
-  validates_length_of :meta_keywords, :within=>0..255
+  validates_numericality_of :price, :only_integer=>false, :greater_than_or_equal_to=>0, :allow_nil=>false
+  validates_length_of :meta_description, :within=>0..255, :allow_nil=>true, :allow_blank=>true
+  validates_length_of :meta_keywords, :within=>0..255, :allow_nil=>true, :allow_blank=>true
 
   attr_accessible :name, :sku, :price, :description, :meta_keywords, :meta_description, :producer_id, :category_ids, :images_attributes, :properties_attributes
   accepts_nested_attributes_for :images, :allow_destroy => true, :reject_if => proc { |a| a['attachment'].blank? }

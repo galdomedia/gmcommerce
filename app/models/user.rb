@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   acts_as_authentic
 
+  has_and_belongs_to_many :roles
+
   attr_accessible :login, :email, :password, :password_confirmation
 
   def deliver_password_reset_instructions!

@@ -2,6 +2,10 @@ require File.dirname(__FILE__) + '/../../spec_helper'
  
 describe Admin::ProductTemplatesController do
 
+  before(:each) do
+    activate_authlogic
+    UserSession.create(Factory.build(:valid_user))
+  end
   
   it "index action should render index template" do
     get :index

@@ -1,10 +1,8 @@
 <% if current_user %>
- 	<strong><%= current_user.login %></strong> | 
-	<%= link_to "Dashboard", root_url %> | 
-	<%= link_to "Moje konto", profile_url(current_user) %> | 
+ 	<strong><%=h current_user.login %></strong> |
 	<% if admin? -%><%= link_to "Administracja", admin_root_url %> | <% end -%>
-	<%= link_to "Wyloguj", logout_url, :method => :delete %>
+	<%= link_to "Logout", user_session_path, :method => :delete, :confirm => "Are you sure you want to logout?" %>
 <% else %>
-	<%= link_to "Zarejestruj", signup_url %> | 
-	<%= link_to "Zaloguj", login_url %>
+	<%= link_to "Zarejestruj", new_account_path %> | 
+	<%= link_to "Log In", new_user_session_path %>
 <% end %>
