@@ -11,6 +11,7 @@ class ProductsController < ApplicationController
       format.html #
       format.pdf  do
         render :pdf => @product.name.parameterize,
+               :layout=> "/layouts/pdf",
                :wkhtmltopdf => '/usr/local/bin/wkhtmltopdf'
       end
 

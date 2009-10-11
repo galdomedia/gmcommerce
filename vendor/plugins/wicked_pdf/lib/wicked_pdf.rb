@@ -21,11 +21,11 @@ class WickedPdf
     path << ' -q'
 
     logger.info "\n\n-- wkhtmltopdf command --"
-    tmp_file = Tempfile.new('wicked_pdf', 'tmp')
+    tmp_file = Tempfile.new(['wicked_pdf', '.html'], 'tmp')
     tmp_file.write(string)
     tmp_file.close
     path = path + ' ' + tmp_file.path + ' -'
-    tmp_file.unlink
+    #tmp_file.unlink
 
     logger.info path
     logger.info ''
