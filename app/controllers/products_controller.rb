@@ -7,6 +7,14 @@ class ProductsController < ApplicationController
       flash[:warning] = t('products.errors.product_does_not_exist')
       redirect_to root_url
     end
+    respond_to do |format|
+      format.html #
+      format.pdf  do
+        render :pdf => @product.name.parameterize,
+               :wkhtmltopdf => '/usr/local/bin/wkhtmltopdf'
+      end
+
+    end
   end
 
 end
