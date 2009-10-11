@@ -11,6 +11,7 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :products
     admin.resources :property_types
     admin.resources :product_templates
+    admin.resources :users, :member=>{:reset_password=>:get}
     admin.root :controller=>"admin/products", :action=>"index"
   end
 

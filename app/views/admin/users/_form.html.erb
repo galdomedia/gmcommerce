@@ -1,0 +1,12 @@
+<% semantic_form_for [:admin, @user] do |f| %>
+  <%= f.input :login  %>
+  <%= f.input :email %>
+  <% if f.object.new_record? %>
+    <%= f.input :password, :as=>:password %>
+    <%= f.input :password_confirmation, :as=>:password %>
+  <% end %>
+  <%= f.input :is_admin if admin? %>
+  <%= f.input :is_staff %>
+  <%= f.input :roles, :as=>:check_boxes, :collection=>Role.all.map{|r| [t("roles.#{r.name}"), r.id]} %>  
+  <%= f.buttons %>
+<% end %>

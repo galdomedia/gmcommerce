@@ -1,0 +1,24 @@
+<% content_for :header do -%>
+  Użytkownik: <em><%=h @user.login %></em>
+<% end -%>
+
+<% content_for :sidebar do -%>
+  <%= link_to "Reset password", reset_password_admin_user_path(@user) %>	
+<% end -%>
+Login: <%=h(@user.login) %> <br />
+ID: <%=h(@user.id) %> <br />
+<br />
+Email: <%=h(@user.email) %><br />
+Hasło: ********<small><%=link_to "wyślij nowe hasło", reset_password_admin_user_url(@user)%></small><br />
+<br />
+Konto utworzone:  <%=h @user.created_at.to_s(:long) %><br />
+Ostatnie zmiany:  <%=h @user.updated_at.to_s(:long) %><br />
+
+<h4>Role użytkownika: </h4>
+<ul>
+  <% @user.roles.each do |role| %>
+    <li><%=h role.name %></li>
+  <% end %>
+</ul>
+
+<%= link_to 'Edytuj', edit_admin_user_path(@user) %> | <%= link_to 'Cofnij', admin_users_path %>

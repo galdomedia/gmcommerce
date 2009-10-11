@@ -1,0 +1,14 @@
+<% content_for :header do -%>
+  Użytkownicy  | <%= link_to 'Nowy użytkownik', new_admin_user_path %>
+<% end -%>
+
+<% content_for :sidebar do -%>
+  <p>
+  <%= link_to 'Nowy użytkownik', new_admin_user_path %>
+</p>
+<% end -%>
+
+<%= render :partial => "users_table" %>
+
+<%#= will_paginate @users %>
+

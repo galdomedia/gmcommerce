@@ -1,0 +1,19 @@
+<% content_for :header do -%>
+Stworz nowe konto
+<% end -%>
+
+<% content_for :sidebar do -%>
+
+<p>
+	<strong>To konto nie zostanie aktywowane automatycznie!</strong>
+</p>	
+
+<p>
+	Użytkownik otrzyma e-mail z instrukcją aktywacji. Jeżeli chcesz 
+	aktywować to konto, możesz zrobić to ręcznie później.
+</p>
+<% end -%>
+
+<%= render :partial=>"form" %>
+
+<%= link_to 'Cofnij', admin_users_path %>
