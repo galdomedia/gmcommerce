@@ -1,0 +1,31 @@
+<h1>Cart</h1>
+<table width="500" border="0" cellspacing="0" cellpadding="0">
+  <tr style="height:28px; background-color: Green;">
+    <td width="280" style="padding:0 0 0 20px;">Product name</td>
+    <td width="36" style="text-align:center;">Delete</td>
+    <td width="62" style="text-align:center;">Price</td>
+    <td width="40" style="text-align:center;">Quantity</td>
+    <td width="82" style="text-align:center; border:none;">Value</td>
+  </tr>
+  <% @cart.items.each do |cart_item| %>
+    <tr class="tr_produkt">
+      <td class="td_item">
+        <p><%= h cart_item.name %></p>
+      </td>
+      <td style="text-align:center;">
+        <% form_tag(delete_product_in_cart_path(:id => cart_item.id)) do -%>
+          <%= submit_tag "X", :style=>"width: 30px; height: auto;"%>
+        <% end -%>
+      </td>
+      <td style="text-align:center;"><%= cart_item.product_price %> </td>
+      <td style="text-align:center;">
+        <% form_tag(set_product_quantity_in_cart_path(:id => cart_item.id), :id=>'form_sub') do -%>
+          <%= text_field(:product, :quantity, :value => cart_item.quantity, :onchange => "$(this).parent().submit()") %>
+        <% end %>
+      </td>
+      <td style="text-align:center; border:none;"><%= cart_item.price %></td>
+    </tr>
+  <% end %>
+</table>
+
+Cart total value: <%= @cart.total_price%> 

@@ -1,5 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
 
+  map.resource :cart, :member=>{:add_product_to=>:post, :set_product_quantity_in=>:post, :delete_product_in=>:post}
   map.resources :products, :only=>[:show]
   map.resources :categories, :only=>[:index, :show]
 
