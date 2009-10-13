@@ -8,7 +8,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :products, :only=>[:show]
   map.resources :categories, :only=>[:index, :show]
 
-  
+  # HACK!
+  map.admin "/admin", :controller=>"admin/products", :action=>"index"
   map.namespace :admin do |admin|
     admin.resources :pages
     admin.resources :categories
