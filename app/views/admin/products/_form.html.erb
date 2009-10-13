@@ -49,7 +49,7 @@
   </div>
   <hr />
   <strong>Option groups</strong>
-  <%= f.input :option_groups, :as=>:check_boxes, :collection=>OptionGroup.all.map{|og| [h(og.name), og.id]}, :hint=>"Changes will aply after save" %>
+  <%= f.input :option_groups, :as=>:check_boxes, :collection=>OptionGroup.all.map{|og| [h(og.name), og.id]}, :hint=>"Changes will apply after save" %>
 
   <% if f.object.option_groups.count > 0 %>
      <hr/>

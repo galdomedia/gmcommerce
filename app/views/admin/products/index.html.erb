@@ -5,18 +5,12 @@
     <th>Name</th>
     <th>Sku</th>
     <th>Price</th>
-    <th>Description</th>
-    <th>Meta Keywords</th>
-    <th>Meta Description</th>
   </tr>
   <% for product in @products %>
     <tr>
       <td><%=h product.name %></td>
       <td><%=h product.sku %></td>
       <td><%=h product.price %></td>
-      <td><%=h product.description %></td>
-      <td><%=h product.meta_keywords %></td>
-      <td><%=h product.meta_description %></td>
       <td><%= link_to "Show", admin_product_path(product) %></td>
       <td><%= link_to "Edit", edit_admin_product_path(product) %></td>
       <td><%= link_to "Destroy", admin_product_path(product), :confirm => 'Are you sure?', :method => :delete %></td>

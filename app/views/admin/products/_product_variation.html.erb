@@ -1,10 +1,13 @@
 <p>
-
-  <% for o in f.object.options %>
-    <%= f.input :options, :label=>h(o.option_group.name), :collection=>o.option_group.options.all.map{ |o| [h(o.name), o.id] }, :input_html=>{ :multiple=>false, :size=>1 } %>
-  <% end %>
-  <%= f.input :price %>
-   <% unless f.object.new_record? %>
-    <%= f.check_box :_delete, :class=>"field checkbox" %> <%= f.label :_delete, 'Delete', :class=>"choice" %>
+  <% if f.object.options %>
+      <% for o in f.object.options %>
+        <%= f.input :options, :label=>h(o.option_group.name), :collection=>o.option_group.options.all.map{ |o| [h(o.name), o.id] }, :input_html=>{ :multiple=>false, :size=>1 } %>
+      <% end %>
+      <%= f.input :price %>
+       <% unless f.object.new_record? %>
+        <%= f.check_box :_delete, :class=>"field checkbox" %> <%= f.label :_delete, 'Delete', :class=>"choice" %>
+      <% end %>
+  <% else %>
+    Option group does not have any options, adding product variation is not possible.
   <% end %>
 </p>

@@ -3,8 +3,8 @@ class Product < ActiveRecord::Base
   belongs_to :producer
   has_and_belongs_to_many :categories
   has_and_belongs_to_many :option_groups
-  has_many :images 
-  has_many :properties
+  has_many :images, :dependent=>:destroy
+  has_many :properties, :dependent=>:destroy
   has_many :property_types, :through => :properties
   has_many :product_variations
   
