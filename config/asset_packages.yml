@@ -12,7 +12,6 @@ javascripts:
 stylesheets:
 - base:
   - application
-  - header
 - admin:
   - default
   - admin
