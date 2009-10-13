@@ -1,0 +1,23 @@
+<% title "Shipments" %>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Cost</th>
+    <th>Active</th>
+    <th>Free From Cart Value</th>
+  </tr>
+  <% for shipment in @shipments %>
+    <tr>
+      <td><%=h shipment.name %></td>
+      <td><%=h shipment.cost %></td>
+      <td><%=h shipment.active %></td>
+      <td><%=h shipment.free_from_cart_value %></td>
+      <td><%= link_to "Show", admin_shipment_url(shipment) %></td>
+      <td><%= link_to "Edit", edit_admin_shipment_path(shipment) %></td>
+      <td><%= link_to "Destroy", admin_shipment_url(shipment), :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Shipment", new_admin_shipment_path %></p>

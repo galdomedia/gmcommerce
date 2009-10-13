@@ -1,0 +1,28 @@
+<% title "Shipment" %>
+
+<p>
+  <strong>Name:</strong>
+  <%=h @shipment.name %>
+</p>
+<p>
+  <strong>Cost:</strong>
+  <%=h @shipment.cost %>
+</p>
+<p>
+  <strong>Active:</strong>
+  <%=h @shipment.active %>
+</p>
+<p>
+  <strong>Free From Cart Value:</strong>
+  <%=h @shipment.free_from_cart_value %>
+</p>
+<p>
+  <strong>Description:</strong>
+  <%=h @shipment.description %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_admin_shipment_path(@shipment) %> |
+  <%= link_to "Destroy", admin_shipment_url(@shipment), :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", admin_shipments_path %>
+</p>

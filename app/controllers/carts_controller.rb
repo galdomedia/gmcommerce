@@ -1,9 +1,9 @@
 class CartsController < ApplicationController
 
-  before_filter :find_cart
- 
 
-  def show  
+  before_filter :find_cart, :except=>:destroy
+
+  def show
   end
 
   def destroy
@@ -12,8 +12,9 @@ class CartsController < ApplicationController
   end
 
   def add_product_to
-    @cart = find_cart
     product = Product.find(params[:id])
+    product_variation = nil
+    product_variation = ProductVariation.find(params[:variation_id]) unless params[:variation_id].blank?
     if params[:quantity]
       begin
         quantity = params[:quantity].to_i
@@ -24,36 +25,29 @@ class CartsController < ApplicationController
     else
       quantity = 1
     end
-    @cart.add_product(product, quantity)
+    @cart.add_product(product, quantity, product_variation)
     redirect_to cart_url
   end
 
   def delete_product_in
-    @cart = find_cart
-    if (params[:id]).to_i == 0
-      product = Product.find_by_slug(params[:id])
-    else
-      product = Product.find(params[:id])
-    end
-    @cart.delete_product(product)
+    product = Product.find(params[:id])
+    product_variation = nil
+    product_variation = ProductVariation.find(params[:variation_id]) unless params[:variation_id].blank?
+    @cart.delete_product(product, product_variation)
     redirect_to cart_url
   end
 
   def set_product_quantity_in
-    @cart = find_cart
-    if (params[:id]).to_i == 0
-      product = Product.find_by_slug(params[:id])
-    else
-      product = Product.find(params[:id])
-    end
-    @cart.set_quantity(product, params[:product][:quantity])
+    product = Product.find(params[:id])
+    product_variation = nil
+    product_variation = ProductVariation.find(params[:variation_id]) unless params[:variation_id].blank?
+    @cart.set_quantity(product, params[:product][:quantity], product_variation)
     redirect_to cart_url
   end
 
   private
     def find_cart
-      @cart = session[:cart] ||= Cart.new
-      @cart
+      @cart = (session[:cart] ||= Cart.new)
     end
 
 end

@@ -7,33 +7,34 @@ class Cart
     @payment_id = "1"
   end
   
-  def add_product(product, quantity = 1)
-    current_item = @items.find {|item| item.product == product}
+  def add_product(product, quantity = 1, product_variation=nil)
+    current_item = @items.find {|item| item.product == product and item.variation==product_variation}
     if current_item
       quantity.times {current_item.increment_quantity}
     else
-      @items << CartItem.new(product)
-      current_item = @items.find {|item| item.product == product}
+      ci = CartItem.new(product, product_variation)
+      @items << ci
+      current_item = @items.find {|item| item.product == product and item.variation==product_variation}
       (quantity - 1).times {current_item.increment_quantity}
     end
   end
 
-  def subtract_product(product)
-    current_item = @items.find {|item| item.product == product}
+  def subtract_product(product, product_variation=nil)
+    current_item = @items.find {|item| item.product == product and item.variation==product_variation}
     if current_item
       current_item.decrement_quantity
     end
   end
 
-  def delete_product(product)
-    current_item = @items.find {|item| item.product == product}
+  def delete_product(product, product_variation=nil)
+    current_item = @items.find {|item| item.product == product and item.variation==product_variation}
     if current_item
       @items.delete(current_item)
     end
   end
 
-  def set_quantity product, quantity
-    current_item = @items.find {|item| item.product == product}
+  def set_quantity(product, quantity, product_variation=nil)
+    current_item = @items.find {|item| item.product == product and item.variation==product_variation}
     if current_item
       current_item.set_quantity(quantity)
     end

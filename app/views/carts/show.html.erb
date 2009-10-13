@@ -10,16 +10,16 @@
   <% @cart.items.each do |cart_item| %>
     <tr class="tr_produkt">
       <td class="td_item">
-        <p><%= h cart_item.name %></p>
+        <p><%= h cart_item.name %> <%= h cart_item.variation %></p>
       </td>
       <td style="text-align:center;">
-        <% form_tag(delete_product_in_cart_path(:id => cart_item.id)) do -%>
+        <% form_tag(delete_product_in_cart_path(:id => cart_item.id, :variation_id=>cart_item.variation_id)) do -%>
           <%= submit_tag "X", :style=>"width: 30px; height: auto;"%>
         <% end -%>
       </td>
       <td style="text-align:center;"><%= cart_item.product_price %> </td>
       <td style="text-align:center;">
-        <% form_tag(set_product_quantity_in_cart_path(:id => cart_item.id), :id=>'form_sub') do -%>
+        <% form_tag(set_product_quantity_in_cart_path(:id => cart_item.id, :variation_id=>cart_item.variation_id), :id=>'form_sub') do -%>
           <%= text_field(:product, :quantity, :value => cart_item.quantity, :onchange => "$(this).parent().submit()") %>
         <% end %>
       </td>

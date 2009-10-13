@@ -1,8 +1,4 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :options
-
-
-
 
   map.resource :cart, :member=>{:add_product_to=>:post, :set_product_quantity_in=>:post, :delete_product_in=>:post}
   map.resources :products, :only=>[:show]
@@ -18,6 +14,7 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :products
     admin.resources :property_types
     admin.resources :product_templates
+    admin.resources :shipments
     admin.resources :users, :member=>{:reset_password=>:get}
     admin.root :controller=>"admin/products", :action=>"index"
   end

@@ -33,6 +33,29 @@ class Product < ActiveRecord::Base
     end
   end
 
+  def get_minimal_price
+    if self.product_variations.count > 0
+      prices = self.product_variations.map{|pv| pv.price}
+      prices.min
+    else
+      self.price
+    end
+  end
+  alias_method :get_price, :get_minimal_price
+
+  def get_maximal_price
+    if self.product_variations.count > 0
+      prices = self.product_variations.map{|pv| pv.price}
+      prices.max
+    else
+      self.price
+    end
+  end
+
+  def have_variations?
+    not self.product_variations.empty?
+  end
+
   def new_product_variation
     pv = ProductVariation.new
     pv.product = self

@@ -1,6 +1,22 @@
+<script type="text/javascript">
+  $(document).ready(function(){
+     $('.product_variation').change(function(){
+        $('#variation_id').val($(this).val());
+        $('#product_price').html($(this).parent().find('span.pv_price').text());
+     });
+  });
+</script>
 <h1>Product: <%=h @product.name %></h1>
 
+<strong>Cena: <span id="product_price"><%= h @product.get_price %></span></strong><br />
+
+<% if @product.have_variations? %>
+  <% for pv in @product.product_variations %>
+    <li><%= radio_button_tag "product_variation", pv.id, {}, {:class=>"product_variation"} %><label for="product_variation_<%= pv.id %>"><%=h pv %>: <span class="pv_price"><%=h pv.price %></span></label></li>
+  <% end %>
+<% end %>
 
 <% form_tag(add_product_to_cart_path(:id=>@product.id)) do  %>
+  <%= hidden_field_tag :variation_id %>
   <%= submit_tag "Add to cart" %>
 <% end %>

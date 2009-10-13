@@ -1,0 +1,9 @@
+<% semantic_form_for [:admin, @shipment] do |f| %>
+    <%= f.error_messages %>
+    <%= f.input :name %>
+    <%= f.input :cost %>
+    <%= f.input :active, :as=>:boolean %>
+    <%= f.input :free_from_cart_value %>
+    <%= f.input :description %>
+    <%= f.buttons %>
+<% end %>

@@ -1,7 +1,7 @@
 require File.dirname(__FILE__) + '/../spec_helper'
 
-describe Option do
+describe Shipment do
   it "should be valid" do
-    Option.new({:name=>"test", :code=>"test"}).should be_valid
+    Shipment.new({:name=>"test", :cost=>10.5}).should be_valid
   end
 end
