@@ -1,0 +1,6 @@
+<p>
+  <% unless f.object.new_record? %>
+    <%= f.check_box :_delete, :class=>"field checkbox" %> <%= f.label :_delete, 'Delete', :class=>"choice" %>
+  <% end %>
+  <%= f.inputs :name, :code %>
+</p>

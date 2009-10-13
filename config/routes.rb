@@ -1,4 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :options
+
+
+
 
   map.resource :cart, :member=>{:add_product_to=>:post, :set_product_quantity_in=>:post, :delete_product_in=>:post}
   map.resources :products, :only=>[:show]
@@ -8,6 +12,7 @@ ActionController::Routing::Routes.draw do |map|
   map.namespace :admin do |admin|
     admin.resources :pages
     admin.resources :categories
+    admin.resources :option_groups
     admin.resources :producers
     admin.resources :products
     admin.resources :property_types

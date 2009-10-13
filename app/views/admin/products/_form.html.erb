@@ -4,11 +4,19 @@
        var nested_forms = new Array();
        $(document).ready(function(){
          <%= "nested_forms['image'] = '#{generate_template(f, :images)}';" %>
+         <% unless f.object.new_record? %>
+            <%= "nested_forms['product_variation'] = '#{generate_template(f, :product_variations, :object=>f.object.new_product_variation)}';" %>
+         <% end %>
          $('.add_nested_item').click(function(){
            var app = nested_forms[this.rel];
            app = replace_ids(app, this.rel);
            $('#'+this.rel+'s_fields').append(app);
+           $('#product_variations_fields li.select select').removeAttr('multiple');
+           return false;
          });
+         // HACK: for some reason passing :multiple=>false to formtastic does not work
+         $('#product_variations_fields li.select select').removeAttr('multiple');
+
        });
      </script>
   <% end %>
@@ -23,17 +31,36 @@
   <%= f.input :meta_keywords, :hint=>"This tag should not contain no more than 30-35 words separated by comma [,] (e.g. house,home, etc.), use lower case for all keywords and pluralize all keywords id possible." %>
   <%= f.input :meta_description, :hint=>"The length of this tag should contain approx. 20-25 words and should not exceed more than 150-160 characters (including white spaces)." %>
   <%= f.input :categories, :collection=>options_for_category_tree(Category.roots), :as=>:select, :multiple=>true %>
+  <hr />
+  <strong>Images</strong>
     <div id="images_fields">
      <% f.semantic_fields_for :images do |fp| %>
          <%= render :partial=>"image", :locals=>{:f=>fp}%>
      <% end %>
     </div>
-  <a name="price"></a>
+  <a name="image"></a>
   <%= link_to 'Add image', '#image', :class => "add_nested_item", :rel => "image" %><br />
+  <hr/>
+  <strong>Properties</strong>
   <div id="properties">
     <% f.semantic_fields_for :properties do |fp| %>
       <%= render :partial=>"property", :locals=>{:f=>fp}%>
     <% end %>
   </div>
+  <hr />
+  <strong>Option groups</strong>
+  <%= f.input :option_groups, :as=>:check_boxes, :collection=>OptionGroup.all.map{|og| [h(og.name), og.id]}, :hint=>"Changes will aply after save" %>
+
+  <% if f.object.option_groups.count > 0 %>
+     <hr/>
+     <strong>Product Variations</strong>
+     <div id="product_variations_fields">
+       <% f.semantic_fields_for :product_variations do |fp| %>
+         <%= render :partial=>"product_variation", :locals=>{:f=>fp}%>
+       <% end %>
+     </div>
+     <a name="product_variation"></a>
+     <%= link_to 'Add variation', '#product_variation', :class => "add_nested_item", :rel => "product_variation" %><br />
+  <% end %>
   <%= f.buttons %>
 <% end %>

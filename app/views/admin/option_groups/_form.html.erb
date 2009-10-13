@@ -1,0 +1,25 @@
+<% semantic_form_for [:admin,@option_group] do |f| %>
+  <% content_for :head do %>
+     <script type="text/javascript">
+       var nested_forms = new Array();
+       $(document).ready(function(){
+         <%= "nested_forms['option'] = '#{generate_template(f, :options)}';" %>
+         $('.add_nested_item').click(function(){
+           var app = nested_forms[this.rel];
+           app = replace_ids(app, this.rel);
+           $('#'+this.rel+'s_fields').append(app);
+         });
+       });
+  </script>
+  <% end %>
+  <%= f.error_messages %>
+  <%= f.input :name %>
+    <div id="options_fields">
+     <% f.semantic_fields_for :options do |fp| %>
+         <%= render :partial=>"option", :locals=>{:f=>fp}%>
+     <% end %>
+    </div>
+  <a name="option"></a>
+  <%= link_to 'Add option', '#option', :class => "add_nested_item", :rel => "option" %><br />
+  <%= f.buttons %>
+<% end %>

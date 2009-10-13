@@ -1,0 +1,20 @@
+<% title "Option Group" %>
+
+<p>
+  <strong>Name:</strong>
+  <%=h @option_group.name %>
+</p>
+<p>
+  <strong>Options:</strong>
+  <ul>
+    <% for o in @option_group.options %>
+    <li><%=h o.name %> (<%=h o.code %>)</li>
+    <% end %>
+  </ul>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_admin_option_group_path(@option_group) %> |
+  <%= link_to "Destroy", admin_option_group_path(@option_group), :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", admin_option_groups_path %>
+</p>
