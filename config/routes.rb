@@ -1,15 +1,18 @@
 ActionController::Routing::Routes.draw do |map|
 
+
+
   map.resource :cart, :member=>{:add_product_to=>:post, :set_product_quantity_in=>:post, :delete_product_in=>:post}
-  map.resources :products, :only=>[:show]
+  map.resources :products, :only=>[:show], :collection=>{:gifts=>:get}
   map.resources :categories, :only=>[:index, :show]
 
   # HACK!
   map.admin "/admin", :controller=>"admin/products", :action=>"index"
   map.namespace :admin do |admin|
-    admin.resources :pages
     admin.resources :categories
+    admin.resources :gift_discounts
     admin.resources :option_groups
+    admin.resources :pages
     admin.resources :producers
     admin.resources :products
     admin.resources :property_types

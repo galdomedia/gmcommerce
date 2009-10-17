@@ -1,14 +1,43 @@
 <% content_for :header do -%>
-  Użytkownicy  | <%= link_to 'Nowy użytkownik', new_admin_user_path %>
+  Użytkownicy  | <%= link_to 'New user', new_admin_user_path %>
 <% end -%>
 
 <% content_for :sidebar do -%>
   <p>
-  <%= link_to 'Nowy użytkownik', new_admin_user_path %>
+  <%= link_to 'New user', new_admin_user_path %>
 </p>
 <% end -%>
 
-<%= render :partial => "users_table" %>
+<% form_for @search do |f| %>
+  <table>
+    <tr><td>Login</td><td><%= f.text_field :login_like, :size => 13 %></td></tr>
+    <tr><td colspan="2"><%= f.submit "Find" %></td></tr>
+  </table>
+<% end %>
 
-<%#= will_paginate @users %>
+<table class="index">
+  <tr>
+    <th><%= order @search, :by => :id %></th>
+    <th><%= order @search, :by => :login %></th>
+    <th><%= order @search, :by => :email %></th>
+    <th><%= order @search, :by => :created_at %></th>
+  </tr>
+
+  <% # TODO: (base_app) Add some sort of search feature to easily find users %>
+  <% for user in @users %>
+    <tr>
+      <td><%=h user.id %></td>
+      <td><%= link_to h(user.login), admin_user_url(user) %></td>
+      <td><%=h user.email %></td>
+      <td><%=h user.created_at %></td>
+      <td class="actions">
+        <%= link_to "Show", admin_user_path(user) %> |
+        <%= link_to "Edit", edit_admin_user_path(user) %> |
+        <%= link_to "Destroy", admin_user_path(user), :confirm => 'Are you sure?', :method => :delete if current_user!=user and (admin? or not user.is_admin?) %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+<%= will_paginate @users %>
 

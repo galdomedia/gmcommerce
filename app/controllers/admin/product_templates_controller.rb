@@ -1,6 +1,8 @@
 class Admin::ProductTemplatesController < Admin::AdminController
   def index
-    @product_templates = ProductTemplate.all
+    @search = ProductTemplate.search(params[:search])
+    @search.order = "ascend_by_name" unless @search.order
+    @product_templates =  @search.paginate(:page => params[:page], :include=>[])
   end
   
   def show

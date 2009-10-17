@@ -1,5 +1,5 @@
 <% content_for :header do -%>
-Edytujesz konto użytkownika <%= h @user.login %>
+Editing account <%= h @user.login %>
 <% end -%>
 
 <% content_for :sidebar do -%>
@@ -8,4 +8,4 @@ Edytujesz konto użytkownika <%= h @user.login %>
 
 <%= render :partial=>"form" %>
 
-<%= link_to 'Powrót do listy', admin_users_path %>
+<%= link_to 'Back', admin_users_path %>

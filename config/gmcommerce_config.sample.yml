@@ -1,0 +1,9 @@
+development:
+  registration_required: false
+
+test:
+  registration_required: false
+
+production:
+  registration_required: false
+

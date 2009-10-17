@@ -1,0 +1,20 @@
+<% title "Gift Discount" %>
+
+<p>
+  <strong>Name:</strong>
+  <%=h @gift_discount.name %>
+</p>
+<p>
+  <strong>Discount Value:</strong>
+  <%=h @gift_discount.discount_value %>
+</p>
+<p>
+  <strong>From Cart Value:</strong>
+  <%=h @gift_discount.from_cart_value %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_admin_gift_discount_path(@gift_discount) %> |
+  <%= link_to "Destroy", admin_gift_discount_path(@gift_discount), :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", admin_gift_discounts_path %>
+</p>

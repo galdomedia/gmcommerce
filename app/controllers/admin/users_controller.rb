@@ -4,11 +4,13 @@ class Admin::UsersController < Admin::AdminController
   # GET /admin_users
   # GET /admin_users.xml
   def index
-    @users = User.all
+    @search = User.search(params[:search])
+    @search.order = "ascend_by_login" unless @search.order
+    @users =  @search.paginate(:page => params[:page], :include=>[])
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @users }
+      format.xml  { render :xml => User.all }
     end
   end
 

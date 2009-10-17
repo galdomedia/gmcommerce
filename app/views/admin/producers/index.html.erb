@@ -1,6 +1,11 @@
 <% title "Producers" %>
-
-<table>
+<% form_for @search do |f| %>
+  <table>
+    <tr><td>Name</td><td><%= f.text_field :name_like, :size => 13 %></td></tr>
+    <tr><td colspan="2"><%= f.submit "Find" %></td></tr>
+  </table>
+<% end %>
+<table class="index">
   <tr>
     <th>Name</th>
   </tr>
@@ -13,5 +18,5 @@
     </tr>
   <% end %>
 </table>
-
+<%= will_paginate @producers %>
 <p><%= link_to "New Producer", new_admin_producer_path %></p>

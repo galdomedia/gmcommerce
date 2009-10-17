@@ -1,6 +1,8 @@
 class Admin::ShipmentsController < Admin::AdminController
   def index
-    @shipments = Shipment.all
+    @search = Shipment.search(params[:search])
+    @search.order = "ascend_by_name" unless @search.order
+    @shipments =  @search.paginate(:page => params[:page], :include=>[])
   end
   
   def show

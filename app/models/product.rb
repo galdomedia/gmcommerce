@@ -1,5 +1,4 @@
 class Product < ActiveRecord::Base
-
   belongs_to :producer
   has_and_belongs_to_many :categories
   has_and_belongs_to_many :option_groups
@@ -9,14 +8,15 @@ class Product < ActiveRecord::Base
   has_many :product_variations
   
 
-  named_scope :available, :conditions=>[]
+  named_scope :available, :conditions=>['is_gift=?', false]
+  named_scope :gifts, :conditions=>['is_gift=?', true]
 
   validates_presence_of :name
   validates_numericality_of :price, :only_integer=>false, :greater_than_or_equal_to=>0, :allow_nil=>false
   validates_length_of :meta_description, :within=>0..255, :allow_nil=>true, :allow_blank=>true
   validates_length_of :meta_keywords, :within=>0..255, :allow_nil=>true, :allow_blank=>true
 
-  attr_accessible :name, :sku, :price, :description, :meta_keywords, :meta_description, :producer_id, :category_ids, :images_attributes, :properties_attributes, :option_group_ids, :product_variations_attributes
+  attr_accessible :name, :sku, :price, :description, :meta_keywords, :meta_description, :producer_id, :category_ids, :images_attributes, :properties_attributes, :option_group_ids, :product_variations_attributes, :is_gift
   accepts_nested_attributes_for :images, :allow_destroy => true, :reject_if => proc { |a| a['attachment'].blank? }
   accepts_nested_attributes_for :properties, :allow_destroy => true
   accepts_nested_attributes_for :product_variations, :allow_destroy => true, :reject_if => proc { |pv| pv['price'].blank? }

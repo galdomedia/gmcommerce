@@ -18,4 +18,7 @@ class ProductsController < ApplicationController
     end
   end
 
+  def gifts
+  end
+
 end

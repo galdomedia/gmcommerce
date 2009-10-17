@@ -4,6 +4,7 @@ class CartsController < ApplicationController
   before_filter :find_cart, :except=>:destroy
 
   def show
+    @available_discount = GiftDiscount.get_discount_for_cart_value(@cart.total_value_without_gifts)
   end
 
   def destroy

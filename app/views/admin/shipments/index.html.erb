@@ -1,11 +1,18 @@
 <% title "Shipments" %>
 
-<table>
+<% form_for @search do |f| %>
+  <table>
+    <tr><td>Name</td><td><%= f.text_field :name_like, :size => 13 %></td></tr>
+    <tr><td colspan="2"><%= f.submit "Find" %></td></tr>
+  </table>
+<% end %>
+
+<table class="index">
   <tr>
-    <th>Name</th>
-    <th>Cost</th>
-    <th>Active</th>
-    <th>Free From Cart Value</th>
+    <th><%= order @search, :by => :name %></th>
+    <th><%= order @search, :by => :cost %></th>
+    <th><%= order @search, :by => :active %></th>
+    <th><%= order @search, :by => :free_from_cart_value %></th>
   </tr>
   <% for shipment in @shipments %>
     <tr>
@@ -19,5 +26,5 @@
     </tr>
   <% end %>
 </table>
-
+<%= will_paginate @shipments %>
 <p><%= link_to "New Shipment", new_admin_shipment_path %></p>

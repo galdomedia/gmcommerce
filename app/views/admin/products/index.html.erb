@@ -1,10 +1,20 @@
 <% title "Products" %>
 
-<table>
+
+<% form_for @search do |f| %>
+  <table>
+    <tr><td>Product name</td><td><%= f.text_field :name_like, :size => 13 %></td></tr>
+    <tr><td>SKU</td><td><%= f.text_field :sku_like, :size=>13%></td></tr>
+    <tr><td colspan="2"><%= f.submit "Find" %></td></tr>
+  </table>
+<% end %>
+
+
+<table class="index">
   <tr>
-    <th>Name</th>
-    <th>Sku</th>
-    <th>Price</th>
+    <th><%= order @search, :by => :name %></th>
+    <th><%= order @search, :by => :sku %></th>
+    <th><%= order @search, :by => :price %></th>
   </tr>
   <% for product in @products %>
     <tr>
@@ -17,6 +27,7 @@
     </tr>
   <% end %>
 </table>
+<%= will_paginate @products %>
 
 <p><%= link_to "New Product", new_admin_product_path %></p>
 

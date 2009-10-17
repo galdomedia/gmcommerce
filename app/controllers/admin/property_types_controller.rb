@@ -1,6 +1,8 @@
 class Admin::PropertyTypesController < Admin::AdminController
   def index
-    @property_types = PropertyType.all
+    @search = PropertyType.search(params[:search])
+    @search.order = "ascend_by_name" unless @search.order
+    @property_types =  @search.paginate(:page => params[:page], :include=>[])
   end
   
   def show

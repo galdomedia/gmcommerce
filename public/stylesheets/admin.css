@@ -14,117 +14,35 @@
 	background-color: #808d67;
 }
 
-#lista_produktow, #widok_produktu {
-    font-size:12px;
-    position:relative;
+/* Pagination */
+.pagination {
+    text-align: right;
+    padding: 3px;
+    margin: 3px;
 }
-
-#lista_produktow .sortowanie, #widok_produktu .top {
-    margin:0 3px 0 3px;
-    padding:10px 0 0 15px;
+.pagination a {
+    padding: 2px 5px 2px 5px;
+    margin: 2px;
+    border: 1px solid #aaa;
+    text-decoration: none;
+    color: #666;
 }
-
-#lista_produktow .sortowanie select {
-    width:155px;
-    height:22px;
-    border:#a1a1a1 solid;
-    margin:4px 0 0 0;
-    font-size:10px;
-    border-width:1px 0 0 1px;
+.pagination a:hover, .pagination a:active {
+    border: 1px solid #666;
+    background-color: #aaa;
+    color: #000;
 }
-
-#lista_produktow .sortowanie .zastosuj {
-    width:74px;
-    height:20px;
-    background:url(../gfx/sortowanie_button.gif) no-repeat;
-    padding:3px 10px 0 8px;
-    position:absolute;
-    left:360px;
-    top:75px;
+.pagination span.current {
+    padding: 2px 5px 2px 5px;
+    margin: 2px;
+    border: 1px solid #666;
+    font-weight: bold;
+    background-color: #666;
+    color: #FFF;
 }
-
-#lista_produktow .sortowanie .zastosuj a {
-    display:block;
-    text-decoration:none;
-    color:#000000;}
-
-#lista_produktow .numeracja {
-    font-size:10px;
-    text-align:center;
-    margin:0 3px 0 3px;
-    padding:8px 0 8px 0;
-}
-
-#lista_produktow .numeracja a {
-    text-decoration:none;
-    color:#000000;
-    padding:0 5px 0 0;
-}
-
-#lista_produktow .numeracja a:hover {
-    text-decoration:underline;
-}
-
-#lista_produktow .numeracja .disabled {
-    color:grey   
-}
-
-#lista_produktow .numeracja .current {
-    color:grey   
-}
-
-#lista_produktow .produkt {
-    border:#d5c39d solid;
-    border-width:0 0 3px 0;
-    margin:0 3px 0 3px;
-}
-
-#lista_produktow .cena {
-    padding:5px;
-}
-
-#lista_produktow .produkt img {
-    border:1px #000000 solid;
-    margin:0 15px 15px 15px;
-    float:left;
-}
-
-#lista_produktow .opis {
-    margin:0 30px 0 160px;
-    font-size:10px;
-}
-
-#lista_produktow .opis img {
-    border:none;
-    padding:4px 0 4px 0;
-    margin:0;
-}
-
-#lista_produktow .opis h3 {
-    color:#9f0e0e;
-    font-size:12px;
-}
-
-#lista_produktow .opis a {
-    color:#9f0e0e;
-}
-
-#lista_produktow .produkt .red {
-    font-size:14px;
-}
-
-#lista_produktow .dodajdokoszyka {
-    padding:3px;
-    position:absolute;
-    margin:-18px 0 0 200px;
- }
-
-#lista_produktow .dodajdokoszyka a {
-    color:#000000;
-    display:block;
-    text-decoration:none;
-}
-
-#lista_produktow .dodajdokoszyka a:hover {
-    text-decoration:underline;
+.pagination span.disabled {
+    padding: 2px 5px 2px 5px;
+    margin: 2px;
+    border: 1px solid #eee;
+    color: #ddd;
 }

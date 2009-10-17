@@ -1,0 +1,2 @@
+module GiftDiscountsHelper
+end

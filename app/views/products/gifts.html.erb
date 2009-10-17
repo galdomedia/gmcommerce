@@ -1,0 +1,7 @@
+
+<h1>Available gifts:</h1>
+<ul>
+<% for p in Product.gifts %>
+  <li><%= link_to h(p.name), p %></li>
+<% end %>
+</ul>

@@ -9,6 +9,6 @@ class ProductVariation < ActiveRecord::Base
   def to_s
     s = self.options.map{|o| "#{o.option_group.name}: #{o.name}"}
     s.join ", "
-    
   end
+
 end

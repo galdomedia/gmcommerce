@@ -1,6 +1,8 @@
 class Admin::PagesController < Admin::AdminController
   def index
-    @pages = Page.all
+    @search = Page.search(params[:search])
+    @search.order = "ascend_by_title" unless @search.order
+    @pages =  @search.paginate(:page => params[:page], :include=>[])
   end
   
   def show

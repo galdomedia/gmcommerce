@@ -1,0 +1,26 @@
+<% title "Gift Discounts" %>
+<% form_for @search do |f| %>
+  <table>
+    <tr><td>Name</td><td><%= f.text_field :name_like, :size => 13 %></td></tr>
+    <tr><td colspan="2"><%= f.submit "Find" %></td></tr>
+  </table>
+<% end %>
+<table class="index">
+  <tr>
+    <th><%= order @search, :by => :name %></th>
+    <th><%= order @search, :by => :discount_value %></th>
+    <th><%= order @search, :by => :from_cart_value %></th>
+  </tr>
+  <% for gift_discount in @gift_discounts %>
+    <tr>
+      <td><%=h gift_discount.name %></td>
+      <td><%=h gift_discount.discount_value %></td>
+      <td><%=h gift_discount.from_cart_value %></td>
+      <td><%= link_to "Show", admin_gift_discount_path(gift_discount) %></td>
+      <td><%= link_to "Edit", edit_admin_gift_discount_path(gift_discount) %></td>
+      <td><%= link_to "Destroy", admin_gift_discount_path(gift_discount), :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+<%= will_paginate @gift_discounts %>
+<p><%= link_to "New Gift Discount", new_admin_gift_discount_path %></p>

@@ -1,6 +1,8 @@
 class Admin::OptionGroupsController < Admin::AdminController
   def index
-    @option_groups = OptionGroup.all
+    @search = OptionGroup.search(params[:search])
+    @search.order = "ascend_by_name" unless @search.order
+    @option_groups =  @search.paginate(:page => params[:page], :include=>[])
   end
   
   def show

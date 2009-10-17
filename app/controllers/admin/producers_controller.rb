@@ -1,6 +1,8 @@
 class Admin::ProducersController < Admin::AdminController
   def index
-    @producers = Producer.all
+    @search = Producer.search(params[:search])
+    @search.order = "ascend_by_name" unless @search.order
+    @producers =  @search.paginate(:page => params[:page], :include=>[])
   end
   
   def show
