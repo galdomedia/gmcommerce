@@ -1,8 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
 
-
-
-  map.resource :cart, :member=>{:add_product_to=>:post, :set_product_quantity_in=>:post, :delete_product_in=>:post}
+  map.resources :orders, :new => { :preview => :post }
+  map.resource :payments, :only => [:new], :member=>{:ok=>:get, :failed=>:get}
+  map.resource :cart, :member=>{:add_product_to=>:post, :set_product_quantity_in=>:post, :delete_product_in=>:post, :set_shipment_for=>:post}
   map.resources :products, :only=>[:show], :collection=>{:gifts=>:get}
   map.resources :categories, :only=>[:index, :show]
 
@@ -10,8 +10,10 @@ ActionController::Routing::Routes.draw do |map|
   map.admin "/admin", :controller=>"admin/products", :action=>"index"
   map.namespace :admin do |admin|
     admin.resources :categories
+    admin.resources :contacts
     admin.resources :gift_discounts
     admin.resources :option_groups
+    admin.resources :orders
     admin.resources :pages
     admin.resources :producers
     admin.resources :products

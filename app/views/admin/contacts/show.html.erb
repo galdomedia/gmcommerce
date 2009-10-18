@@ -1,0 +1,44 @@
+<% title "Contact" %>
+
+<p>
+  <strong>First Name:</strong>
+  <%=h @contact.first_name %>
+</p>
+<p>
+  <strong>Last Name:</strong>
+  <%=h @contact.last_name %>
+</p>
+<p>
+  <strong>Street:</strong>
+  <%=h @contact.street %>
+</p>
+<p>
+  <strong>Street Nr:</strong>
+  <%=h @contact.street_nr %>
+</p>
+<p>
+  <strong>Zip Code:</strong>
+  <%=h @contact.zip_code %>
+</p>
+<p>
+  <strong>City:</strong>
+  <%=h @contact.city %>
+</p>
+<p>
+  <strong>Country:</strong>
+  <%=h @contact.country %>
+</p>
+<p>
+  <strong>Is Billing:</strong>
+  <%=h @contact.is_billing %>
+</p>
+<p>
+  <strong>Is Shipping:</strong>
+  <%=h @contact.is_shipping %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_admin_contact_path(@contact) %> |
+  <%= link_to "Destroy", admin_contact_path(@contact), :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", admin_contacts_path %>
+</p>

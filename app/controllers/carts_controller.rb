@@ -5,6 +5,7 @@ class CartsController < ApplicationController
 
   def show
     @available_discount = GiftDiscount.get_discount_for_cart_value(@cart.total_value_without_gifts)
+    @shipments = Shipment.active.all
   end
 
   def destroy
@@ -46,9 +47,16 @@ class CartsController < ApplicationController
     redirect_to cart_url
   end
 
+  def set_shipment_for
+    shipment = Shipment.find(params[:shipment])
+    @cart.set_shipment(shipment)
+    redirect_to cart_url
+  end
+
   private
     def find_cart
       @cart = (session[:cart] ||= Cart.new)
+      @cart.set_shipment(Shipment.active.first) if @cart.shipment.blank?
     end
 
 end

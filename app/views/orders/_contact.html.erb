@@ -1,0 +1,6 @@
+<div class="<%= "contact_shipping" if f.object.is_shipping%><%= "contact_billing" if f.object.is_billing%>">
+First name: <%= f.text_field :first_name, :class=>"first_name" %><br />
+Last name: <%= f.text_field :last_name, :class=>"last_name" %><br />
+<%= f.hidden_field :is_shipping %>
+<%= f.hidden_field :is_billing %>
+</div>

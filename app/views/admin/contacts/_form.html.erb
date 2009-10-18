@@ -1,0 +1,12 @@
+<% semantic_form_for [:admin, @contact] do |f| %>
+  <%= f.error_messages %>
+  <%= f.input :first_name %>
+  <%= f.input :last_name %>
+  <%= f.inputs :street, :steet_nr %>
+  <%= f.input :zip_code %>
+  <%= f.input :city %>
+  <%= f.input :country %>
+  <%= f.inputs :is_billing, :is_shipping %>
+  <%= f.buttons %>
+
+<% end %>

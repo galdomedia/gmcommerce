@@ -1,0 +1,32 @@
+<% title "Order" %>
+
+<p>
+  <strong>Number:</strong>
+  <%=h @order.number %> (<small>Secret key: <%=h @order.secret %> </small>)
+</p>
+<p>
+  <strong>Status:</strong>
+  <%=h @order.status %>
+</p>
+<p>
+  <strong>Order value:</strong>
+  <%=h @order.order_value %>
+</p>
+<p>
+  <strong>Shipment cost:</strong>
+  <%=h @order.shipment_cost %>
+</p>
+<p>
+  <strong>Comment:</strong>
+  <%=h @order.comment %>
+</p>
+<p>
+  <strong>Shipment:</strong>
+  <%=h @order.shipment %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_admin_order_path(@order) %> |
+  <%= link_to "Destroy", admin_order_path(@order), :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", admin_orders_path %>
+</p>

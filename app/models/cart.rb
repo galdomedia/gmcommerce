@@ -1,10 +1,11 @@
 class Cart
-  attr_reader :items
+  attr_reader :items, :shipment
   attr_accessor :payment_id
 
   def initialize
     @items = []
     @payment_id = "1"
+    @shipment = nil
   end
   
   def add_product(product, quantity = 1, product_variation=nil)
@@ -40,6 +41,10 @@ class Cart
     end
   end
 
+  def set_shipment(shipment)
+    @shipment = shipment
+  end
+
   def total_price
     @items.sum { |item| item.price }.to_f
   end
@@ -59,6 +64,20 @@ class Cart
   end
 
   def total_price_with_delivery
-   total_price
+    total = self.total_price_with_gifts_and_discounts
+    unless @shipment.blank?
+      total+=@shipment.cost if total < @shipment.free_from_cart_value
+    end
+    total
+  end
+
+  def shipment_name
+    @shipment.name if @shipment
+  end
+
+  def shipment_cost
+    unless @shipment.blank?
+      self.total_price_with_gifts_and_discounts < @shipment.free_from_cart_value ? @shipment.cost : 0.0
+    end
   end
 end

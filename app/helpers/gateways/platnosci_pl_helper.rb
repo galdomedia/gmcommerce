@@ -1,0 +1,2 @@
+module Gateways::PlatnosciPlHelper
+end

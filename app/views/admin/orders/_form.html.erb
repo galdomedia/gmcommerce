@@ -1,0 +1,19 @@
+<% form_for [:admin, @order] do |f| %>
+  <%= f.error_messages %>
+  <%= f.input :number, :hint=>"secret key: #{h(@order.secret)}" %>
+  <p>
+    <strong>Status: </strong>
+    <%=h @order.status %>
+  </p>
+  <p>
+    <strong>Order value:</strong>
+    <%=h @order.order_value %>
+  </p>
+  <p>
+    <strong>Shipment cost:</strong>
+    <%=h @order.shipment_cost %>
+  </p>
+  <%= f.input :comment %>
+  <%= f.input :shipment %>
+  <%= f.input :buttons %>
+<% end %>

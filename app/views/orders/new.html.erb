@@ -1,0 +1,67 @@
+<% title "New Order" %>
+
+<% content_for :head do %>
+    <script type="text/javascript">
+    function manage_contact_data(){
+        //alert($('#order_same_address').attr('checked'));
+        if($('#order_same_address').attr('checked')){
+            $('.contact_shipping').hide();
+            $('.contact_shipping .first_name').val($('.contact_billing .first_name').val());
+            $('.contact_shipping .last_name').val($('.contact_billing .last_name').val());
+        }else{
+            $('.contact_shipping .first_name').val('');
+            $('.contact_shipping .last_name').val('');
+            $('.contact_shipping').show();
+        }
+    }
+    $(document).ready(function(){
+        $('#new_order').submit(manage_contact_data);
+        $('#order_same_address').click(manage_contact_data);
+        manage_contact_data();
+    });
+    </script>
+<% end %>
+<table width="500" border="0" cellspacing="0" cellpadding="0">
+  <tr style="height:28px; background-color: Green;">
+    <td width="280" style="padding:0 0 0 20px;">Product name</td>
+    <td width="62" style="text-align:center;">Price</td>
+    <td width="40" style="text-align:center;">Quantity</td>
+    <td width="82" style="text-align:center; border:none;">Value</td>
+  </tr>
+  <% @cart.items.each do |cart_item| %>
+    <tr class="tr_produkt">
+      <td class="td_item">
+        <p><%= h cart_item.name %><br /><small><%= h cart_item.variation %></small></p>
+      </td>
+      <td style="text-align:center;"><%= cart_item.product_price %> </td>
+      <td style="text-align:center;"><%= cart_item.quantity %></td>
+      <td style="text-align:center; border:none;"><%= cart_item.price %></td>
+    </tr>
+  <% end %>
+  <% if @available_discount > 0.0 %>
+  <tr>
+    <td colspan=5 align="right">Available discount for gifts: <%= @available_discount %></td>
+  </tr>
+  <% end %>
+</table>
+
+Cart total value: <%= @cart.total_price_with_gifts_and_discounts%>
+<br />
+<% if @cart.shipment %>
+<br />
+Delivery method: <%=h @cart.shipment_name %> (<%=h @cart.shipment_cost %>)<br />
+<% end %>
+<br />
+Total order value: <%= @cart.total_price_with_delivery %>
+<% form_for @order do |f| %>
+  <%= f.error_messages %>
+  <%= f.check_box :same_address %><%= f.label :same_address %><br />
+  <% f.fields_for :contacts do |cf| %>
+     <%= render :partial=>'contact', :locals=>{:f=>cf} %>
+  <% end %>
+  <%= f.label :comment %>:<br />
+  <%= f.text_area :comment, :rows=>5 %>
+  <p><%= f.submit "Submit" %></p>
+<% end %>
+
+

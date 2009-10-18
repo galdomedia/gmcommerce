@@ -28,10 +28,23 @@
   <% end %>
   <% if @available_discount > 0.0 %>
   <tr>
-    <td colspan=5 align="right">Avaiable discount for gifts: <%= @available_discount %></td>
+    <td colspan=5 align="right">Available discount for gifts: <%= @available_discount %></td>
   </tr>
   <% end %>
 </table>
 
 Cart total value: <%= @cart.total_price_with_gifts_and_discounts%> 
 <br />
+<% if @cart.shipment %>
+<br />
+Delivery method: <%=h @cart.shipment_name %> (<%=h @cart.shipment_cost %>)<br />
+<% end %>
+<% if @shipments.length > 1 %>
+  <% form_tag(set_shipment_for_cart_path(:id=>'shipment_form_sub')) do -%>
+     <%= select_tag(:shipment, options_for_select(@shipments.map{|s|[h(s.name), s.id]}, @cart.shipment.id), :onchange => "$(this).parent().submit()") %>
+   <% end %>
+<% end %>
+<br />
+Total order value: <%= @cart.total_price_with_delivery %>
+<br /><br />
+<%= link_to "Complete your order", new_order_path %>

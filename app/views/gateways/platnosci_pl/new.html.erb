@@ -1,0 +1,26 @@
+<% title "Płatności.pl" %>
+<script type="text/javascript" src="https://www.platnosci.pl/paygw/UTF/js/<%=h @pos_id %>/<%=h @k2 %>/paytype.js" >
+</script>
+<form action="https://www.platnosci.pl/paygw/ISO/NewPayment" method="POST"
+      name="payform">
+  <input type="hidden" name="pos_id" value="<%=h @pos_id%>"> <!-- required -->
+  <input type="hidden" name="pos_auth_key" value="<%=h @pos_auth_key%>"> <!-- required -->
+  <input type="hidden" name="session_id" value="<%=h @session_id %>"> <!-- required -->
+  <input type="hidden" name="amount" value="<%=h @amount.to_i%>"> <!-- required -->
+  <input type="hidden" name="desc" value="<%=h @desc %>">  <!-- required -->
+  <input type="hidden" name="client_ip" value="<%=h @client_ip%>"> <!-- required -->
+  <input type="hidden" name="order_id" value="<%=h @order_id%>">
+  <input type="hidden" name="js" value="0">
+  <!--<input type="hidden" name="ts" value="<%=h @ts %>">-->
+              <!--<input type="hidden" name="sig" value="<%=h @sig.upcase %>">-->
+
+  <h2> Imię i nazwisko: <%#= @order.bill_addr_first_name + " " + @order.bill_addr_last_name %> </h2>
+  <h2>Kwota: <%= @order.order_value %> PLN </h2>
+  <script language="JavaScript" type="text/javascript">
+    PlnDrawRadioImg(4);
+  </script>
+  <input type="submit" value="Zapłac poprzez Płatności.pl">
+</form>
+<script language="JavaScript" type="text/javascript">
+  document.forms['payform'].js.value=1;
+</script>

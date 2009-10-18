@@ -1,0 +1,17 @@
+development:
+  pos_id:
+  pos_auth_key:
+  md5_key_1:
+  md5_key_2:
+
+test:
+  pos_id:
+  pos_auth_key:
+  md5_key_1:
+  md5_key_2:
+
+production:
+  pos_id:
+  pos_auth_key:
+  md5_key_1:
+  md5_key_2:

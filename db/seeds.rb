@@ -82,7 +82,11 @@ var3.save
 appl = Producer.create(:name=>"apple")
 appl.products << product_advanced
 
-
+gateway = Gateway.new
+gateway.name = "Platnosci.pl"
+gateway.ident = "platnosci_pl"
+gateway.is_active = true
+gateway.save
 
 
 

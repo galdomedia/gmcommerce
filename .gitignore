@@ -1,6 +1,7 @@
 log/
 config/database.yml
 config/gmcommerce_config.yml
+config/gateways/*
 .idea/
 tmp/
 db/schema.rb

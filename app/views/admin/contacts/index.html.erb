@@ -1,0 +1,19 @@
+<% title "Contacts" %>
+
+<table class="index">
+  <tr>
+    <th>First Name</th>
+    <th>Last Name</th>
+  </tr>
+  <% for contact in @contacts %>
+    <tr>
+      <td><%=h contact.first_name %></td>
+      <td><%=h contact.last_name %></td>
+      <td><%= link_to "Show", admin_contact_path(contact) %></td>
+      <td><%= link_to "Edit", edit_admin_contact_path(contact) %></td>
+      <td><%= link_to "Destroy", contact, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Contact", new_admin_contact_path %></p>
