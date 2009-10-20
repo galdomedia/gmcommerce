@@ -13,8 +13,10 @@ class Gateways::PlatnosciPlController < Gateways::PaymentsController
     @desc = "Order ##{o.number} (id: #{o.id.to_s})"
     @order_id = o.id
     @session_id = @order.secret
+    @first_name = @order.billing_contact.first_name
+    @last_name = @order.billing_contact.last_name
     sig = "" + @pos_id.to_s + @session_id.to_s + @pos_auth_key.to_s
-    sig += @amount.to_s + @desc.to_s + @order_id.to_s + o.billing_contact.first_name.to_s + o.billing_contact.last_name.to_s
+    sig += @amount.to_s + @desc.to_s + @order_id.to_s + @first_name + @last_name
     #sig += o.billing_address.street + o.billing_address.street_nr + o.billing_address.city + o.billing_address.zip_code.to_s
     #sig += o.billing_address.email + o.billing_address.phone
     sig += @client_ip + @ts.to_s + config[:md5_key_1]

@@ -12,9 +12,9 @@
   <input type="hidden" name="order_id" value="<%=h @order_id%>">
   <input type="hidden" name="js" value="0">
   <input type="hidden" name="ts" value="<%=h @ts %>">
-  <input type="hidden" name="first_name" value="<%=h @order.billing_contact.first_name %>">
-  <input type="hidden" name="last_name" value="<%=h @order.billing_contact.last_name %>">
-              <input type="hidden" name="sig" value="<%=h @sig.upcase %>">
+  <input type="hidden" name="first_name" value="<%=h @first_name %>">
+  <input type="hidden" name="last_name" value="<%=h @last_name %>">
+  <input type="hidden" name="sig" value="<%=h @sig %>">
 
   <h2> Imię i nazwisko: <%=h(@order.billing_contact.first_name + " " + @order.billing_contact.last_name)%> </h2>
   <h2>Kwota: <%= @order.order_value %> PLN </h2>
