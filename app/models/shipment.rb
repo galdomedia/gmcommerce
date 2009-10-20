@@ -7,4 +7,9 @@ class Shipment < ActiveRecord::Base
   validates_numericality_of :free_from_cart_value, :only_integer=>false, :allow_nil=>true
 
   attr_accessible :name, :cost, :active, :free_from_cart_value, :description
+
+
+  def to_s
+    self.name
+  end
 end

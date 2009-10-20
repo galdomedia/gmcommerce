@@ -8,6 +8,7 @@ class Order < ActiveRecord::Base
   #has_many :order_items
   
   validates_associated :contacts
+  validate :validates_contacts_number
   
   before_create :generate_secret
 
@@ -64,5 +65,20 @@ class Order < ActiveRecord::Base
         order.order
         order.save
       end
+  end
+
+  def validates_contacts_number
+    if self.contacts.length != 2
+       self.errors.add_to_base('Invalid number of contact data, should be 2 (billing and shipping)')
+    end
+  end
+
+  def billing_contact
+    self.contacts.find(:first, :conditions=>['is_billing=?', true])
+
+  end
+
+  def shipping_contact
+    self.contacts.find(:first, :conditions=>['is_shipping=?', true])
   end
 end

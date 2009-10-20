@@ -11,13 +11,15 @@
   <input type="hidden" name="client_ip" value="<%=h @client_ip%>"> <!-- required -->
   <input type="hidden" name="order_id" value="<%=h @order_id%>">
   <input type="hidden" name="js" value="0">
-  <!--<input type="hidden" name="ts" value="<%=h @ts %>">-->
-              <!--<input type="hidden" name="sig" value="<%=h @sig.upcase %>">-->
+  <input type="hidden" name="ts" value="<%=h @ts %>">
+  <input type="hidden" name="first_name" value="<%=h @order.billing_contact.first_name %>">
+  <input type="hidden" name="last_name" value="<%=h @order.billing_contact.last_name %>">
+              <input type="hidden" name="sig" value="<%=h @sig.upcase %>">
 
-  <h2> Imię i nazwisko: <%#= @order.bill_addr_first_name + " " + @order.bill_addr_last_name %> </h2>
+  <h2> Imię i nazwisko: <%=h(@order.billing_contact.first_name + " " + @order.billing_contact.last_name)%> </h2>
   <h2>Kwota: <%= @order.order_value %> PLN </h2>
   <script language="JavaScript" type="text/javascript">
-    PlnDrawRadioImg(4);
+    PlnDrawRadioImg(3);
   </script>
   <input type="submit" value="Zapłac poprzez Płatności.pl">
 </form>

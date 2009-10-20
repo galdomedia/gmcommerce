@@ -14,6 +14,8 @@ PropertyType.delete_all
 ProductTemplate.delete_all
 Product.delete_all
 Category.delete_all
+Shipment.delete_all
+Gateway.delete_all
 Role.delete_all
 User.delete_all
 
@@ -87,6 +89,13 @@ gateway.name = "Platnosci.pl"
 gateway.ident = "platnosci_pl"
 gateway.is_active = true
 gateway.save
+
+
+shipment = Shipment.new
+shipment.name = "Post"
+shipment.cost = 15
+shipment.free_from_cart_value = 200
+shipment.save
 
 
 
