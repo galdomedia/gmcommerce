@@ -15,13 +15,7 @@ class Gateways::PlatnosciPlController < Gateways::PaymentsController
     @session_id = @order.secret
     @first_name = @order.billing_contact.first_name
     @last_name = @order.billing_contact.last_name
-    sig = "" + @pos_id.to_s + @session_id.to_s + @pos_auth_key.to_s
-    sig += @amount.to_s + @desc.to_s + @order_id.to_s + @first_name + @last_name
-    #sig += o.billing_address.street + o.billing_address.street_nr + o.billing_address.city + o.billing_address.zip_code.to_s
-    #sig += o.billing_address.email + o.billing_address.phone
-    sig += @client_ip + @ts.to_s + config[:md5_key_1]
-    @k2 = config[:md5_key_1][0..2] 
-    @sig = Digest::MD5.hexdigest(sig)
+    @k2 = config[:md5_key_1][0..2]
   end
 
   def status
