@@ -49,7 +49,7 @@ class Order < ActiveRecord::Base
 
 
   def self.generate_number
-    Order.all.count + 1
+    Order.all.length + 1
   end
 
   def generate_secret

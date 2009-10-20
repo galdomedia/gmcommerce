@@ -34,7 +34,7 @@ class Product < ActiveRecord::Base
   end
 
   def get_minimal_price
-    if self.product_variations.count > 0
+    if self.product_variations.length > 0
       prices = self.product_variations.map{|pv| pv.price}
       prices.min
     else
