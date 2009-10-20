@@ -10,7 +10,7 @@ class Gateways::PlatnosciPlController < Gateways::PaymentsController
     @ts = Time.now.to_i
     o = @order
     @amount = (o.order_value + o.shipment_cost) * 100
-    @desc = "Order ##{o.number} (id: #{o.id.to_s})"
+    @desc = "Order #{o.number}"
     @order_id = o.number
     @session_id = @order.secret
     @first_name = @order.billing_contact.first_name
@@ -37,7 +37,7 @@ class Gateways::PlatnosciPlController < Gateways::PaymentsController
           amount = (@order.order_value + @order.shipment_cost) * 100
           sig = ""+@pos_id.to_s + session_id.to_s +
             @order.number.to_s + y['trans_status'].to_s +
-            amount.to_s + y['trans_desc'].to_s +
+            amount.to_i.to_s + y['trans_desc'].to_s +
             y['trans_ts'].to_s + config[:md5_key_2]
 
 
