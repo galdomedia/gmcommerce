@@ -12,9 +12,9 @@
   <% for page in @pages %>
     <tr>
       <td><%=h page.title %></td>
-      <td><%= link_to "Show", admin_page_url(page) %></td>
-      <td><%= link_to "Edit", edit_admin_page_path(page) %></td>
-      <td><%= link_to "Destroy", admin_page_url(page), :confirm => 'Are you sure?', :method => :delete %></td>
+      <td><%= link_to t('gmcommerce.common.show'), admin_page_url(page) %></td>
+      <td><%= link_to t('gmcommerce.common.edit'), edit_admin_page_path(page), :class=>"edit_link" %></td>
+      <td><%= link_to t('gmcommerce.common.destroy'), admin_page_url(page), :confirm => 'Are you sure?', :method => :delete, :class=>"destroy_link" %></td>
     </tr>
   <% end %>
 </table>

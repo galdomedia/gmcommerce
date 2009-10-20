@@ -31,9 +31,9 @@
       <td><%=h user.email %></td>
       <td><%=h user.created_at %></td>
       <td class="actions">
-        <%= link_to "Show", admin_user_path(user) %> |
-        <%= link_to "Edit", edit_admin_user_path(user) %> |
-        <%= link_to "Destroy", admin_user_path(user), :confirm => 'Are you sure?', :method => :delete if current_user!=user and (admin? or not user.is_admin?) %>
+        <%= link_to t('gmcommerce.common.show'), admin_user_path(user) %> |
+        <%= link_to t('gmcommerce.common.edit'), edit_admin_user_path(user), :class=>"edit_link" %> |
+        <%= link_to t('gmcommerce.common.destroy'), admin_user_path(user), :confirm => 'Are you sure?', :method => :delete if current_user!=user and (admin? or not user.is_admin?), :class=>"destroy_link" %>
       </td>
     </tr>
   <% end %>

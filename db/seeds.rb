@@ -93,9 +93,6 @@ gateway.save
 
 shipment = Shipment.new
 shipment.name = "Post"
-shipment.cost = 15
-shipment.free_from_cart_value = 200
+shipment.cost = 15.0
+shipment.free_from_cart_value = 200.0
 shipment.save
-
-
-

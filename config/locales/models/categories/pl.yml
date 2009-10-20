@@ -1,0 +1,4 @@
+pl:
+  categories:
+    errors:
+      not_found: Kategoria nie istnieje

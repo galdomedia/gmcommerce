@@ -1,0 +1,22 @@
+pl:
+  authlogic:
+    login_successfull: "Pomyślnie zalogowano do systemu"
+    logout_successfull: "Pomyślnie wylogowano z systemu"
+    attributes:
+      user_session:
+        login: "Login"
+        password: "Hasło"
+        remember_me: "Pamiętaj mnie"
+    password_reminder:
+      user_to_update_not_found: "Przykro nam, ale nie udało się odnaleźc Twojego konta. Jeśli masz problemy, spróbuj skopiowac adres www z emaila wysłanego do Ciebie, ew. spróbuj ponownie zresetowac hasło."
+      password_updated: "Hasło zostało pomyślnie zmienione"
+      user_not_found: "Nie znaleziono użytkownika o podanym adresie email"
+      instructions_sent: "Instrukcja zmiany hasła została wysłana na podany adres email. Sprawdź proszę pocztę."
+      email:
+        header: "Poproszono o zmianę hasła. Jeśli to nie ty, po prostu zignoruj tego maila. Jeśli jednak zapomniałeś hasła, po prostu kliknij link poniżej:"
+        footer: "Jeśli powyższy link nie działa, spróbuj go skopiowac i wkleic w oknie przegladarki. Jeśli problem będzie dalej występował, śmiało skontaktuj się z nami."
+    account:
+      registered: "Konto zarejestrowano!"
+      updated: "Konto zaktualizowano!"
+    access_danied: "Musisz by zalogowany, by przejśc na tę stronę"
+    only_for_logged_out: "Musisz byc wylogowany, by przejśc na tę strone"

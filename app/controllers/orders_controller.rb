@@ -23,6 +23,8 @@ class OrdersController < ApplicationController
     if @order.valid?
       Order.create_new(@order, @cart)
       flash[:notice] = "Successfully created order."
+      session[:cart] = nil
+      session[:order_number] = @order.number
       redirect_to new_payment_url(:key=>@order.secret, :number=>@order.number)
     else
       render :action => 'new'

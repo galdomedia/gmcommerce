@@ -20,9 +20,9 @@
       <td><%=h shipment.cost %></td>
       <td><%=h shipment.active %></td>
       <td><%=h shipment.free_from_cart_value %></td>
-      <td><%= link_to "Show", admin_shipment_url(shipment) %></td>
-      <td><%= link_to "Edit", edit_admin_shipment_path(shipment) %></td>
-      <td><%= link_to "Destroy", admin_shipment_url(shipment), :confirm => 'Are you sure?', :method => :delete %></td>
+      <td><%= link_to t('gmcommerce.common.show'), admin_shipment_url(shipment) %></td>
+      <td><%= link_to t('gmcommerce.common.edit'), edit_admin_shipment_path(shipment), :class=>"edit_link" %></td>
+      <td><%= link_to t('gmcommerce.common.destroy'), admin_shipment_url(shipment), :confirm => 'Are you sure?', :method => :delete, :class=>"destroy_link" %></td>
     </tr>
   <% end %>
 </table>

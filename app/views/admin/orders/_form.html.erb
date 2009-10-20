@@ -1,4 +1,4 @@
-<% form_for [:admin, @order] do |f| %>
+<% semantic_form_for [:admin, @order] do |f| %>
   <%= f.error_messages %>
   <%= f.input :number, :hint=>"secret key: #{h(@order.secret)}" %>
   <p>
@@ -12,8 +12,9 @@
   <p>
     <strong>Shipment cost:</strong>
     <%=h @order.shipment_cost %>
+    <br />
   </p>
-  <%= f.input :comment %>
+  <%= f.input :comment, :input_html=>{:rows=>5} %>
   <%= f.input :shipment %>
-  <%= f.input :buttons %>
+  <%= f.buttons %>
 <% end %>

@@ -30,7 +30,7 @@
 </p>
 
 <p>
-  <%= link_to "Edit", edit_admin_product_template_path(@product_template) %> |
-  <%= link_to "Destroy", admin_product_template_path(@product_template), :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", admin_product_templates_path %>
+  <%= link_to t('gmcommerce.common.edit'), edit_admin_product_template_path(@product_template), :class=>"edit_link" %> |
+  <%= link_to t('gmcommerce.common.destroy'), admin_product_template_path(@product_template), :confirm => 'Are you sure?', :method => :delete, :class=>"destroy_link" %> |
+  <%= link_to t('gmcommerce.common.view_all'), admin_product_templates_path, :class=>"view_all_link" %>
 </p>

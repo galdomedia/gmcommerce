@@ -1,4 +1,6 @@
-<% title "New Product" %>
+<% content_for :header do %>
+  <%= link_to t('products.new'), admin_products_path %>
+<% end %>
 
 <%= render :partial => 'form' %>
 

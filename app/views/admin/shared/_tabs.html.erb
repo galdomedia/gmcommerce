@@ -1,17 +1,17 @@
 <ul>
   <li style="float: right;"><%#= tab_to "Ustawienia", [{:controller => "admin/settings"}] %></li>
-  <li style="float: right;"><%= tab_to "Users", [{:controller => "admin/users"}] %></li>
+  <li style="float: right;"><%= tab_to t('gmcommerce.administration.tabs.users'), [{:controller => "admin/users"}] %></li>
   
   <li><%#= tab_to "Przegląd", [{:controller => "admin/admin"}] %></li>
-  <li><%#= tab_to "Zamówienia", [{:controller=>"admin/orders"}]%>
-  <li><%= tab_to "Products", [{:controller=>"admin/products"}]%></li>
-  <li><%= tab_to "Categories", [{:controller=>"admin/categories"}]%>
-  <li><%= tab_to "Gift Discounts", [{:controller=>"admin/gift_discounts"}]%></li>
-  <li><%= tab_to "Pages", [{:controller=>"admin/pages"}]%></li>
+  <li><%= tab_to t('gmcommerce.administration.tabs.orders'), [{:controller=>"admin/orders"}]%>
+  <li><%= tab_to t('gmcommerce.administration.tabs.products'), [{:controller=>"admin/products"}]%></li>
+  <li><%= tab_to t('gmcommerce.administration.tabs.categories'), [{:controller=>"admin/categories"}]%>
+  <li><%= tab_to t('gmcommerce.administration.tabs.gift_discounts'), [{:controller=>"admin/gift_discounts"}]%></li>
+  <li><%= tab_to t('gmcommerce.administration.tabs.pages'), [{:controller=>"admin/pages"}]%></li>
   <li><%#= tab_to "Aktualności", [{:controller=>"admin/messages"}]%></li>
-  <li><%= tab_to "Shipments", [{:controller=>"admin/shipments"}]%></li>
+  <li><%= tab_to t('gmcommerce.administration.tabs.shipments'), [{:controller=>"admin/shipments"}]%></li>
   <li><%#= tab_to "Statusy zamówień", [{:controller=>"admin/order_statuses"}]%></li>
-  <li><%= tab_to "Producers", [{:controller=>"admin/producers"}]%></li>
+  <li><%= tab_to t('gmcommerce.administration.tabs.producers'), [{:controller=>"admin/producers"}]%></li>
  
   
 </ul>

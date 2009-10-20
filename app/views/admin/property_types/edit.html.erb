@@ -3,6 +3,6 @@
 <%= render :partial => 'form' %>
 
 <p>
-  <%= link_to "Show", admin_property_type_path(@property_type) %> |
-  <%= link_to "View All", admin_property_types_path %>
+  <%= link_to t('gmcommerce.common.show'), admin_property_type_path(@property_type) %> |
+  <%= link_to t('gmcommerce.common.view_all'), admin_property_types_path, :class=>"view_all_link" %>
 </p>

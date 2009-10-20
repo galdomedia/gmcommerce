@@ -1,0 +1,20 @@
+en:
+  authlogic:
+    password_reminder:
+      email:
+        header: "A request to reset your password has been made. If you did not make this request, simply ignore this email. If you did make this request just click the link below:"
+        footer: "If the above URL does not work try copying and pasting it into your browser. If you continue to have problem please feel free to contact us."
+      user_to_update_not_found: "We're sorry, but we could not locate your account. If you are having issues try copying and pasting the URL from your email into your browser or restarting the reset password process."
+      password_updated: "Password successfully updated"
+      user_not_found: "No user was found with that email address"
+      instructions_sent: "Instructions to reset your password have been emailed to you. Please check your email."
+    account:
+      registered: "Account registered!"
+      updated: "Account updated!"
+    access_danied: "You must be logged in to access this page"
+    only_for_logged_out: "You must be logged out to access this page"
+    logout_question: "Are you sure you want to logout?"
+    links:
+      logout: "Logout"
+      sign_up: "Sign up"
+      sign_in: "Sign In"

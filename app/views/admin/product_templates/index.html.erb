@@ -12,9 +12,9 @@
   <% for product_template in @product_templates %>
     <tr>
       <td><%=h product_template.template_name %></td>
-      <td><%= link_to "Show", admin_product_template_path(product_template) %></td>
-      <td><%= link_to "Edit", edit_admin_product_template_path(product_template) %></td>
-      <td><%= link_to "Destroy", admin_product_template_path(product_template), :confirm => 'Are you sure?', :method => :delete %></td>
+      <td><%= link_to t('gmcommerce.common.show'), admin_product_template_path(product_template) %></td>
+      <td><%= link_to t('gmcommerce.common.edit'), edit_admin_product_template_path(product_template), :class=>"edit_link" %></td>
+      <td><%= link_to t('gmcommerce.common.destroy'), admin_product_template_path(product_template), :confirm => 'Are you sure?', :method => :delete, :class=>"destroy_link" %></td>
     </tr>
   <% end %>
 </table>

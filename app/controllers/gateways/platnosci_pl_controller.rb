@@ -4,6 +4,7 @@ class Gateways::PlatnosciPlController < Gateways::PaymentsController
   def new
     config = Payments.load_settings_for "platnosci_pl"
     @order = Order.find_by_number_and_secret params[:number], params[:key]
+    session[:order_number] ||= @order.number
     @client_ip = request.remote_ip
     @pos_id = config[:pos_id]
     @pos_auth_key = config[:pos_auth_key]
@@ -65,15 +66,15 @@ class Gateways::PlatnosciPlController < Gateways::PaymentsController
     else
       text = 'Invalid SIG'
     end
-
     render :layout=>false, :text=>text
-
   end
 
-  def ok
+  def success
+    redirect_to success_payment_url(:order_id=>params[:order_id])
   end
 
   def failed
+    redirect_to failed_payment_url(:order_id=>params[:order_id], :error_code=>params[:error], :gateway=>'platnosci_pl')
   end
 
 end

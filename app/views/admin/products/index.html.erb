@@ -1,4 +1,6 @@
-<% title "Products" %>
+<% content_for :header do %>
+  <%= link_to t('products.plural'), admin_products_path %>
+<% end %>
 
 
 <% form_for @search do |f| %>
@@ -21,20 +23,20 @@
       <td><%=h product.name %></td>
       <td><%=h product.sku %></td>
       <td><%=h product.price %></td>
-      <td><%= link_to "Show", admin_product_path(product) %></td>
-      <td><%= link_to "Edit", edit_admin_product_path(product) %></td>
-      <td><%= link_to "Destroy", admin_product_path(product), :confirm => 'Are you sure?', :method => :delete %></td>
+      <td><%= link_to t('gmcommerce.common.show'), admin_product_path(product) %></td>
+      <td><%= link_to t('gmcommerce.common.edit'), edit_admin_product_path(product), :class=>"edit_link" %></td>
+      <td><%= link_to t('gmcommerce.common.destroy'), admin_product_path(product), :confirm => 'Are you sure?', :method => :delete, :class=>"destroy_link" %></td>
     </tr>
   <% end %>
 </table>
 <%= will_paginate @products %>
 
-<p><%= link_to "New Product", new_admin_product_path %></p>
+<p><%= link_to t('products.new'), new_admin_product_path %></p>
 
 <% content_for :sidebar do %>
-  <%= link_to "Property types", admin_property_types_path %> <br />
-  <%= link_to "Product templates", admin_product_templates_path %> <br />
-  <%= link_to "Option groups", admin_option_groups_path %> <br />
+  <%= link_to t('property_types.index'), admin_property_types_path %> <br />
+  <%= link_to t('product_templates.index'), admin_product_templates_path %> <br />
+  <%= link_to t('option_groups.index'), admin_option_groups_path %> <br />
     <br />
   <strong>Create product from template:</strong>
   <ul>

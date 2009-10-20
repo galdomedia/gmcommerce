@@ -20,7 +20,7 @@ class Admin::AdminController < ApplicationController
   end
 
   def access_danied
-    flash[:warning] = t('auth.access_danied')
+    flash[:warning] = t('authlogic.access_danied')
     redirect_to root_url
   end
 end

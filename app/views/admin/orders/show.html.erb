@@ -26,7 +26,7 @@
 </p>
 
 <p>
-  <%= link_to "Edit", edit_admin_order_path(@order) %> |
-  <%= link_to "Destroy", admin_order_path(@order), :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", admin_orders_path %>
+  <%= link_to t('gmcommerce.common.edit'), edit_admin_order_path(@order), :class=>"edit_link" %> |
+  <%= link_to t('gmcommerce.common.destroy'), admin_order_path(@order), :confirm => 'Are you sure?', :method => :delete, :class=>"destroy_link" %> |
+  <%= link_to t('gmcommerce.common.view_all'), admin_orders_path, :class=>"view_all_link" %>
 </p>

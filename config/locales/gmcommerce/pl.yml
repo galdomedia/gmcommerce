@@ -1,0 +1,23 @@
+pl:
+  gmcommerce:
+    gateways:
+      transaction_error: "Nie udało się zrealizowac transakcji"
+    links:
+      administration: "Administracja"
+    administration:
+      tabs:
+        users: "Użytkownicy"
+        products: "Produkty"
+        categories: "Kategorie"
+        orders: "Zamówienia"
+        gift_discounts: "Promocje na prezenty"
+        pages: "Strony statyczne"
+        shipments: "Dostawy"
+        producers: "Producenci"
+    errors:
+      invalid_call: "Błędne wywołanie"
+    common:
+      show: "Podglad"
+      edit: "Edytuj"
+      destroy: "Usuń"
+      view_all: "Pokaż wszystkie"

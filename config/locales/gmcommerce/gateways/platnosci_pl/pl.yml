@@ -1,0 +1,40 @@
+pl:
+  gmcommerce:
+    gateways:
+      platnosci_pl:
+        error_codes:
+          e100: brak lub błędna wartosc parametru pos_id
+          e101: brak parametru session_id
+          e102: brak parametru ts
+          e103: brak lub błędna wartośc parametru sig
+          e104: brak parametru desc
+          e105: brak parametru client_ip
+          e106: brak parametru first_name
+          e107: brak parametru last_name
+          e108: brak parametru street
+          e109: brak parametru city
+          e110: brak parametru post_code
+          e111: brak parametru amount
+          e112: błędny numer konta bankowego
+          e113: brak parametru email
+          e114: brak numeru telefonu
+          e200: inny chwilowy bład
+          e201: inny chwilowy bład bazy danych
+          e202: Pos o podanym identyfikatorze jest zablokowany
+          e203: niedozwolona wartośc pay_type dla danego pos_id
+          e204: podana metoda płatności (wartośc pay_type) jest chwilowo zablokowana dla danego pos_id, np. przerwa konserwacyjna bramki płatniczej
+          e205: kwota transakcji jest mniejsza od wartości minimalnej
+          e206: kwota transakcji jest większa od wartości maksymalnej
+          e207: przekroczona wartośc wszystkich transakcji dla jednego klienta w ostatnim przedziale czasowym
+          e208: Pos działa w wariancie ExpressPayment lecz nie nastapiła aktywacja tego wariantu współpracy (czekamy na zgodę działu obsługi klienta)
+          e209: błędny numer pos_id lub pos_auth_key
+          e500: transakcja nie istnieje
+          e501: brak autoryzacji dla danej transakcji
+          e502: transakcja rozpoczęta wcześniej
+          e503: autoryzacja do transakcji była już przeprowadzona
+          e504: transakcja anulowana wcześniej
+          e505: transakcja przekazana do odbioru wcześniej
+          e506: transakcja już odebrana
+          e507: bład podczas zwrotu środków do klienta
+          e599: błędny stan transakcji, np. nie można uznac transakcji kilka razy lub inny, prosimy o kontakt
+          e999: inny bład krytyczny - prosimy o kontakt

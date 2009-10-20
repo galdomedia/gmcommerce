@@ -10,7 +10,7 @@
 </p>
 
 <p>
-  <%= link_to "Edit", edit_admin_page_path(@page) %> |
-  <%= link_to "Destroy", admin_page_url(@page), :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", admin_pages_path %>
+  <%= link_to t('gmcommerce.common.edit'), edit_admin_page_path(@page), :class=>"edit_link" %> |
+  <%= link_to t('gmcommerce.common.destroy'), admin_page_url(@page), :confirm => 'Are you sure?', :method => :delete, :class=>"destroy_link" %> |
+  <%= link_to t('gmcommerce.common.view_all'), admin_pages_path, :class=>"view_all_link" %>
 </p>

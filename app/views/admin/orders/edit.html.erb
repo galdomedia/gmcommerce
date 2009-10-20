@@ -3,6 +3,6 @@
 <%= render :partial => 'form' %>
 
 <p>
-  <%= link_to "Show", admin_order_path(@order) %> |
-  <%= link_to "View All", admin_orders_path %>
+  <%= link_to t('gmcommerce.common.show'), admin_order_path(@order) %> |
+  <%= link_to t('gmcommerce.common.view_all'), admin_orders_path, :class=>"view_all_link" %>
 </p>

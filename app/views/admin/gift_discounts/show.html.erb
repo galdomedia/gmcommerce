@@ -14,7 +14,7 @@
 </p>
 
 <p>
-  <%= link_to "Edit", edit_admin_gift_discount_path(@gift_discount) %> |
-  <%= link_to "Destroy", admin_gift_discount_path(@gift_discount), :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", admin_gift_discounts_path %>
+  <%= link_to t('gmcommerce.common.edit'), edit_admin_gift_discount_path(@gift_discount), :class=>"edit_link" %> |
+  <%= link_to t('gmcommerce.common.destroy'), admin_gift_discount_path(@gift_discount), :confirm => 'Are you sure?', :method => :delete, :class=>"destroy_link" %> |
+  <%= link_to t('gmcommerce.common.view_all'), admin_gift_discounts_path, :class=>"view_all_link" %>
 </p>

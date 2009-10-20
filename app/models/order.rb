@@ -58,13 +58,16 @@ class Order < ActiveRecord::Base
 
   def self.create_new(order, cart)
     Order.transaction do
-        order.number = Order.generate_number
-        order.order_value = cart.total_price_with_gifts_and_discounts
-        order.shipment_cost = cart.shipment_cost
-        order.shipment = cart.shipment
-        order.order
-        order.save
+      order.number = Order.generate_number
+      order.order_value = cart.total_price_with_gifts_and_discounts
+      order.shipment_cost = cart.shipment_cost
+      order.shipment = cart.shipment
+      order.order
+      order.save
+      for item in cart.items
+        
       end
+    end
   end
 
   def validates_contacts_number

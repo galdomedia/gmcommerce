@@ -1,7 +1,7 @@
 <p>
   <% unless f.object.new_record? %>
     <%= image_tag f.object.attachment.url(:list) %> <%=h f.object.attachment_file_name %>
-    <%= f.check_box :_delete, :class=>"field checkbox" %> <%= f.label :_delete, 'Delete', :class=>"choice" %>
+    <%= f.check_box :_delete, :class=>"field checkbox" %> <%= f.label :_delete, t('gmcommerce.common.destroy'), :class=>"choice" %>
   <% end %>
   <%= f.input :attachment, :as=>:file %>
 </p>

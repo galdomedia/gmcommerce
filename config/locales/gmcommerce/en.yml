@@ -1,0 +1,18 @@
+en:
+  gmcommerce:
+    gateways:
+      transaction_error: "Transaction error"
+    links:
+      administration: "Administration"
+    administration:
+      tabs:
+        users: "Users"
+        products: "Products"
+        categories: "Categories"
+        orders: "Orders"
+        gift_discounts: "Gift Discounts"
+        pages: "Pages"
+        shipments: "Shipments"
+        producers: "Producers"
+    errors:
+      invalid_call: "Invalid call"

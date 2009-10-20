@@ -5,8 +5,10 @@ class Gateways::PaymentsController < ApplicationController
   
   def check_params
     if params[:number].blank? or params[:key].blank?
-      flash[:warning] = 'Invalid call'
+      flash[:warning] = t('gmcommerce.errors.invalid_call')
       redirect_to root_url
+    else
+      session[:order_number] ||= nil
     end
   end
 

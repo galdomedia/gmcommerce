@@ -1,4 +1,8 @@
-<% title "Product" %>
+<% content_for :header do %>
+  <%= link_to t('products.plural'), admin_products_path %>
+    &raquo;
+  <%= link_to h(@product.name), admin_product_path(@product) %>
+<% end %>
 
 <p>
   <strong>Name:</strong>
@@ -36,7 +40,7 @@
 </p>
 
 <p>
-  <%= link_to "Edit", edit_admin_product_path(@product) %> |
-  <%= link_to "Destroy", admin_product_path(@product), :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", admin_products_path %>
+  <%= link_to t('gmcommerce.common.edit'), edit_admin_product_path(@product), :class=>"edit_link" %> |
+  <%= link_to t('gmcommerce.common.destroy'), admin_product_path(@product), :confirm => 'Are you sure?', :method => :delete, :class=>"destroy_link" %> |
+  <%= link_to t('gmcommerce.common.view_all'), admin_products_path, :class=>"view_all_link" %>
 </p>

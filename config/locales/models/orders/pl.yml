@@ -1,0 +1,13 @@
+pl:
+  orders:
+    errors:
+  activerecord:
+    attributes:
+      order:
+        number: Numer zamówienia
+        status: Status
+        secret_key: Tajny klucz
+        order_value: Wartośc zamówienia
+        shipment_cost: Koszt dostawy
+        comment: Komentarz
+        shipment: Dostawa

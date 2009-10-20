@@ -1,8 +1,12 @@
-<% title "Edit Product" %>
+<% content_for :header do %>
+  <%= link_to t('products.plural'), admin_products_path %>
+    &raquo; <%= t('products.editing') %>
+  <%= link_to h(@product.name), admin_product_path(@product) %>
+<% end %>
 
 <%= render :partial => 'form' %>
 
 <p>
-  <%= link_to "Show", admin_product_path(@product) %> |
-  <%= link_to "View All", admin_products_path %>
+  <%= link_to t('gmcommerce.common.show'), admin_product_path(@product) %> |
+  <%= link_to t('gmcommerce.common.view_all'), admin_products_path, :class=>"view_all_link" %>
 </p>

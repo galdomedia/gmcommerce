@@ -28,6 +28,7 @@ class CartsController < ApplicationController
       quantity = 1
     end
     @cart.add_product(product, quantity, product_variation)
+    flash[:notice] = t('carts.product_added')
     redirect_to cart_url
   end
 
@@ -36,6 +37,7 @@ class CartsController < ApplicationController
     product_variation = nil
     product_variation = ProductVariation.find(params[:variation_id]) unless params[:variation_id].blank?
     @cart.delete_product(product, product_variation)
+    flash[:notice] = t('carts.product_deleted')
     redirect_to cart_url
   end
 

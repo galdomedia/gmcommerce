@@ -9,9 +9,9 @@
     <tr>
       <td><%=h contact.first_name %></td>
       <td><%=h contact.last_name %></td>
-      <td><%= link_to "Show", admin_contact_path(contact) %></td>
-      <td><%= link_to "Edit", edit_admin_contact_path(contact) %></td>
-      <td><%= link_to "Destroy", contact, :confirm => 'Are you sure?', :method => :delete %></td>
+      <td><%= link_to t('gmcommerce.common.show'), admin_contact_path(contact) %></td>
+      <td><%= link_to t('gmcommerce.common.edit'), edit_admin_contact_path(contact), :class=>"edit_link" %></td>
+      <td><%= link_to t('gmcommerce.common.destroy'), contact, :confirm => 'Are you sure?', :method => :delete, :class=>"destroy_link" %></td>
     </tr>
   <% end %>
 </table>

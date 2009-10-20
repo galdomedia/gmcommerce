@@ -1,0 +1,29 @@
+pl:
+  products:
+    errors:
+      not_found: "Produkt nie istnieje"
+    plural: "Produkty"
+    new: "Nowy product"
+    editing: "Edytujesz produkt"
+    form:
+      add_variation: Dodaj nowa wariacje
+      add_image: Dodaj obrazek / zdjęcie
+      categories: Kategorie
+      images: Zdjęcia
+      properties: Własciwości
+      option_groups: Grupy właściwości
+      product_variations: Możliwe wariacje
+  activerecord:
+    models:
+      product: Produkt
+    attributes:
+      product:
+        name: Nazwa produktu
+        producer: Producent
+        sku: SKU
+        price: Cena
+        description: Opis
+        meta_keywords: Meta Keywords
+        meta_description: Meta Description
+
+

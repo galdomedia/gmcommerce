@@ -1,0 +1,4 @@
+pl:
+  carts:
+    product_deleted: "Pomyślnie usunięto produkt z koszyka"
+    product_added: "Pomyślnie dodano produkt do koszyka"

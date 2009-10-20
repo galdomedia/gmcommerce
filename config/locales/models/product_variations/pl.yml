@@ -1,0 +1,5 @@
+pl:
+  activerecord:
+    attributes:
+      product_variation:
+        price: Cena

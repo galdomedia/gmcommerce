@@ -53,7 +53,7 @@
           <div id="error"><%=h flash[:error] %></div>
         <% end %>
         
-        <h2 class="head"><%= yield_or_default yield(:header), "Use 'content_for :header do; end' in your view to set this title" %></h2>
+        <h2 class="head"><%= yield(:header)%></h2>
         
         <div id="screen">
           <%= yield %>
