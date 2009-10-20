@@ -11,7 +11,7 @@ class Gateways::PlatnosciPlController < Gateways::PaymentsController
     o = @order
     @amount = (o.order_value + o.shipment_cost) * 100
     @desc = "Order ##{o.number} (id: #{o.id.to_s})"
-    @order_id = o.id
+    @order_id = o.number
     @session_id = @order.secret
     @first_name = @order.billing_contact.first_name
     @last_name = @order.billing_contact.last_name
@@ -21,7 +21,7 @@ class Gateways::PlatnosciPlController < Gateways::PaymentsController
   def status
     config = Payments.load_settings_for "platnosci_pl"
     own_sig = Digest::MD5.hexdigest(""+params[:pos_id]+params[:session_id]+params[:ts]+config[:md5_key_2])
-    text = 'FAILS'
+    text = 'OK'
     if own_sig.upcase == params[:sig].upcase
       text = 'OK'
       @pos_id = config[:pos_id]
@@ -34,11 +34,12 @@ class Gateways::PlatnosciPlController < Gateways::PaymentsController
       if y['status']=='OK'
         @order = Order.find_by_secret session_id
         if @order
-          sig = y['trans_pos_id'].to_s + y['trans_session_id'].to_s +
-            y['trans_order_id'].to_s + y['trans_status'].to_s +
-            y['trans_amount'].to_s + y['trans_desc'].to_s +
-            y['trans_ts'].to_s + config[:md5_key_2]
           amount = (@order.order_value + @order.shipment_cost) * 100
+          sig = ""+@pos_id.to_s + session_id.to_s +
+            @order.number.to_s + y['trans_status'].to_s +
+            amount.to_s + y['trans_desc'].to_s +
+            y['trans_ts'].to_s + config[:md5_key_2]
+
 
           payment = Payment.new
           payment.gateway = 'platnosci_pl'
@@ -46,15 +47,10 @@ class Gateways::PlatnosciPlController < Gateways::PaymentsController
           payment.transaction_id = y['trans_id']
           payment.order = @order
           if Digest::MD5.hexdigest(sig).upcase == y['trans_sig'].upcase
-
-            if y['trans_amount'].to_s == amount.to_i.to_s
-              status_code = y['trans_status']
-              if status_code.to_i == 99 or status_code.to_i == 5
-                @order.pay
-                @order.save
-              end
-            else
-              text = 'Kwoty si« nie zgadzajˆ'
+            status_code = y['trans_status']
+            if status_code.to_i == 99
+              @order.pay
+              @order.save
             end
           else
             text = 'Nie zgadzajˆ si« sumy kontrolne'
