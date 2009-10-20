@@ -34,7 +34,7 @@ class Gateways::PlatnosciPlController < Gateways::PaymentsController
       agent = WWW::Mechanize.new
       ts = Time.now.to_i
       session_id = params[:session_id]
-      sig = Digest::MD5.hexdigest(@pos_id + session_id + ts.to_s + config[:md5_key_1])
+      sig = Digest::MD5.hexdigest(@pos_id.to_s + session_id.to_s + ts.to_s + config[:md5_key_1])
       reply = agent.post('https://www.platnosci.pl/paygw/UTF/Payment/get/txt', "pos_id" => @pos_id, "session_id"=>session_id, "ts"=>ts, "sig"=>sig)
       y = YAML.load(reply.body)
       if y['status']=='OK'
