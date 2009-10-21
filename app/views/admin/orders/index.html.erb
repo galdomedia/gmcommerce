@@ -1,19 +1,24 @@
-<% title "Orders" %>
-
-<table>
+<% content_for :header do %>
+  <%= link_to t('orders.plural'), admin_orders_path %>
+<% end %>
+<table class="index">
   <tr>
-    <th>Number</th>
-    <th>Status</th>
+    <th><%= t('activerecord.attributes.order.number') %></th>
+    <th><%= t('activerecord.attributes.contact.first_name') %></th>
+    <th><%= t('activerecord.attributes.contact.last_name') %></th>
+    <th><%= t('activerecord.attributes.order.status') %></th>
   </tr>
   <% for order in @orders %>
     <tr>
       <td><%=h order.number %></td>
       <td><%=h order.status %></td>
-      <td><%= link_to t('gmcommerce.common.show'), admin_order_path(order) %></td>
-      <td><%= link_to t('gmcommerce.common.edit'), edit_admin_order_path(order), :class=>"edit_link" %></td>
-      <td><%= link_to t('gmcommerce.common.destroy'), admin_order_path(order), :confirm => 'Are you sure?', :method => :delete, :class=>"destroy_link" %></td>
+      <td><%=h order.billing_contact.first_name %></td>
+      <td><%=h order.billing_contact.last_name %></td>
+      <td class="action_cell show_cell"><%= link_to t('gmcommerce.common.show'), admin_order_path(order), :class=>"show_link" %></td>
+      <td class="action_cell"><%= link_to t('gmcommerce.common.edit'), edit_admin_order_path(order), :class=>"edit_link" %></td>
+      <td class="action_cell"><%= link_to t('gmcommerce.common.destroy'), admin_order_path(order), :confirm => 'Are you sure?', :method => :delete, :class=>"destroy_link" %></td>
     </tr>
   <% end %>
 </table>
-
-<p><%= link_to "New Order", new_admin_order_path %></p>
+<%= will_paginate @orders %>
+<p><%= link_to t('orders.new'), new_admin_order_path %></p>

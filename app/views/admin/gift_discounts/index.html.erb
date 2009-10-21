@@ -16,9 +16,9 @@
       <td><%=h gift_discount.name %></td>
       <td><%=h gift_discount.discount_value %></td>
       <td><%=h gift_discount.from_cart_value %></td>
-      <td><%= link_to t('gmcommerce.common.show'), admin_gift_discount_path(gift_discount) %></td>
-      <td><%= link_to t('gmcommerce.common.edit'), edit_admin_gift_discount_path(gift_discount), :class=>"edit_link" %></td>
-      <td><%= link_to t('gmcommerce.common.destroy'), admin_gift_discount_path(gift_discount), :confirm => 'Are you sure?', :method => :delete, :class=>"destroy_link" %></td>
+      <td class="action_cell show_cell"><%= link_to t('gmcommerce.common.show'), admin_gift_discount_path(gift_discount), :class=>"show_link" %></td>
+      <td class="action_cell"><%= link_to t('gmcommerce.common.edit'), edit_admin_gift_discount_path(gift_discount), :class=>"edit_link" %></td>
+      <td class="action_cell"><%= link_to t('gmcommerce.common.destroy'), admin_gift_discount_path(gift_discount), :confirm => 'Are you sure?', :method => :delete, :class=>"destroy_link" %></td>
     </tr>
   <% end %>
 </table>

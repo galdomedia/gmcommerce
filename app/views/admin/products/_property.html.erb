@@ -1,4 +1,4 @@
-<p>
+<li>
   <%= f.input :property_type_id, :as=>:hidden %>
   <%= f.input :property_value, :as=>f.object.property_type.field_type.to_sym, :label=>h(f.object.property_type.name), :input_html=>{:rows=>5} %>
-</p>
+</li>

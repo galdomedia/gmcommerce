@@ -1,5 +1,7 @@
 <% content_for :header do %>
-  <%= link_to t('products.new'), admin_products_path %>
+  <%= link_to t('products.plural'), admin_products_path %>
+    &raquo;
+    <%= t('products.new') %>
 <% end %>
 
 <%= render :partial => 'form' %>

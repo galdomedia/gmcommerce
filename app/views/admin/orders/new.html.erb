@@ -1,5 +1,8 @@
-<% title "New Order" %>
-
+<% content_for :header do %>
+  <%= link_to t('orders.plural'), admin_orders_path %>
+    &raquo;
+    <%= t('orders.new') %>
+<% end %>
 <%= render :partial => 'form' %>
 
 <p><%= link_to "Back to List", admin_orders_path %></p>

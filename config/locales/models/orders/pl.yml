@@ -1,13 +1,18 @@
 pl:
   orders:
+    new: Dodaj zamówienie ręcznie
+    singular: Zamówienie
+    plural: Zamówienia
+    editing: Edytujesz zamówienie
     errors:
   activerecord:
     attributes:
       order:
         number: Numer zamówienia
         status: Status
-        secret_key: Tajny klucz
-        order_value: Wartośc zamówienia
+        secret: Tajny klucz
+        order_value: Wartośc produktów
         shipment_cost: Koszt dostawy
         comment: Komentarz
         shipment: Dostawa
+        complete_value: Całkowita wartość zamówienia

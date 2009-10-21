@@ -12,9 +12,9 @@
   <% for option_group in @option_groups %>
     <tr>
       <td><%=h option_group.name %></td>
-      <td><%= link_to t('gmcommerce.common.show'), admin_option_group_path(option_group) %></td>
-      <td><%= link_to t('gmcommerce.common.edit'), edit_admin_option_group_path(option_group), :class=>"edit_link" %></td>
-      <td><%= link_to t('gmcommerce.common.destroy'), admin_option_group_path(option_group), :confirm => 'Are you sure?', :method => :delete, :class=>"destroy_link" %></td>
+      <td class="action_cell show_cell"><%= link_to t('gmcommerce.common.show'), admin_option_group_path(option_group), :class=>"show_link" %></td>
+      <td class="action_cell"><%= link_to t('gmcommerce.common.edit'), edit_admin_option_group_path(option_group), :class=>"edit_link" %></td>
+      <td class="action_cell"><%= link_to t('gmcommerce.common.destroy'), admin_option_group_path(option_group), :confirm => 'Are you sure?', :method => :delete, :class=>"destroy_link" %></td>
     </tr>
   <% end %>
 </table>

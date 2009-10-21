@@ -5,7 +5,9 @@
       <% end %>
       <%= f.input :price, :input_html=>{:size=>10, :class=>"price_field"} %>
        <% unless f.object.new_record? %>
+       <li class="delete">
         <%= f.check_box :_delete, :class=>"field checkbox" %> <%= f.label :_delete, t('gmcommerce.common.destroy'), :class=>"choice" %>
+        </li>
       <% end %>
   <% else %>
     Option group does not have any options, adding product variation is not possible.

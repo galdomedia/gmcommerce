@@ -1,28 +1,51 @@
-<% title "Order" %>
+<% content_for :header do %>
+  <%= link_to t('orders.plural'), admin_orders_path %>
+    &raquo;
+    <%= t('orders.singular') %> #<%=h @order.number %>
+<% end %>
 
 <p>
-  <strong>Number:</strong>
-  <%=h @order.number %> (<small>Secret key: <%=h @order.secret %> </small>)
+  <strong><%= t('activerecord.attributes.order.number') %>:</strong>
+  <%=h @order.number %> (<small><%= t('activerecord.attributes.order.secret') %>: <%=h @order.secret %></small>)
 </p>
 <p>
-  <strong>Status:</strong>
+  <strong><%= t('activerecord.attributes.order.status') %>:</strong>
   <%=h @order.status %>
 </p>
 <p>
-  <strong>Order value:</strong>
+  <strong><%= t('activerecord.attributes.order.order_value') %>:</strong>
   <%=h @order.order_value %>
 </p>
 <p>
-  <strong>Shipment cost:</strong>
+  <strong><%= t('activerecord.attributes.order.shipment_cost') %>:</strong>
   <%=h @order.shipment_cost %>
 </p>
 <p>
-  <strong>Comment:</strong>
+  <strong><%= t('activerecord.attributes.order.comment') %>:</strong>
   <%=h @order.comment %>
 </p>
 <p>
-  <strong>Shipment:</strong>
+  <strong><%= t('activerecord.attributes.order.shipment') %>:</strong>
   <%=h @order.shipment %>
+</p>
+<p>
+  <strong><%= t('order_items.plural') %></strong>
+  <table>
+    <tr>
+      <th>Product</th>
+      <th>Product price</th>
+      <th>Quantity</th>
+      <th>Order item value</th>
+    </tr>
+    <% for oi in @order.order_items %>
+    <tr>
+      <td><%=h oi.product %> <%=h("- #{oi.product_variation}") if oi.product_variation %></td>
+      <td><%=h oi.price %></td>
+      <td><%=h oi.quantity %></td>
+      <td><%=h (oi.quantity*oi.price)%></td>
+    </tr>
+    <% end %>
+  </table>
 </p>
 
 <p>

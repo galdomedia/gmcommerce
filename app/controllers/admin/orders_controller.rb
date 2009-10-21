@@ -1,6 +1,8 @@
 class Admin::OrdersController < Admin::AdminController
   def index
-    @orders = Order.all
+    @search = Order.search(params[:search])
+    @search.order = "descend_by_number" unless @search.order
+    @orders =  @search.paginate(:page => params[:page], :include=>[])
   end
   
   def show

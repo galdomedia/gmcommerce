@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  order: 
+  product: 
+  product_variation: 
+  price: 1.5
+  quantity: 1.5
+
+two:
+  order: 
+  product: 
+  product_variation: 
+  price: 1.5
+  quantity: 1.5

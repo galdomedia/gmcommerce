@@ -3,6 +3,6 @@
 <%= render :partial => 'form' %>
 
 <p>
-  <%= link_to t('gmcommerce.common.show'), admin_gift_discount_path(@gift_discount) %> |
+  <%= link_to t('gmcommerce.common.show'), admin_gift_discount_path(@gift_discount), :class=>"show_link" %> |
   <%= link_to t('gmcommerce.common.view_all'), admin_gift_discounts_path, :class=>"view_all_link" %>
 </p>

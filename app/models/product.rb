@@ -22,6 +22,15 @@ class Product < ActiveRecord::Base
   accepts_nested_attributes_for :product_variations, :allow_destroy => true, :reject_if => proc { |pv| pv['price'].blank? }
   after_save :check_product_variatons_options
 
+
+  def to_s
+    self.name
+  end
+  
+  def to_param
+    "#{self.id}-#{self.name.parameterize}"
+  end
+  
   def fill_values_from_template(template)
     self.name = template.name
     self.price = template.price

@@ -1,0 +1,6 @@
+pl:
+  activerecord:
+    attributes:
+      contact:
+        first_name: Imię
+        last_name: Nazwisko

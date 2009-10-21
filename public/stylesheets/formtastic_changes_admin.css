@@ -1,0 +1,102 @@
+
+form.formtastic li{
+    list-style: none;
+}
+
+form.formtastic li label{
+    width: 150px;
+}
+form.formtastic input, form.formtastic textarea, form.formtastic select {
+    left: 150px;
+}
+form.formtastic fieldset ol li.string input {
+width:60%;
+}
+form.formtastic fieldset ol li.text textarea {
+width:60%;
+}
+
+
+form.formtastic fieldset {    
+float: left;    
+clear: both;    
+width: 100%;    
+margin: 0 0 1.5em 0;    
+padding: 0;    
+border: 1px solid #BFBAB0;    
+background-color: #F2EFE9;    
+}
+
+form.formtastic legend {  
+  margin-left: 1em;    
+  padding: 0;    
+  color: #000;    
+  font-weight: bold;  
+}  
+form.formtastic fieldset ol {  
+padding: 1em 1em 0 1em;  
+list-style: none;  
+}  
+form.formtastic li {    
+float: left;    
+clear: left;    
+width: 100%;    
+padding-bottom: 1em;  
+}
+form.formtastic label {    
+float: left;    
+width: 10em;    
+margin-right: 1em;    
+text-align: right;  
+}
+form.formtastic fieldset.buttons{
+  float: none;    
+  width: auto;    
+  border-style: none;    
+  padding-left: 12em;    
+  background-color: transparent;    
+}
+
+
+.inline-hints{
+    font-size: 0.8em;
+}
+
+div.product_variation li.delete{
+  margin-bottom: 20px;
+  float: left;
+}
+.product_variation li, #properties li{
+  clear: left;
+  padding-bottom: 0px !important;
+  margin-bottom: 0px !important;
+}
+.product_variation li.numeric input{
+  width: 150px !important;
+}
+.hidden{
+  display: none !important;
+}
+.action_cell{
+  width: 60px;
+}
+.show_cell{
+  width: 120px;
+}
+.icon_link, .show_link, .edit_link, .view_all_link, .destroy_link{
+  background-repeat:no-repeat;
+  background-position:middle left;
+  padding-left: 18px;
+}
+.show_link{
+  background-image:url('../images/icons/show.png');
+}
+.edit_link{
+  background-image:url('../images/icons/edit.png');
+}
+.view_all_link{
+  background-image:url('../images/icons/view_all.png');
+}
+.destroy_link{
+  background-image:url('../images/icons/destroy.png');
+}

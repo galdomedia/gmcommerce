@@ -1,8 +1,12 @@
-<% title "Edit Order" %>
+<% content_for :header do %>
+  <%= link_to t('orders.plural'), admin_orders_path %>
+    &raquo; <%= t('orders.editing') %>
+    <%= t('orders.singular')%> #<%=h @order.number %>
+<% end %>
 
 <%= render :partial => 'form' %>
 
 <p>
-  <%= link_to t('gmcommerce.common.show'), admin_order_path(@order) %> |
+  <%= link_to t('gmcommerce.common.show'), admin_order_path(@order), :class=>"show_link" %> |
   <%= link_to t('gmcommerce.common.view_all'), admin_orders_path, :class=>"view_all_link" %>
 </p>

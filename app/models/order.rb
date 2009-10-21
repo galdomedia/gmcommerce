@@ -5,12 +5,13 @@ class Order < ActiveRecord::Base
   belongs_to :shipment
   has_and_belongs_to_many :contacts
   #has_many :payments
-  #has_many :order_items
-  
+  has_many :order_items
+
   validates_associated :contacts
   validate :validates_contacts_number
   
   before_create :generate_secret
+  before_create :generate_number, :if=>proc{|o| o['number'].blank? }
 
   attr_accessor :same_address
   attr_accessible :number, :comment, :shipment_id, :contacts_ids, :contacts_attributes, :shipment_cost, :same_address
@@ -55,6 +56,10 @@ class Order < ActiveRecord::Base
   def generate_secret
     self.secret = PasswordGenerator::random_pronouncable_password(4)
   end
+  
+  def generate_number
+    self.number = Order.generate_number
+  end
 
   def self.create_new(order, cart)
     Order.transaction do
@@ -65,7 +70,13 @@ class Order < ActiveRecord::Base
       order.order
       order.save
       for item in cart.items
-        
+        oi = OrderItem.new
+        oi.product = item.product
+        oi.product_variation = item.variation
+        oi.price = item.product_price
+        oi.quantity = item.quantity
+        oi.order = order
+        oi.save
       end
     end
   end
@@ -83,5 +94,9 @@ class Order < ActiveRecord::Base
 
   def shipping_contact
     self.contacts.find(:first, :conditions=>['is_shipping=?', true])
+  end
+  
+  def complete_value
+    self.shipping_cost + self.order_value
   end
 end

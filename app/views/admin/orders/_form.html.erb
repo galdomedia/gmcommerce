@@ -1,19 +1,22 @@
 <% semantic_form_for [:admin, @order] do |f| %>
   <%= f.error_messages %>
-  <%= f.input :number, :hint=>"secret key: #{h(@order.secret)}" %>
-  <p>
-    <strong>Status: </strong>
+  <%= f.input :number, :hint=>"Not required, will be generated automatically (if not present)" %>
+  <li>
+    <label><%= t('activerecord.attributes.order.secret')%>:</label>
+    <%=h @order.secret %>
+  </li>
+  <li>
+    <label><%= t('activerecord.attributes.order.status') %>: </label>
     <%=h @order.status %>
-  </p>
-  <p>
-    <strong>Order value:</strong>
+  </li>
+  <li>
+    <label><%= t('activerecord.attributes.order.order_value') %>:</label>
     <%=h @order.order_value %>
-  </p>
-  <p>
-    <strong>Shipment cost:</strong>
+  </li>
+  <li>
+    <label><%= t('activerecord.attributes.order.shipment_cost') %>:</label>
     <%=h @order.shipment_cost %>
-    <br />
-  </p>
+  </li>
   <%= f.input :comment, :input_html=>{:rows=>5} %>
   <%= f.input :shipment %>
   <%= f.buttons %>

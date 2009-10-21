@@ -12,9 +12,9 @@
   <% for producer in @producers %>
     <tr>
       <td><%=h producer.name %></td>
-      <td><%= link_to t('gmcommerce.common.show'), admin_producer_url(producer) %></td>
-      <td><%= link_to t('gmcommerce.common.edit'), edit_admin_producer_path(producer), :class=>"edit_link" %></td>
-      <td><%= link_to t('gmcommerce.common.destroy'), admin_producer_url(producer), :confirm => 'Are you sure?', :method => :delete, :class=>"destroy_link" %></td>
+      <td class="action_cell show_cell"><%= link_to t('gmcommerce.common.show'), admin_producer_url(producer), :class=>"show_link" %></td>
+      <td class="action_cell"><%= link_to t('gmcommerce.common.edit'), edit_admin_producer_path(producer), :class=>"edit_link" %></td>
+      <td class="action_cell"><%= link_to t('gmcommerce.common.destroy'), admin_producer_url(producer), :confirm => 'Are you sure?', :method => :delete, :class=>"destroy_link" %></td>
     </tr>
   <% end %>
 </table>

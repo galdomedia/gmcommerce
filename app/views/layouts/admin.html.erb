@@ -9,6 +9,11 @@
     
     <%= javascript_include_merged :admin %>
     <%= stylesheet_link_merged :admin %>
+    <!--[if lte IE 7]>    
+    <style type="text/css" media="all">    
+    @import "/stylesheets/formtastic-admin-ie.css";    
+    </style>    
+    <![endif]-->
 
 
     <%= yield(:head) || ''%>
