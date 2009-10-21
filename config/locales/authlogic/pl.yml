@@ -20,3 +20,8 @@ pl:
       updated: "Konto zaktualizowano!"
     access_danied: "Musisz by zalogowany, by przejśc na tę stronę"
     only_for_logged_out: "Musisz byc wylogowany, by przejśc na tę strone"
+    logout_question: "Na pewno chcesz się wylogować?"
+    links:
+      logout: "Wyloguj"
+      sign_up: "Zarejestruj się"
+      sign_in: "Zaloguj się"
