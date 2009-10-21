@@ -1,3 +1,4 @@
 en:
   orders:
-    errors:
+    form:
+      number_not_required: "Not required, will be generated automatically (if not present)"

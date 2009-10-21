@@ -1,6 +1,21 @@
 <% semantic_form_for [:admin, @order] do |f| %>
+<% content_for :head do %>
+   <script type="text/javascript">
+     var nested_forms = new Array();
+     $(document).ready(function(){
+       <%= "nested_forms['order_item'] = '#{generate_template(f, :order_items)}';" %>
+       
+       $('.add_nested_item').click(function(){
+         var app = nested_forms[this.rel];
+         app = replace_ids(app, this.rel);
+         $('#'+this.rel+'s_fields').append(app);
+         return false;
+       });
+    });
+   </script>
+<% end %>
   <%= f.error_messages %>
-  <%= f.input :number, :hint=>"Not required, will be generated automatically (if not present)" %>
+  <%= f.input :number, :hint=>t('orders.form.number_not_required') %>
   <li>
     <label><%= t('activerecord.attributes.order.secret')%>:</label>
     <%=h @order.secret %>
@@ -19,5 +34,16 @@
   </li>
   <%= f.input :comment, :input_html=>{:rows=>5} %>
   <%= f.input :shipment %>
+  
+  <% f.inputs :name => t('order_items.plural'), :id => "order_items_fieldset" do %>
+    <div id="order_items_fields">
+     <% f.semantic_fields_for :order_items do |fp| %>
+         <%= render :partial=>"order_item", :locals=>{:f=>fp}%>
+     <% end %>
+    </div>
+    <a name="order_item"></a>
+    <%= link_to t('orders.form.add_order_item'), '#order_item', :class => "add_nested_item", :rel => "order_item" %><br />
+  <% end %>
+  
   <%= f.buttons %>
 <% end %>

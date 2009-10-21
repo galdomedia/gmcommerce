@@ -66,13 +66,17 @@ div.product_variation li.delete{
   margin-bottom: 20px;
   float: left;
 }
-.product_variation li, #properties li{
+.product_variation li, #properties li, #order_items_fieldset li{
   clear: left;
   padding-bottom: 0px !important;
   margin-bottom: 0px !important;
 }
-.product_variation li.numeric input{
+#order_items_fieldset a{
+  clear: both;
+}
+form.formtastic li.numeric input{
   width: 150px !important;
+  text-align: right;
 }
 .hidden{
   display: none !important;
@@ -99,4 +103,7 @@ div.product_variation li.delete{
 }
 .destroy_link{
   background-image:url('../images/icons/destroy.png');
+}
+.clear{
+  clear: both;
 }

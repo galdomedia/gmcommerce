@@ -5,31 +5,31 @@
 <% end %>
 
 <p>
-  <strong>Name:</strong>
+  <strong><%= t('activerecord.attributes.product.name')%>:</strong>
   <%=h @product.name %>
 </p>
 <p>
-  <strong>Sku:</strong>
+  <strong><%= t('activerecord.attributes.product.sku')%>:</strong>
   <%=h @product.sku %>
 </p>
 <p>
-  <strong>Price:</strong>
+  <strong><%= t('activerecord.attributes.product.price')%>:</strong>
   <%=h @product.price %>
 </p>
 <p>
-  <strong>Description:</strong>
+  <strong><%= t('activerecord.attributes.product.description')%>:</strong>
   <%=h @product.description %>
 </p>
 <p>
-  <strong>Meta Keywords:</strong>
+  <strong><%= t('activerecord.attributes.product.meta_keywords')%>:</strong>
   <%=h @product.meta_keywords %>
 </p>
 <p>
-  <strong>Meta Description:</strong>
+  <strong><%= t('activerecord.attributes.product.meta_description')%>:</strong>
   <%=h @product.meta_description %>
 </p>
 <p>
-  <strong>Images:</strong>
+  <strong><%= t('products.form.images')%>:</strong>
   <% unless @product.images.empty? %>
     <ul>
     <% for i in @product.images %>

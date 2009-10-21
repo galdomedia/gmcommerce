@@ -4,7 +4,7 @@ class CreateOrderItems < ActiveRecord::Migration
       t.references :order
       t.references :product
       t.references :product_variation
-      t.float :price, :default=>0.0
+      t.float :price
       t.float :quantity, :default=>1
 
       t.timestamps

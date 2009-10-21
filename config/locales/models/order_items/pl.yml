@@ -1,0 +1,11 @@
+pl:
+  order_items:
+    plural: Zamówione przedmioty
+  activerecord:
+    attributes:
+      order_item:
+        product: Produkt
+        product_variation: Wariacja produktu
+        price: Cena jednostkowa
+        quantity: Ilość
+        value: Wartość

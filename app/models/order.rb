@@ -14,8 +14,9 @@ class Order < ActiveRecord::Base
   before_create :generate_number, :if=>proc{|o| o['number'].blank? }
 
   attr_accessor :same_address
-  attr_accessible :number, :comment, :shipment_id, :contacts_ids, :contacts_attributes, :shipment_cost, :same_address
+  attr_accessible :number, :comment, :shipment_id, :contacts_ids, :contacts_attributes, :shipment_cost, :same_address, :order_items_attributes
   accepts_nested_attributes_for :contacts, :allow_destroy => true
+  accepts_nested_attributes_for :order_items, :allow_destroy => true, :reject_if=>proc { |oi| oi['price'].blank? }
 
   aasm_column :status
   aasm_initial_state :temporary

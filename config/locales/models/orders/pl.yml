@@ -4,7 +4,9 @@ pl:
     singular: Zamówienie
     plural: Zamówienia
     editing: Edytujesz zamówienie
-    errors:
+    form:
+      add_order_item: Dodaj przedmiot do zamówienia
+      number_not_required: "Nie wymagany, będzie wygenerowany automatycznie (o ile pole pozostanie puste)"
   activerecord:
     attributes:
       order:

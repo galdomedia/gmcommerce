@@ -30,12 +30,12 @@
 </p>
 <p>
   <strong><%= t('order_items.plural') %></strong>
-  <table>
+  <table class="index">
     <tr>
-      <th>Product</th>
-      <th>Product price</th>
-      <th>Quantity</th>
-      <th>Order item value</th>
+      <th><%= t('activerecord.attributes.order_item.product') %></th>
+      <th><%= t('activerecord.attributes.order_item.price') %></th>
+      <th><%= t('activerecord.attributes.order_item.quantity') %></th>
+      <th><%= t('activerecord.attributes.order_item.value') %></th>
     </tr>
     <% for oi in @order.order_items %>
     <tr>

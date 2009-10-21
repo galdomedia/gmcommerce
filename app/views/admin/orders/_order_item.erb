@@ -1,0 +1,10 @@
+<li>
+  
+  <%= f.input :product %>
+  <%= f.input :price%>
+  <%= f.input :quantity %>
+  <% unless f.object.new_record? %>
+    <%= f.check_box :_delete, :class=>"field checkbox" %> <%= f.label :_delete, t('gmcommerce.common.destroy'), :class=>"choice" %>
+  <% end %>
+  <br class="clear" />
+</li>

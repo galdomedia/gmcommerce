@@ -5,8 +5,8 @@
 
 <% form_for @search do |f| %>
   <table>
-    <tr><td>Product name</td><td><%= f.text_field :name_like, :size => 13 %></td></tr>
-    <tr><td>SKU</td><td><%= f.text_field :sku_like, :size=>13%></td></tr>
+    <tr><td><%= t('activerecord.attributes.product.name')%></td><td><%= f.text_field :name_like, :size => 13 %></td></tr>
+    <tr><td><%= t('activerecord.attributes.product.sku')%></td><td><%= f.text_field :sku_like, :size=>13%></td></tr>
     <tr><td colspan="2"><%= f.submit "Find" %></td></tr>
   </table>
 <% end %>
@@ -14,9 +14,9 @@
 
 <table class="index">
   <tr>
-    <th><%= order @search, :by => :name %></th>
-    <th><%= order @search, :by => :sku %></th>
-    <th><%= order @search, :by => :price %></th>
+    <th><%= order @search, :by => :name, :as=>t('activerecord.attributes.product.name') %></th>
+    <th><%= order @search, :by => :sku, :as=>t('activerecord.attributes.product.sku') %></th>
+    <th><%= order @search, :by => :price, :as=>t('activerecord.attributes.product.price') %></th>
   </tr>
   <% for product in @products %>
     <tr>

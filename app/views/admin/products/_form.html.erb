@@ -39,8 +39,8 @@
          <%= render :partial=>"image", :locals=>{:f=>fp}%>
      <% end %>
     </div>
-  <a name="image"></a>
-  <%= link_to t('products.form.add_image'), '#image', :class => "add_nested_item", :rel => "image" %><br />
+    <a name="image"></a>
+    <%= link_to t('products.form.add_image'), '#image', :class => "add_nested_item", :rel => "image" %><br />
   <% end %>
   <% f.inputs :name => t('products.form.properties'), :id => "properties" do %>
     <div id="properties">
