@@ -12,6 +12,8 @@ class Order < ActiveRecord::Base
   
   before_create :generate_secret
   before_create :generate_number, :if=>proc{|o| o['number'].blank? }
+  after_create :fill_in_contact_data, :if=>proc{ |o| o['first_name'].blank? or o['last_name'].blank? or o['email'].blank? or o['phone'].blank? }
+
 
   attr_accessor :same_address
   attr_accessible :number, :comment, :shipment_id, :contacts_ids, :contacts_attributes, :shipment_cost, :same_address, :order_items_attributes
@@ -61,6 +63,15 @@ class Order < ActiveRecord::Base
   def generate_number
     self.number = Order.generate_number
   end
+  
+  def fill_in_contact_data
+    c = self.billing_contact
+    self.first_name = c.first_name
+    self.last_name = c.last_name
+    self.email = c.email
+    self.phone = c.phone
+    self.save
+  end
 
   def self.create_new(order, cart)
     Order.transaction do
@@ -83,8 +94,21 @@ class Order < ActiveRecord::Base
   end
 
   def validates_contacts_number
-    if self.contacts.length != 2
-       self.errors.add_to_base('Invalid number of contact data, should be 2 (billing and shipping)')
+    unless [1,2].member?(self.contacts.length)
+       return self.errors.add_to_base('Invalid number of contact_data')
+    end
+    if self.contacts.length>0
+      shipping_present = false
+      billing_present = false
+      self.contacts.each do |c|
+        billing_present = true if c.is_billing
+        shipping_present = true if c.is_shipping
+        return if (shipping_present and billing_present)
+      end
+      if not shipping_present or not billing_present
+        self.errors.add_to_base('Shipping address missing') unless shipping_present
+        self.errors.add_to_base('Billing address missing') unless billing_present
+      end
     end
   end
 
@@ -100,4 +124,6 @@ class Order < ActiveRecord::Base
   def complete_value
     self.shipping_cost + self.order_value
   end
+  
+  
 end

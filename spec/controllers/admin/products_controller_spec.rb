@@ -30,7 +30,7 @@ describe Admin::ProductsController do
   
   it "create action should redirect when model is valid" do
     Product.any_instance.stubs(:valid?).returns(true)
-    post :create
+    post :create, :product=>{:name=>"test"}
     response.should redirect_to(admin_product_url(assigns[:product]))
   end
   

@@ -1,0 +1,19 @@
+pl:
+  comments:
+    plural: 'Komentarze'
+    singular: 'Komentarz'
+    new: 'Dodaj nowy komentarz'
+    editing: 'Edytujesz komentarz'
+    form:
+      author_will_replaced_if_user_present: "Pole autor zostanie zastąpione loginem użytkownika, jeśli taki zostanie ustawiony"
+      user_is_required_if_author_is_blank: "Pole jest wymagane, jeśli nie uzupełniono pola 'autor komentarza'"
+  activerecord:
+    attributes:
+      comment:
+        author: Autor komentarza
+        user: Dodający użytkownik
+        comment: Treść komentarza
+        product: Produkt
+        product_id: Produkt
+        note: Ocena
+        created_at: Data utworzenia

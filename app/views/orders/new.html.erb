@@ -2,22 +2,32 @@
 
 <% content_for :head do %>
     <script type="text/javascript">
-    function manage_contact_data(){
+    function manage_contact_data(clear){
         //alert($('#order_same_address').attr('checked'));
         if($('#order_same_address').attr('checked')){
             $('.contact_shipping').hide();
-            $('.contact_shipping .first_name').val($('.contact_billing .first_name').val());
-            $('.contact_shipping .last_name').val($('.contact_billing .last_name').val());
+            $('.contact_billing input').each(function(i){
+              if($(this).attr('type')!='hidden'){
+                var c = $(this).attr('class');
+                $('.contact_shipping .'+c).val($('.contact_billing .'+c).val());
+              }
+            });
+            
         }else{
-            $('.contact_shipping .first_name').val('');
-            $('.contact_shipping .last_name').val('');
+          if(clear){
+            $('.contact_shipping input').each(function(i){
+              if($(this).attr('type')!='hidden'){
+                $(this).val('');
+              };
+            });
+          }
             $('.contact_shipping').show();
         }
     }
     $(document).ready(function(){
-        $('#new_order').submit(manage_contact_data);
-        $('#order_same_address').click(manage_contact_data);
-        manage_contact_data();
+        $('#new_order').submit(function(){manage_contact_data(false);});
+        $('#order_same_address').click(function(){manage_contact_data(true);});
+        manage_contact_data(false);
     });
     </script>
 <% end %>

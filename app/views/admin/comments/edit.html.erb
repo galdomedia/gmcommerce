@@ -1,0 +1,14 @@
+<% content_for :header do %>
+  <%= link_to h(@product.name), admin_product_path(@product)%>
+  &raquo;
+  <%= link_to t('comments.plural'), admin_product_comments_path(@product) %>
+  &raquo;
+    <%= t('comments.editing')%> #<%=h @comment.id %>
+<% end %>
+
+<%= render :partial => 'form' %>
+
+<p>
+  <%= link_to t('gmcommerce.common.show'), admin_product_comment_path(@product, @comment), :class=>"show_link" %> |
+  <%= link_to t('gmcommerce.common.view_all'), admin_product_comments_path(@product), :class=>"view_all_link view_all_comments_link" %>
+</p>

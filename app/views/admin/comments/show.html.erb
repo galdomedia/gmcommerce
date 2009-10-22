@@ -1,0 +1,27 @@
+<% content_for :header do %>
+  <%= link_to h(@product.name), admin_product_path(@product)%>
+  &raquo;
+  <%= link_to t('comments.plural'), admin_product_comments_path(@product) %>
+  &raquo;
+  <%= t('comments.singular')%>
+    #<%=h @comment.id%>
+<% end %>
+
+<p>
+  <strong><%= t('activerecord.attributes.comment.author')%>:</strong>
+  <%=h @comment.author %>
+</p>
+<p>
+  <strong><%= t('activerecord.attributes.comment.user')%>:</strong>
+  <%=h @comment.user %>
+</p>
+<p>
+  <strong><%= t('activerecord.attributes.comment.comment')%>:</strong>
+  <%=h @comment.comment %>
+</p>
+
+<p>
+  <%= link_to t('gmcommerce.common.edit'), edit_admin_product_comment_path(@product, @comment), :class=>"edit_link edit_comment_link" %> |
+  <%= link_to t('gmcommerce.common.destroy'), admin_product_comment_path(@product, @comment), :confirm => 'Are you sure?', :method => :delete, :class=>"destroy_link destroy_comments_link" %> |
+  <%= link_to t('gmcommerce.common.view_all'), admin_product_comments_path(@product), :class=>"view_all_link view_all_comments_link" %>
+</p>

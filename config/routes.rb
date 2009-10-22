@@ -1,5 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
 
+
   map.resources :orders, :new => { :preview => :post }
   map.resource :payment, :only => [:new], :member=>{:ok=>:get, :failed=>:get}
   map.resource :cart, :member=>{:add_product_to=>:post, :set_product_quantity_in=>:post, :delete_product_in=>:post, :set_shipment_for=>:post}
@@ -16,7 +17,9 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :orders
     admin.resources :pages
     admin.resources :producers
-    admin.resources :products
+    admin.resources :products do |product|
+      product.resources :comments
+    end
     admin.resources :property_types
     admin.resources :product_templates
     admin.resources :shipments

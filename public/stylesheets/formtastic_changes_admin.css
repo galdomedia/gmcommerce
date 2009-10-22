@@ -87,7 +87,7 @@ form.formtastic li.numeric input{
 .show_cell{
   width: 120px;
 }
-.icon_link, .show_link, .edit_link, .view_all_link, .destroy_link{
+.icon_link, .show_link, .edit_link, .view_all_link, .destroy_link, .new_link{
   background-repeat:no-repeat;
   background-position:middle left;
   padding-left: 18px;
@@ -103,6 +103,21 @@ form.formtastic li.numeric input{
 }
 .destroy_link{
   background-image:url('../images/icons/destroy.png');
+}
+.edit_comment_link{
+  background-image:url('../images/icons/comment_edit.png') !important;
+}
+.view_all_comments_link{
+  background-image:url('../images/icons/comments.png') !important;
+}
+.destroy_comment_link{
+  background-image:url('../images/icons/comment_destroy.png') !important;
+}
+.new_link{
+  background-image:url('../images/icons/add.png');
+}
+.new_comment_link{
+  background-image:url('../images/icons/comment_add.png') !important;
 }
 .clear{
   clear: both;

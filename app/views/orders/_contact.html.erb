@@ -1,6 +1,14 @@
 <div class="<%= "contact_shipping" if f.object.is_shipping%><%= "contact_billing" if f.object.is_billing%>">
 First name: <%= f.text_field :first_name, :class=>"first_name" %><br />
 Last name: <%= f.text_field :last_name, :class=>"last_name" %><br />
+Street: <%= f.text_field :street, :class=>"street" %><br />
+Street nr / home nr: <%= f.text_field :street_nr, :class=>"street_nr" %><br />
+City: <%= f.text_field :city, :class=>"city" %><br />
+Zip-code: <%= f.text_field :zip_code, :class=>"zip_code" %><br />
+<% if f.object.is_billing? %>
+  Email: <%= f.text_field :email %><br />
+  Phone: <%= f.text_field :phone %><br />
+<% end %>
 <%= f.hidden_field :is_shipping %>
 <%= f.hidden_field :is_billing %>
 </div>

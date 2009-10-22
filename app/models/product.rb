@@ -6,6 +6,7 @@ class Product < ActiveRecord::Base
   has_many :properties, :dependent=>:destroy
   has_many :property_types, :through => :properties
   has_many :product_variations
+  has_many :comments
   
 
   named_scope :available, :conditions=>['is_gift=?', false]
@@ -28,7 +29,11 @@ class Product < ActiveRecord::Base
   end
   
   def to_param
-    "#{self.id}-#{self.name.parameterize}"
+    unless self.name.blank?
+      "#{self.id}-#{self.name.parameterize}"
+    else
+      self.id
+    end
   end
   
   def fill_values_from_template(template)
