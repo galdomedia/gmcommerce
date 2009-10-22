@@ -1,5 +1,8 @@
-<% title "Option Group" %>
-
+<% content_for :header do %>
+  <%= link_to t('option_groups.plural'), admin_option_groups_path %>
+    &raquo;
+  <%= link_to h(@option_group.name), admin_option_group_path(@option_group) %>
+<% end %>
 <p>
   <strong>Name:</strong>
   <%=h @option_group.name %>

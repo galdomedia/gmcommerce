@@ -4,6 +4,6 @@
     <%= f.input :cost %>
     <%= f.input :active, :as=>:boolean %>
     <%= f.input :free_from_cart_value %>
-    <%= f.input :description %>
+    <%= f.input :description, :input_html=>{:rows=>5} %>
     <%= f.buttons %>
 <% end %>

@@ -1,4 +1,8 @@
-<% title "Category" %>
+<% content_for :header do %>
+  <%= link_to t('categories.plural'), admin_categories_path %>
+    &raquo;
+  <%= link_to h(@category.name), admin_category_path(@category) %>
+<% end %>
 
 <p>
   <strong>Name:</strong>

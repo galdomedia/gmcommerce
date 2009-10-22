@@ -1,4 +1,7 @@
-<% title "Property Types" %>
+<% content_for :header do %>
+  <%= link_to t('property_types.plural'), admin_property_types_path %>
+<% end %>
+
 
 <% form_for @search do |f| %>
   <table>

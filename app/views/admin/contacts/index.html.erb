@@ -1,4 +1,7 @@
-<% title "Contacts" %>
+<% content_for :header do %>
+  <%= link_to t('contacts.plural'), admin_contacts_path %>
+<% end %>
+
 
 <table class="index">
   <tr>

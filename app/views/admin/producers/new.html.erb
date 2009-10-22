@@ -1,5 +1,9 @@
-<% title "New Producer" %>
+<% content_for :header do %>
+  <%= link_to t('producers.plural'), admin_producers_path %>
+    &raquo;
+    <%= t('producers.new') %>
+<% end %>
 
 <%= render :partial => 'form' %>
 
-<p><%= link_to "Back to List", admin_producers_path %></p>
+<p><%= link_to t('gmcommerce.common.back_to_list'), admin_producers_path , :class=>"back_to_list_link" %></p>

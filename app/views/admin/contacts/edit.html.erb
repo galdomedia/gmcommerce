@@ -1,4 +1,8 @@
-<% title "Edit Contact" %>
+<% content_for :header do %>
+  <%= link_to t('contacts.plural'), admin_contacts_path %>
+    &raquo; <%= t('contacts.editing') %>
+  <%=  h(@contact.name) %>
+<% end %>
 
 <%= render :partial => 'form' %>
 

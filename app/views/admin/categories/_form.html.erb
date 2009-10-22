@@ -1,6 +1,17 @@
-<% semantic_form_for [:admin, @category] do |f| %>
+<% semantic_form_for [:admin, @category], :html=>{:multipart=>true} do |f| %>
   <%= f.error_messages %>
   <%= f.input :name %>
   <%= f.input :parent %>
+  <% unless f.object.new_record? %>
+    <% unless f.object.icon.blank? %>
+      <li>
+        <label><%= t('categories.form.current_icon')%></label>
+        <%= image_tag(f.object.icon.url(:icon)) %>
+      </li>
+    <% end %>
+  <% end %>
+  <%= f.input :icon, :as=>:file%>
+  <%= f.input :short_description, :input_html=>{:rows=>3}%>
+  <%= f.input :description, :input_html=>{:rows=>7}%>
   <%= f.buttons %>
 <% end %>

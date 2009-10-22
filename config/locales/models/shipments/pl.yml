@@ -1,0 +1,15 @@
+pl:
+  shipments:
+    plural: Sposoby dostawy
+    singular: Sposób dostawy
+    editing: Edytujesz dostawę
+    new: Dodan nowy sposób dostawy
+  activerecord:
+    attributes:
+      shipment:
+        name: Nazwa
+        cost: Koszt
+        active: Aktywny
+        free_from_cart_value: Dostawa darmowa od kwoty (wartości koszyka)
+        description: Dodatkowy opis
+          

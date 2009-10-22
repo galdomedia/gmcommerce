@@ -1,0 +1,13 @@
+pl:
+  gift_discounts:
+    new: Dodaj nową zniżkę na prezenty
+    index: Zniżki na prezenty
+    singular: Zniżka na prezenty
+    plural: Zniżki na prezenty
+    editing: Edytujesz zniżkę
+  activerecord:
+    attributes:
+      gift_discount:
+        name: Nazwa
+        discount_value: Wartość zniżki
+        from_cart_value: Zniżka przyznawana od kwoty (wartości koszyka)

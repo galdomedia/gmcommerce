@@ -1,4 +1,6 @@
-<% title "Categories" %>
+<% content_for :header do %>
+  <%= link_to t('categories.plural'), admin_categories_path %>
+<% end %>
 
 <table class="index">
   <tr>

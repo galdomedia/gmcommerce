@@ -1,4 +1,7 @@
-<% title "Pages" %>
+<% content_for :header do %>
+  <%= link_to t('pages.plural'), admin_pages_path %>
+<% end %>
+
 <% form_for @search do |f| %>
   <table>
     <tr><td>Title</td><td><%= f.text_field :title_like, :size => 13 %></td></tr>

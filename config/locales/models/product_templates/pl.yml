@@ -2,3 +2,6 @@ pl:
   product_templates:
     index: Szablony produktów
     new: Dodaj nowy szablon
+    editing: Edytujesz szablon
+    plural: Szablony produktów
+    singular: Szablon produktu

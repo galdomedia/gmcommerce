@@ -1,5 +1,9 @@
-<% title "New Shipment" %>
+<% content_for :header do %>
+  <%= link_to t('shipments.plural'), admin_shipments_path %>
+    &raquo;
+    <%= t('shipments.new') %>
+<% end %>
 
 <%= render :partial => 'form' %>
 
-<p><%= link_to "Back to List", admin_shipments_path %></p>
+<p><%= link_to t('gmcommerce.common.back_to_list'), admin_shipments_path , :class=>"back_to_list_link" %></p>

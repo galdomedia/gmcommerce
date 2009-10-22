@@ -1,4 +1,18 @@
 pl:
   property_types:
     index: Właściwości produktów
-    new: Dodaj nowa właściwośc
+    new: Dodaj nowa właściwość
+    editing: Edytujesz właściwiość
+    plural: Właściwości produktów
+    singular: Właściwość produktu
+    form:
+      current_icon: Obecna ikona
+  activerecord:
+    attributes:
+      property_type:
+        name: Nazwa
+        identifier: Identyfikator
+        field_type: Typ właściwości
+        icon: Ikona
+        short_description: Opis krótki
+        description: Opis

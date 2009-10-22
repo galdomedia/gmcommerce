@@ -1,5 +1,9 @@
-<% title "New Product Template" %>
+<% content_for :header do %>
+  <%= link_to t('product_templates.plural'), admin_product_templates_path %>
+    &raquo;
+    <%= t('product_templates.new') %>
+<% end %>
 
 <%= render :partial => 'form' %>
 
-<p><%= link_to "Back to List", admin_product_templates_path %></p>
+<p><%= link_to t('gmcommerce.common.back_to_list'), admin_product_templates_path , :class=>"back_to_list_link" %></p>

@@ -1,6 +1,7 @@
-<% content_for :header do -%>
-  Użytkownicy  | <%= link_to 'New user', new_admin_user_path %>
-<% end -%>
+<% content_for :header do %>
+  <%= link_to t('users.plural'), admin_users_path %>
+<% end %>
+
 
 <% content_for :sidebar do -%>
   <p>

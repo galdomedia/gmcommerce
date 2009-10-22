@@ -1,7 +1,18 @@
-<% semantic_form_for [:admin, @property_type] do |f| %>
+<% semantic_form_for [:admin, @property_type], :html=>{:multipart=>true} do |f| %>
   <%= f.error_messages %>
   <%= f.input :name %>
   <%= f.input :identifier %>
   <%= f.input :field_type, :as=>:select, :collection=>PropertyType::FIELD_TYPES %>
+  <% unless f.object.new_record? %>
+    <% unless f.object.icon.blank? %>
+      <li>
+        <label><%= t('property_types.form.current_icon')%></label>
+        <%= image_tag(f.object.icon.url(:icon)) %>
+      </li>
+    <% end %>
+  <% end %>
+  <%= f.input :icon, :as=>:file%>
+  <%= f.input :short_description, :input_html=>{:rows=>3}%>
+  <%= f.input :description, :input_html=>{:rows=>7}%>
   <%= f.buttons %>
 <% end %>

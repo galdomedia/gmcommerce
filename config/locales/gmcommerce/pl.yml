@@ -21,3 +21,4 @@ pl:
       edit: "Edytuj"
       destroy: "Usuń"
       view_all: "Pokaż wszystkie"
+      back_to_list: Powrót do listy

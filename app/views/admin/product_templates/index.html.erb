@@ -1,4 +1,9 @@
-<% title "Product Templates" %>
+<% content_for :header do %>
+  <%= link_to t('product_templates.plural'), admin_product_templates_path %>
+    &raquo; <%= t('product_templates.editing') %>
+  <%=  h(@product_template.template_name) %>
+<% end %>
+
 <% form_for @search do |f| %>
   <table>
     <tr><td>Template name</td><td><%= f.text_field :template_name_like, :size => 13 %></td></tr>

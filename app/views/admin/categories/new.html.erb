@@ -1,5 +1,9 @@
-<% title "New Category" %>
+<% content_for :header do %>
+  <%= link_to t('categories.plural'), admin_categories_path %>
+    &raquo;
+    <%= t('categories.new') %>
+<% end %>
 
 <%= render :partial => 'form' %>
 
-<p><%= link_to "Back to List", admin_categories_path %></p>
+<p><%= link_to t('gmcommerce.common.back_to_list'), admin_categories_path , :class=>"back_to_list_link" %></p>

@@ -1,6 +1,8 @@
-<% content_for :header do -%>
-  User: <em><%=h @user.login %></em>
-<% end -%>
+<% content_for :header do %>
+  <%= link_to t('users.plural'), admin_users_path %>
+    &raquo;
+  <%= link_to h(@user.login), admin_user_path(@user) %>
+<% end %>
 
 <% content_for :sidebar do -%>
   <%= link_to "Reset password", reset_password_admin_user_path(@user) %>	

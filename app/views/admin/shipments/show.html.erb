@@ -1,4 +1,8 @@
-<% title "Shipment" %>
+<% content_for :header do %>
+  <%= link_to t('shipments.plural'), admin_shipments_path %>
+    &raquo;
+  <%= link_to h(@shipment.name), admin_shipment_path(@shipment) %>
+<% end %>
 
 <p>
   <strong>Name:</strong>

@@ -1,6 +1,8 @@
-<% content_for :header do -%>
-Create new account
-<% end -%>
+<% content_for :header do %>
+  <%= link_to t('users.plural'), admin_users_path %>
+    &raquo;
+    <%= t('users.new') %>
+<% end %>
 
 <% content_for :sidebar do -%>
 

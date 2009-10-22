@@ -1,4 +1,8 @@
-<% title "Edit Producer" %>
+<% content_for :header do %>
+  <%= link_to t('producers.plural'), admin_producers_path %>
+    &raquo; <%= t('producers.editing') %>
+  <%=  h(@producer.name) %>
+<% end %>
 
 <%= render :partial => 'form' %>
 

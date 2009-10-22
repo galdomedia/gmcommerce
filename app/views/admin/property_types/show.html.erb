@@ -1,4 +1,8 @@
-<% title "Property Type" %>
+<% content_for :header do %>
+  <%= link_to t('property_types.plural'), admin_property_types_path %>
+    &raquo;
+  <%= link_to h(@property_type.name), admin_property_type_path(@property_type) %>
+<% end %>
 
 <p>
   <strong>Name:</strong>

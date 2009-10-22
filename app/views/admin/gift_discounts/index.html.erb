@@ -1,4 +1,7 @@
-<% title "Gift Discounts" %>
+<% content_for :header do %>
+  <%= link_to t('gift_discounts.plural'), admin_gift_discounts_path %>
+<% end %>
+
 <% form_for @search do |f| %>
   <table>
     <tr><td>Name</td><td><%= f.text_field :name_like, :size => 13 %></td></tr>

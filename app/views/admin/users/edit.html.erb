@@ -1,6 +1,8 @@
-<% content_for :header do -%>
-Editing account <%= h @user.login %>
-<% end -%>
+<% content_for :header do %>
+  <%= link_to t('users.plural'), admin_users_path %>
+    &raquo; <%= t('users.editing') %>
+  <%=  h(@user.login) %>
+<% end %>
 
 <% content_for :sidebar do -%>
 

@@ -1,5 +1,8 @@
-<% title "Page" %>
-
+<% content_for :header do %>
+  <%= link_to t('pages.plural'), admin_pages_path %>
+    &raquo;
+  <%= link_to h(@page.title), admin_page_path(@page) %>
+<% end %>
 <p>
   <strong>Title:</strong>
   <%=h @page.title %>

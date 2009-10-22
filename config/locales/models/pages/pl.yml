@@ -1,0 +1,11 @@
+pl:
+  pages:
+    new: Dodaj stronę statyczną
+    plural: Strony statyczne
+    singular: Strona statyczna
+    editing: Edytujesz stronę
+  activerecord:
+    attributes:
+      page:
+        title: Tytuł
+        body: Treść

@@ -1,4 +1,8 @@
-<% title "Contact" %>
+<% content_for :header do %>
+  <%= link_to t('contacts.plural'), admin_contacts_path %>
+    &raquo;
+  <%= link_to h(@contact.name), admin_contact_path(@contact) %>
+<% end %>
 
 <p>
   <strong>First Name:</strong>

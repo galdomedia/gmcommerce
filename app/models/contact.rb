@@ -9,4 +9,8 @@ class Contact < ActiveRecord::Base
   validates_presence_of :is_shipping, :if=>proc{|c| c['is_billing'].blank? or c['is_billing']==false}
 
   attr_accessible :first_name, :last_name, :street, :street_nr, :city, :country, :is_billing, :is_shipping, :zip_code, :email, :phone
+  
+  def name
+    "#{self.first_name} #{self.last_name}"
+  end
 end

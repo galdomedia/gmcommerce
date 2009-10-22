@@ -1,4 +1,8 @@
-<% title "Edit Property Type" %>
+<% content_for :header do %>
+  <%= link_to t('property_types.plural'), admin_property_types_path %>
+    &raquo; <%= t('property_types.editing') %>
+  <%=  h(@property_type.name) %>
+<% end %>
 
 <%= render :partial => 'form' %>
 

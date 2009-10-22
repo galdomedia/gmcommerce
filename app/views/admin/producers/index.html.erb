@@ -1,4 +1,7 @@
-<% title "Producers" %>
+<% content_for :header do %>
+  <%= link_to t('producers.plural'), admin_producers_path %>
+<% end %>
+
 <% form_for @search do |f| %>
   <table>
     <tr><td>Name</td><td><%= f.text_field :name_like, :size => 13 %></td></tr>

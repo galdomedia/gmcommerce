@@ -1,5 +1,8 @@
-<% title "Gift Discount" %>
-
+<% content_for :header do %>
+  <%= link_to t('gift_discounts.plural'), admin_gift_discounts_path %>
+    &raquo;
+  <%= link_to h(@gift_discount.name), admin_gift_discount_path(@gift_discount) %>
+<% end %>
 <p>
   <strong>Name:</strong>
   <%=h @gift_discount.name %>

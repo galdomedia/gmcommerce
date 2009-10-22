@@ -1,4 +1,9 @@
 pl:
+  contacts:
+    new: Dodaj kontakt
+    editing: Edytujesz kontakt
+    plural: Kontakty
+    singular: Kontakt
   activerecord:
     attributes:
       contact:

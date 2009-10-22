@@ -1,4 +1,8 @@
-<% title "Edit Category" %>
+<% content_for :header do %>
+  <%= link_to t('categories.plural'), admin_category_path %>
+    &raquo; <%= t('categories.editing') %>
+  <%=  h(@category.name) %>
+<% end %>
 
 <%= render :partial => 'form' %>
 

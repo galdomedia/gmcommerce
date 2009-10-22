@@ -1,4 +1,8 @@
-<% title "Edit Page" %>
+<% content_for :header do %>
+  <%= link_to t('pages.plural'), admin_pages_path %>
+    &raquo; <%= t('pages.editing') %>
+  <%=  h(@page.title) %>
+<% end %>
 
 <%= render :partial => 'form' %>
 

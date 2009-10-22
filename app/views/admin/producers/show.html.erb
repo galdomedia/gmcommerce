@@ -1,4 +1,8 @@
-<% title "Producer" %>
+<% content_for :header do %>
+  <%= link_to t('producers.plural'), admin_producers_path %>
+    &raquo;
+  <%= link_to h(@producer.name), admin_producer_path(@producer) %>
+<% end %>
 
 <p>
   <strong>Name:</strong>

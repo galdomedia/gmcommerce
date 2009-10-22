@@ -1,4 +1,8 @@
-<% title "Product Template" %>
+<% content_for :header do %>
+  <%= link_to t('product_templates.plural'), admin_product_templates_path %>
+    &raquo;
+  <%= link_to h(@product_template.template_name), admin_product_template_path(@product_template) %>
+<% end %>
 
 <p>
   <strong>Template Name:</strong>

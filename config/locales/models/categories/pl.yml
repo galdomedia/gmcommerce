@@ -1,4 +1,19 @@
 pl:
   categories:
+    new: Dodaj kategorię
+    plural: Kategorie
+    singular: Kategoria
+    editing: Edytujesz kategorię
     errors:
       not_found: Kategoria nie istnieje
+    form:
+      current_icon: Obecna ikona
+  activerecord:
+    attributes:
+      category:
+        name: Nazwa
+        parent: Kategoria nadrzędna
+        parent_id: Kategoria nadrzędna
+        icon: Ikona
+        short_description: Opis krótki
+        description: Opis

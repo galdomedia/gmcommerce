@@ -1,5 +1,9 @@
-<% title "New Option Group" %>
+<% content_for :header do %>
+  <%= link_to t('option_groups.plural'), admin_option_groups_path %>
+    &raquo;
+    <%= t('option_groups.new') %>
+<% end %>
 
 <%= render :partial => 'form' %>
 
-<p><%= link_to "Back to List", admin_option_groups_path %></p>
+<p><%= link_to t('gmcommerce.common.back_to_list'), admin_option_groups_path , :class=>"back_to_list_link" %></p>

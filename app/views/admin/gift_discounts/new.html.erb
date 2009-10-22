@@ -1,5 +1,9 @@
-<% title "New Gift Discount" %>
+<% content_for :header do %>
+  <%= link_to t('gift_discounts.plural'), admin_gift_discounts_path %>
+    &raquo;
+    <%= t('gift_discounts.new') %>
+<% end %>
 
 <%= render :partial => 'form' %>
 
-<p><%= link_to "Back to List", admin_gift_discounts_path %></p>
+<p><%= link_to t('gmcommerce.common.back_to_list'), admin_gift_discounts_path , :class=>"back_to_list_link" %></p>

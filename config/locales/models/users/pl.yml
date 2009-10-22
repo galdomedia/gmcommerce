@@ -1,0 +1,16 @@
+pl:
+  users:
+    plural: Użytkownicy
+    singular: Użytkownik
+    new: Dodaj użytkownika
+    editing: Edytujesz użytkownika
+  activerecord:
+    attributes:
+      user:
+        login: Login
+        email: Email
+        password: Hasło
+        password_confirmation: Potwierdzenie hasła
+        is_admin: Jest administratorem
+        is_staff: Ma dostęp do panelu
+        
