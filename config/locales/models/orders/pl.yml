@@ -18,3 +18,15 @@ pl:
         comment: Komentarz
         shipment: Dostawa
         complete_value: Całkowita wartość zamówienia
+        contacts: Kontakt
+    errors:
+      models:
+        order:
+          contact:
+            attributes:
+              first_name: Imię
+          attributes:
+            contacts:
+              invalid: "- przynajmniej jedno z pól jest błędnie wypełnione"
+    models:
+      order: Zamówienie
