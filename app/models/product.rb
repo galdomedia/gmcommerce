@@ -49,16 +49,18 @@ class Product < ActiveRecord::Base
 
   def get_minimal_price
     if self.product_variations.length > 0
-      prices = self.product_variations.map{|pv| pv.price}
-      prices.min
+      self.product_variations.map{|pv| pv.price}.min
     else
       self.price
     end
   end
-  alias_method :get_price, :get_minimal_price
+  
+  def get_price
+    self.get_minimal_price
+  end
 
   def get_first_variation
-    if self.product_variations.count > 0
+    if self.have_variations?
       self.product_variations.first
     else
       nil
@@ -66,16 +68,15 @@ class Product < ActiveRecord::Base
   end
   
   def get_maximal_price
-    if self.product_variations.count > 0
-      prices = self.product_variations.map{|pv| pv.price}
-      prices.max
+    if self.have_variations?
+      self.product_variations.map{|pv| pv.price}.max
     else
       self.price
     end
   end
   
   def get_minimal_variation
-    if self.product_variations.count > 0
+    if self.have_variations?
       self.product_variations.min{|a,b| a.price<=>b.price}
     else
       nil
@@ -83,7 +84,7 @@ class Product < ActiveRecord::Base
   end
 
   def get_maximal_variation
-    if self.product_variations.count > 0
+    if self.have_variations?
       self.product_variations.max{|a,b| a.price<=>b.price}
     else
       nil

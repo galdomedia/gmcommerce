@@ -13,12 +13,14 @@
     <th><%= order @search, :by => :name %></th>
     <th><%= order @search, :by => :discount_value %></th>
     <th><%= order @search, :by => :from_cart_value %></th>
+    <th><%= order @search, :by => :discounted_products_number %></th>
   </tr>
   <% for gift_discount in @gift_discounts %>
     <tr>
       <td><%=h gift_discount.name %></td>
       <td><%=h gift_discount.discount_value %></td>
       <td><%=h gift_discount.from_cart_value %></td>
+      <td><%=h gift_discount.discounted_products_number %></td>
       <td class="action_cell show_cell"><%= link_to t('gmcommerce.common.show'), admin_gift_discount_path(gift_discount), :class=>"show_link" %></td>
       <td class="action_cell"><%= link_to t('gmcommerce.common.edit'), edit_admin_gift_discount_path(gift_discount), :class=>"edit_link" %></td>
       <td class="action_cell"><%= link_to t('gmcommerce.common.destroy'), admin_gift_discount_path(gift_discount), :confirm => 'Are you sure?', :method => :delete, :class=>"destroy_link" %></td>

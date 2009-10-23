@@ -15,6 +15,10 @@
   <strong>From Cart Value:</strong>
   <%=h @gift_discount.from_cart_value %>
 </p>
+<p>
+  <strong>discounted_products_number:</strong>
+  <%=h @gift_discount.discounted_products_number %>
+</p>
 
 <p>
   <%= link_to t('gmcommerce.common.edit'), edit_admin_gift_discount_path(@gift_discount), :class=>"edit_link" %> |

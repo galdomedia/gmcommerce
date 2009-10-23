@@ -10,7 +10,7 @@
   <% @cart.items.each do |cart_item| %>
     <tr class="tr_produkt">
       <td class="td_item">
-        <p><%= h cart_item.name %><br /><small><%= h cart_item.variation %></small></p>
+        <p><%= h cart_item.name %><br /><small><%= h cart_item.product_variation %></small></p>
       </td>
       <td style="text-align:center;">
         <% form_tag(delete_product_in_cart_path(:id => cart_item.id, :variation_id=>cart_item.variation_id)) do -%>
@@ -33,7 +33,7 @@
   <% end %>
 </table>
 
-Cart total value: <%= @cart.total_price_with_gifts_and_discounts%> 
+Cart total value: <%= @cart.total_value%> 
 <br />
 <% if @cart.shipment %>
 <br />

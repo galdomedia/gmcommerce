@@ -1,11 +1,14 @@
 class CartItem
-
-  attr_reader :product, :quantity, :variation
+  include CalculatedItem
+  
+  attr_reader :product, :quantity, :product_variation
+  attr_accessor :discount_value
 
   def initialize(product, product_variation=nil)
     @product = product
-    @variation = product_variation
+    @product_variation = product_variation
     @quantity = 1
+    @discount_value = 0
   end
 
   def set_quantity(quantity)
@@ -22,27 +25,9 @@ class CartItem
   def decrement_quantity
     @quantity -= 1 if @quantity > 1
   end
+  
+  
 
-  def id
-    @product.id
-  end
-
-  def variation_id
-    return nil unless @variation
-    @variation.id
-  end
-
-  def name
-    @product.name
-  end
-
-  def price
-    return self.product_price * @quantity
-  end
-
-  def product_price
-    return @variation.price unless @variation.blank?
-    return @product.get_price
-  end
+  
 
 end

@@ -6,6 +6,7 @@ class Order < ActiveRecord::Base
   has_and_belongs_to_many :contacts
   #has_many :payments
   has_many :order_items
+  has_many :items, :class_name => "order_item", :foreign_key => "order_id"
 
   validates_associated :contacts
   validate :validates_contacts_number
@@ -87,6 +88,7 @@ class Order < ActiveRecord::Base
         oi.product_variation = item.variation
         oi.price = item.product_price
         oi.quantity = item.quantity
+        oi.discount_value = item.discount_value
         oi.order = order
         oi.save
       end
