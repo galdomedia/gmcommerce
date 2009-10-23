@@ -1,4 +1,8 @@
-<% title "Edit Product Template" %>
+<% content_for :header do %>
+  <%= link_to t('product_templates.plural'), admin_product_templates_path %>
+    &raquo; <%= t('product_templates.editing') %>
+  <%=  h(@product_template.template_name) %>
+<% end %>
 
 <%= render :partial => 'form' %>
 
