@@ -24,14 +24,8 @@
     <label><%= t('activerecord.attributes.order.status') %>: </label>
     <%=h @order.status %>
   </li>
-  <li>
-    <label><%= t('activerecord.attributes.order.order_value') %>:</label>
-    <%=h @order.order_value %>
-  </li>
-  <li>
-    <label><%= t('activerecord.attributes.order.shipment_cost') %>:</label>
-    <%=h @order.shipment_cost %>
-  </li>
+  <%= f.input :order_value %>
+  <%= f.input :shipment_cost %>
   <%= f.input :comment, :input_html=>{:rows=>5} %>
   <%= f.input :shipment %>
   

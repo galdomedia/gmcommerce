@@ -1,7 +1,6 @@
 class Admin::PropertyTypesController < Admin::AdminController
   def index
     @search = PropertyType.search(params[:search])
-    @search.order = "ascend_by_name" unless @search.order
     @property_types =  @search.paginate(:page => params[:page], :include=>[])
   end
   
@@ -42,5 +41,16 @@ class Admin::PropertyTypesController < Admin::AdminController
     @property_type.destroy
     flash[:notice] = "Successfully destroyed property type."
     redirect_to admin_property_types_url
+  end
+  
+  def reorder
+    @property_types = PropertyType.all
+  end
+  
+  def sort
+    params[:property_types].each_with_index do |id, index|
+      PropertyType.update_all(['position=?', index+1], ['id=?', id])
+    end
+    render :nothing=>true
   end
 end

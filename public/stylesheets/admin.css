@@ -46,3 +46,9 @@
     border: 1px solid #eee;
     color: #ddd;
 }
+
+
+.drag{
+  cursor: move;
+  font-weight: bold;
+}

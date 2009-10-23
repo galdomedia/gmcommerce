@@ -1,0 +1,13 @@
+<% title "Property Types" %>
+
+<ul>
+  <% for pt in @property_types %>
+    <li>
+      <% unless pt.icon_file_name.blank? %>
+        <%= image_tag pt.icon.url(:icon) %>
+      <% end %>
+      <%=link_to h(pt.name), pt %>
+    </li>
+  <% end %>
+</ul>
+

@@ -5,6 +5,7 @@ pl:
     editing: Edytujesz właściwiość
     plural: Właściwości produktów
     singular: Właściwość produktu
+    reorder: Zmień kolejność elementów
     form:
       current_icon: Obecna ikona
   activerecord:

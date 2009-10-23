@@ -5,10 +5,21 @@
 <% end %>
 
 <p>
-  <strong>Name:</strong>
+  <strong><%= t('activerecord.attributes.categories.name')%>:</strong>
   <%=h @category.name %>
 </p>
-
+<p>
+  <strong><%= t('activerecord.attributes.categories.icon')%>:</strong>
+  <%= image_tag @category.icon.url(:small )%>
+</p>
+<p>
+  <strong><%= t('activerecord.attributes.categories.short_description')%>:</strong>
+  <%=h @category.short_description%>
+</p>
+<p>
+  <strong><%= t('activerecord.attributes.categories.description')%>:</strong>
+  <%=h @category.description%>
+</p>
 <p>
   <%= link_to t('gmcommerce.common.edit'), edit_admin_category_path(@category), :class=>"edit_link" %> |
   <%= link_to t('gmcommerce.common.destroy'), admin_category_path(@category), :confirm => 'Are you sure?', :method => :delete, :class=>"destroy_link" %> |

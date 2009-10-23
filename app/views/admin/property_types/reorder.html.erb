@@ -1,0 +1,12 @@
+<% content_for :header do %>
+  <%= link_to t('property_types.plural'), admin_property_types_path %>
+  &raquo;
+  <%= t('property_types.reorder') %>
+<% end %>
+
+<ul id="property_types">
+<% for pt in @property_types %>
+  <li id="property_type_<%= pt.id %>"><span class="drag">[<%=t('gmcommerce.common.drag')%>]</span> <%=h pt.name%></li>
+<% end %>
+</ul>
+<%= sortable_element "property_types", :url=>sort_admin_property_types_path, :handle=>"drag"%>

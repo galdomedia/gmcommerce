@@ -2,6 +2,11 @@ class PropertyType < ActiveRecord::Base
 
   FIELD_TYPES = ['string', 'boolean', 'text']
 
+  has_many :properties
+  has_many :products, :through => :properties
+  
+  default_scope :order=>['position ASC']
+  
   has_attached_file :icon, :styles=>{:icon=>"24x24#", :small=>"100x100#", :medium=>"250x250#"}
   validates_presence_of :name
   validates_uniqueness_of :identifier
@@ -16,6 +21,14 @@ class PropertyType < ActiveRecord::Base
   def fill_in_identifier
     if self.identifier.blank?
       self.identifier = self.name.parameterize unless self.name.blank?
+    end
+  end
+  
+  def to_param
+    unless self.identifier.blank?
+      "#{self.id}-#{self.identifier.parameterize}"
+    else
+      self.id
     end
   end
 

@@ -1,6 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
 
-
+  map.resources :property_types, :as=>"properties"
   map.resources :orders, :new => { :preview => :post }
   map.resource :payment, :only => [:new], :member=>{:ok=>:get, :failed=>:get}
   map.resource :cart, :member=>{:add_product_to=>:post, :set_product_quantity_in=>:post, :delete_product_in=>:post, :set_shipment_for=>:post}
@@ -20,7 +20,7 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :products do |product|
       product.resources :comments
     end
-    admin.resources :property_types
+    admin.resources :property_types, :collection=>{:reorder=>:get, :sort=>:post}
     admin.resources :product_templates
     admin.resources :shipments
     admin.resources :users, :member=>{:reset_password=>:get}

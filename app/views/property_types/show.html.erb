@@ -1,0 +1,15 @@
+<% title "Property Type" %>
+
+<p>
+  <%=h @property_type.name %>
+</p>
+
+<ul>
+  <% for p in @products %>
+  <li><%= link_to h(p.name), product_path(p) %> - </li>
+  <% end %>
+</ul>
+
+<p>
+  <%= link_to "View All", property_types_path %>
+</p>

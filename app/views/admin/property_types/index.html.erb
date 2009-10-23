@@ -29,4 +29,7 @@
 </table>
 <%= will_paginate @property_types %>
 
-<p><%= link_to "New Property Type", new_admin_property_type_path %></p>
+<p>
+  <%= link_to t('property_types.new'), new_admin_property_type_path, :class=>'new_link' %> |
+  <%= link_to t('property_types.reorder'), reorder_admin_property_types_path %>
+</p>
