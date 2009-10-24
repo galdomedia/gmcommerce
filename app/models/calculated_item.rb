@@ -13,6 +13,7 @@ module CalculatedItem
   end
 
   def price
+    self.discount_value ||= 0.0
     return (self.product_price * self.quantity) - self.discount_value
   end
 

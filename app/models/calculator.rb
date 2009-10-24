@@ -9,6 +9,7 @@ module Calculator
     normal_products_value = self.total_value_without_gifts
     discounted_products = GiftDiscount.get_discounted_products_number_for_cart_value(normal_products_value)
     for item in self.items
+      item.discount_value = 0
       if item.product.is_gift? and discounted_products > 0
         item.discount_value = item.product_price
         discounted_products -= 1
