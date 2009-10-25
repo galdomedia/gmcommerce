@@ -13,6 +13,9 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :categories
     admin.resources :contacts
     admin.resources :gift_discounts
+    admin.resources :menu_groups, :collection=>{:reorder=>:get, :sort=>:post} do |menu|
+      menu.resources :menu_items, :collection=>{:reorder=>:get, :sort=>:post}
+    end
     admin.resources :option_groups
     admin.resources :orders
     admin.resources :pages
@@ -40,4 +43,6 @@ ActionController::Routing::Routes.draw do |map|
 
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
+  
+  
 end

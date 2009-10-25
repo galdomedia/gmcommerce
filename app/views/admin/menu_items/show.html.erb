@@ -1,0 +1,24 @@
+<% title "Menu Item" %>
+
+<p>
+  <strong>Name:</strong>
+  <%=h @menu_item.name %>
+</p>
+<p>
+  <strong>Url:</strong>
+  <%=h @menu_item.url %>
+</p>
+<p>
+  <strong>Page:</strong>
+  <%=h @menu_item.page %>
+</p>
+<p>
+  <strong>Menu Group:</strong>
+  <%=h @menu_item.menu_group %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_admin_menu_group_menu_item_path(@menu_group, @menu_item) %> |
+  <%= link_to "Destroy", admin_menu_group_menu_item_path(@menu_group, @menu_item), :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", admin_menu_group_menu_items_path(@menu_group) %>
+</p>

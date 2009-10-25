@@ -1,0 +1,19 @@
+<% title "Menu Groups" %>
+
+<table class="index">
+  <tr>
+    <th>Name</th>
+    <th>Identifier</th>
+  </tr>
+  <% for menu_group in @menu_groups %>
+    <tr>
+      <td><%=h menu_group.name %></td>
+      <td><%=h menu_group.identifier %></td>
+      <td><%= link_to "Show", admin_menu_group_path(menu_group) %></td>
+      <td><%= link_to "Edit", edit_admin_menu_group_path(menu_group) %></td>
+      <td><%= link_to "Destroy", admin_menu_group_path(menu_group), :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to t('menu_groups.new'), new_admin_menu_group_path, :class=>"new_link"%></p>

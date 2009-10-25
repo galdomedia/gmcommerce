@@ -32,7 +32,7 @@ class Product < ActiveRecord::Base
     unless self.name.blank?
       "#{self.id}-#{self.name.parameterize}"
     else
-      self.id
+      self.id.to_s
     end
   end
   

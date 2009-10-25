@@ -1,0 +1,17 @@
+<% content_for :header do %>
+  <%= link_to t('menu_groups.plular'), admin_menu_groups_path %>
+  &raquo;
+  <%= t('menu_group.singular')%>
+  <%= link_to h(@menu_group.name), admin_menu_group_path(@menu_group)%>
+  &raquo;
+  <%= link_to t('menu_items.plural'), admin_menu_group_menu_items_path(@menu_group) %>
+  &raquo;
+  <%= t('menu_items.reorder') %>
+<% end %>
+
+<ul id="menu_items">
+<% for mi in @menu_items %>
+  <li id="menu_item_<%= mi.id %>"><span class="drag">[<%=t('gmcommerce.common.drag')%>]</span> <%=h mi.name%></li>
+<% end %>
+</ul>
+<%= sortable_element "menu_items", :url=>sort_admin_menu_group_menu_items_path(@menu_group), :handle=>"drag"%>

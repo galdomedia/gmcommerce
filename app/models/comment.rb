@@ -14,4 +14,6 @@ class Comment < ActiveRecord::Base
   def fill_in_author
     self.author = self.user.login unless self.user_id.blank?
   end
+  
+  
 end

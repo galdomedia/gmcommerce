@@ -1,8 +1,6 @@
 require File.dirname(__FILE__) + '/../spec_helper'
  
 describe PropertyTypesController do
-  fixtures :all
-  integrate_views
   
   it "index action should render index template" do
     get :index
@@ -10,7 +8,7 @@ describe PropertyTypesController do
   end
   
   it "show action should render show template" do
-    get :show, :id => PropertyType.first
+    get :show, :id => Factory(:valid_property_type)
     response.should render_template(:show)
   end
 end

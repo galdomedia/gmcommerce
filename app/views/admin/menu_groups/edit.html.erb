@@ -1,0 +1,12 @@
+<% content_for :header do %>
+  <%= link_to t('menu_groups.plural'), admin_menu_groups_path %>
+  &raquo; <%= t('menu_groups.editing')%>
+  <%=h @menu_group.name %>
+<% end %>
+
+<%= render :partial => 'form' %>
+
+<p>
+  <%= link_to t('gmcommerce.common.show'), admin_menu_group_path(@menu_group), :class=>"show_link" %> |
+  <%= link_to t('gmcommerce.common.view_all'), admin_menu_groups_path, :class=>"view_all_link" %>
+</p>

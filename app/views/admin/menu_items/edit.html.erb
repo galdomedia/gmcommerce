@@ -1,0 +1,8 @@
+<% title "Edit Menu Item" %>
+
+<%= render :partial => 'form' %>
+
+<p>
+  <%= link_to "Show", admin_menu_group_menu_item_path(@menu_group, @menu_item) %> |
+  <%= link_to "View All", admin_menu_group_menu_items_path(@menu_group) %>
+</p>

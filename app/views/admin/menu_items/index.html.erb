@@ -1,0 +1,21 @@
+<% title "Menu Items" %>
+
+<table class="index">
+  <tr>
+    <th>Name</th>
+    <th>Url</th>
+    <th>Page</th>
+  </tr>
+  <% for menu_item in @menu_items %>
+    <tr>
+      <td><%=h menu_item.name %></td>
+      <td><%=h menu_item.url %></td>
+      <td><%=h menu_item.page %></td>
+      <td><%= link_to "Show", admin_menu_group_menu_item_path(@menu_group, menu_item) %></td>
+      <td><%= link_to "Edit", edit_admin_menu_group_menu_item_path(@menu_group, menu_item) %></td>
+      <td><%= link_to "Destroy", admin_menu_group_menu_item_path(@menu_group, menu_item), :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Menu Item", new_admin_menu_group_menu_item_path(@menu_group) %></p>

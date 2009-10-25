@@ -28,7 +28,7 @@ class PropertyType < ActiveRecord::Base
     unless self.identifier.blank?
       "#{self.id}-#{self.identifier.parameterize}"
     else
-      self.id
+      self.id.to_s
     end
   end
 

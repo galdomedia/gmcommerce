@@ -1,0 +1,16 @@
+<% title "Menu Group" %>
+
+<p>
+  <strong>Name:</strong>
+  <%=h @menu_group.name %>
+</p>
+<p>
+  <strong>Identifier:</strong>
+  <%=h @menu_group.identifier %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_admin_menu_group_path(@menu_group) %> |
+  <%= link_to "Destroy", admin_menu_group_path(@menu_group), :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", admin_menu_groups_path %>
+</p>
