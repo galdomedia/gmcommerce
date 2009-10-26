@@ -1,16 +1,21 @@
-<% title "Menu Group" %>
+<% content_for :header do %>
+  <%= link_to t('menu_groups.plural'), admin_menu_groups_path %>
+  &raquo;
+  <%= t('menu_groups.singular') %>
+  <%=h @menu_group.name %>
+<% end %>
 
 <p>
-  <strong>Name:</strong>
+  <strong><%= t('activerecord.attributes.menu_group.name')%>:</strong>
   <%=h @menu_group.name %>
 </p>
 <p>
-  <strong>Identifier:</strong>
+  <strong><%= t('activerecord.attributes.menu_group.identifier')%>:</strong>
   <%=h @menu_group.identifier %>
 </p>
 
 <p>
-  <%= link_to "Edit", edit_admin_menu_group_path(@menu_group) %> |
-  <%= link_to "Destroy", admin_menu_group_path(@menu_group), :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", admin_menu_groups_path %>
+  <%= link_to t('gmcommerce.common.edit'), edit_admin_menu_group_path(@menu_group), :class=>"edit_link" %> |
+  <%= link_to t('gmcommerce.common.destroy'), admin_menu_group_path(@menu_group), :confirm => 'Are you sure?', :method => :delete, :class=>"destroy_link" %> |
+  <%= link_to t('gmcommerce.common.view_all'), admin_menu_groups_path, :class=>"view_all_link" %>
 </p>

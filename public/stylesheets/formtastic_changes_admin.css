@@ -122,3 +122,9 @@ form.formtastic li.numeric input{
 .clear{
   clear: both;
 }
+.menu_items_link{
+  background-image:url('../images/icons/text_list_bullets.png') !important;
+}
+.reorder_link{
+  background-image:url('../images/icons/arrow_switch.png') !important;
+}

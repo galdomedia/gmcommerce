@@ -1,8 +1,19 @@
-<% title "Edit Menu Item" %>
+<% content_for :header do %>
+  <%= link_to t('menu_groups.plural'), admin_menu_groups_path %>
+  &raquo;
+  <%= t('menu_groups.singular')%>
+  <%= link_to h(@menu_group.name), admin_menu_group_path(@menu_group)%>
+  &raquo;
+  <%= link_to t('menu_items.plural'), admin_menu_group_menu_items_path(@menu_group) %>
+  &raquo;
+  <%= t('menu_items.editing') %>
+  <%=h @menu_item.name %>
+<% end %>
+
 
 <%= render :partial => 'form' %>
 
 <p>
-  <%= link_to "Show", admin_menu_group_menu_item_path(@menu_group, @menu_item) %> |
-  <%= link_to "View All", admin_menu_group_menu_items_path(@menu_group) %>
+  <%= link_to t('gmcommerce.common.show'), admin_menu_group_menu_item_path(@menu_group, @menu_item), :class=>"edit_link" %> |
+  <%= link_to t('gmcommerce.common.view_all'), admin_menu_group_menu_items_path(@menu_group), :class=>"view_all_link" %>
 </p>

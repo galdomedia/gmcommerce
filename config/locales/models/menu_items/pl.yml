@@ -1,0 +1,15 @@
+pl:
+  menu_items:
+    plural: Elementy menu
+    editing: Edytujesz element menu
+    new: Dodaj nowy element
+    singular: Element menu
+    reorder: Zmień kolejność elementów
+  activerecord:
+    attributes:
+      menu_item:
+        name: Nazwa elementu
+        page: Strona statyczna
+        page_id: Strona statyczna
+        url: Adres URL
+        is_outgoing: Element kieruje na stronę zewnętrzną

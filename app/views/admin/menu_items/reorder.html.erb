@@ -1,7 +1,7 @@
 <% content_for :header do %>
-  <%= link_to t('menu_groups.plular'), admin_menu_groups_path %>
+  <%= link_to t('menu_groups.plural'), admin_menu_groups_path %>
   &raquo;
-  <%= t('menu_group.singular')%>
+  <%= t('menu_groups.singular')%>
   <%= link_to h(@menu_group.name), admin_menu_group_path(@menu_group)%>
   &raquo;
   <%= link_to t('menu_items.plural'), admin_menu_group_menu_items_path(@menu_group) %>

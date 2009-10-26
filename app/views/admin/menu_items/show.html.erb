@@ -1,24 +1,31 @@
-<% title "Menu Item" %>
+<% content_for :header do %>
+  <%= link_to t('menu_groups.plural'), admin_menu_groups_path %>
+  &raquo;
+  <%= t('menu_groups.singular')%>
+  <%= link_to h(@menu_group.name), admin_menu_group_path(@menu_group)%>
+  &raquo;
+  <%= link_to t('menu_items.plural'), admin_menu_group_menu_items_path(@menu_group) %>
+  &raquo;
+  <%= t('menu_items.singular') %>
+  <%=h @menu_item.name%>
+<% end %>
+
 
 <p>
-  <strong>Name:</strong>
+  <strong><%= t('activerecord.attributes.menu_item.name')%>:</strong>
   <%=h @menu_item.name %>
 </p>
 <p>
-  <strong>Url:</strong>
+  <strong><%= t('activerecord.attributes.menu_item.url')%>:</strong>
   <%=h @menu_item.url %>
 </p>
 <p>
-  <strong>Page:</strong>
+  <strong><%= t('activerecord.attributes.menu_item.page')%>:</strong>
   <%=h @menu_item.page %>
-</p>
-<p>
-  <strong>Menu Group:</strong>
-  <%=h @menu_item.menu_group %>
 </p>
 
 <p>
-  <%= link_to "Edit", edit_admin_menu_group_menu_item_path(@menu_group, @menu_item) %> |
-  <%= link_to "Destroy", admin_menu_group_menu_item_path(@menu_group, @menu_item), :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", admin_menu_group_menu_items_path(@menu_group) %>
+  <%= link_to t('gmcommerce.common.edit'), edit_admin_menu_group_menu_item_path(@menu_group, @menu_item), :class=>"edit_link" %> |
+  <%= link_to t('gmcommerce.common.destroy'), admin_menu_group_menu_item_path(@menu_group, @menu_item), :confirm => 'Are you sure?', :method => :delete, :class=>"destroy_link" %> |
+  <%= link_to t('gmcommerce.common.view_all'), admin_menu_group_menu_items_path(@menu_group), :class=>"view_all_link" %>
 </p>

@@ -1,5 +1,13 @@
-<% title "New Menu Item" %>
+<% content_for :header do %>
+  <%= link_to t('menu_groups.plural'), admin_menu_groups_path %>
+  &raquo;
+  <%= t('menu_groups.singular')%>
+  <%= link_to h(@menu_group.name), admin_menu_group_path(@menu_group)%>
+  &raquo;
+  <%= t('menu_items.new') %>
+<% end %>
+
 
 <%= render :partial => 'form' %>
 
-<p><%= link_to "Back to List", admin_menu_group_menu_items_path(@menu_group) %></p>
+<p><%= link_to t('gmcommerce.common.back_to_list'), admin_menu_group_menu_items_path(@menu_group), :class=>"new_link" %></p>

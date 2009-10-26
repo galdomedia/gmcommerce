@@ -1,0 +1,12 @@
+pl:
+  menu_groups:
+    plural: Kategorie menu
+    singular: Kategoria menu
+    editing: Edytujesz kategorię menu
+    new: Dodaj kategorię menu
+    reorder: Zmień kolejność kategorii
+  activerecord:
+    attributes:
+      menu_group:
+        name: Nazwa grupy
+        identifier: Identyfikator
