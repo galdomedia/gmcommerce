@@ -1,8 +1,8 @@
 class Admin::AdminController < ApplicationController
   layout "admin"
-  before_filter :require_user
-  before_filter :require_staff
-  before_filter :require_role
+  #before_filter :require_user
+  #before_filter :require_staff
+  #before_filter :require_role
 
   def index
 

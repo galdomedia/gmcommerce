@@ -1,5 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
 
+  map.resources :page, :only=>[:show]
   map.resources :property_types, :as=>"properties"
   map.resources :orders, :new => { :preview => :post }
   map.resource :payment, :only => [:new], :member=>{:ok=>:get, :failed=>:get}
@@ -8,7 +9,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :categories, :only=>[:index, :show]
 
   # HACK!
-  map.admin "/admin", :controller=>"admin/products", :action=>"index"
+  map.admin "/admin", :controller=>"admin/orders", :action=>"index"
   map.namespace :admin do |admin|
     admin.resources :categories
     admin.resources :contacts
@@ -17,7 +18,7 @@ ActionController::Routing::Routes.draw do |map|
       menu.resources :menu_items, :collection=>{:reorder=>:get, :sort=>:post}
     end
     admin.resources :option_groups
-    admin.resources :orders
+    admin.resources :orders, :member=>{:cancel=>:get, :pay=>:get, :send_order=>:get, :deliver=>:get}
     admin.resources :pages
     admin.resources :producers
     admin.resources :products do |product|
@@ -27,7 +28,7 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :product_templates
     admin.resources :shipments
     admin.resources :users, :member=>{:reset_password=>:get}
-    admin.root :controller=>"admin/products", :action=>"index"
+    admin.root :controller=>"admin/orders", :action=>"index"
   end
 
 

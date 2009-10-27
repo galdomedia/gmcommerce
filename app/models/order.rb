@@ -48,7 +48,7 @@ class Order < ActiveRecord::Base
     transitions :to=>:delivered, :from => [:sent, :paid]
   end
 
-  aasm_event :cancel do
+  aasm_event :make_canceled do
     transitions :to => :canceled, :from => [:temporary, :ordered, :paid, :sent, :delivered]
   end
 
@@ -85,13 +85,18 @@ class Order < ActiveRecord::Base
       for item in cart.items
         oi = OrderItem.new
         oi.product = item.product
-        oi.product_variation = item.variation
+        oi.product_variation = item.product_variation
         oi.price = item.product_price
         oi.quantity = item.quantity
         oi.discount_value = item.discount_value
         oi.order = order
         oi.save
       end
+      order.first_name = order.billing_contact.first_name
+      order.last_name = order.billing_contact.last_name
+      order.email = order.billing_contact.email
+      order.phone = order.billing_contact.phone
+      order.save
     end
   end
 
@@ -116,7 +121,6 @@ class Order < ActiveRecord::Base
 
   def billing_contact
     self.contacts.find(:first, :conditions=>['is_billing=?', true])
-
   end
 
   def shipping_contact

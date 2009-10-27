@@ -43,4 +43,32 @@ class Admin::OrdersController < Admin::AdminController
     flash[:notice] = "Successfully destroyed order."
     redirect_to admin_orders_url
   end
+  
+  def cancel
+    @order = Order.find(params[:id])
+    @order.make_canceled
+    @order.save
+    redirect_to admin_order_url(@order)
+  end
+  
+  def pay
+    @order = Order.find(params[:id])
+    @order.pay
+    @order.save
+    redirect_to admin_order_url(@order)
+  end
+  
+  def send_order
+    @order = Order.find(params[:id])
+    @order.send_order
+    @order.save
+    redirect_to admin_order_url(@order)
+  end
+  
+  def deliver
+    @order = Order.find(params[:id])
+    @order.deliver
+    @order.save
+    redirect_to admin_order_url(@order)
+  end
 end

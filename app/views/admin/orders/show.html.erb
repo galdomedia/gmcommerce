@@ -21,6 +21,22 @@
   <%=h @order.shipment_cost %>
 </p>
 <p>
+  <strong><%= t('activerecord.attributes.order.first_name') %>:</strong>
+  <%=h @order.first_name %>
+</p>
+<p>
+  <strong><%= t('activerecord.attributes.order.last_name') %>:</strong>
+  <%=h @order.last_name %>
+</p>
+<p>
+  <strong><%= t('activerecord.attributes.order.phone') %>:</strong>
+  <%=h @order.phone %>
+</p>
+<p>
+  <strong><%= t('activerecord.attributes.order.email') %>:</strong>
+  <%=h @order.email %>
+</p>
+<p>
   <strong><%= t('activerecord.attributes.order.comment') %>:</strong>
   <%=h @order.comment %>
 </p>
@@ -47,9 +63,43 @@
     <% end %>
   </table>
 </p>
+<p>
+  <strong><%= t('contacts.plural') %></strong>
+  <table class="index">
+    <tr>
+      <th><%= t('activerecord.attributes.contact.first_name') %></th>
+      <th><%= t('activerecord.attributes.contact.last_name') %></th>
+      <th><%= t('activerecord.attributes.contact.street') %></th>
+      <th><%= t('activerecord.attributes.contact.city') %></th>
+      <th><%= t('activerecord.attributes.contact.zip_code') %></th>
+    </tr>
+    <% for c in @order.contacts %>
+    <tr>
+      <td><%=h c.first_name %></td>
+      <td><%=h c.last_name  %></td>
+      <td><%=h c.street %> <%=h c.street_nr %></td>
+      <td><%=h c.city %>
+      
+      <td><%=h c.zip_code %></td>
+    </tr>
+    <% end %>
+  </table>
+</p>
 
 <p>
   <%= link_to t('gmcommerce.common.edit'), edit_admin_order_path(@order), :class=>"edit_link" %> |
   <%= link_to t('gmcommerce.common.destroy'), admin_order_path(@order), :confirm => 'Are you sure?', :method => :delete, :class=>"destroy_link" %> |
   <%= link_to t('gmcommerce.common.view_all'), admin_orders_path, :class=>"view_all_link" %>
 </p>
+
+
+<% content_for :sidebar do %>
+  <% if @order.status == 'ordered' %>
+  <%= link_to t('orders.status.actions.pay'), pay_admin_order_path(@order) %> <br />
+  <% elsif @order.status == 'paid'%>
+  <%= link_to t('orders.status.actions.send'), send_order_admin_order_path(@order) %> <br />
+  <% elsif @order.status == 'sent'%>
+  <%= link_to t('orders.status.actions.deliver'), deliver_admin_order_path(@order) %> <br />
+  <% end %>
+  <%= link_to t('orders.status.actions.cancel'), cancel_admin_order_path(@order) %> <br />
+<% end %>

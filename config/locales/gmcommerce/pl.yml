@@ -14,6 +14,7 @@ pl:
         pages: "Strony statyczne"
         shipments: "Dostawy"
         producers: "Producenci"
+        menu: "Menu"
     errors:
       invalid_call: "Błędne wywołanie"
     common:

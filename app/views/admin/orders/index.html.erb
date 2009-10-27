@@ -11,8 +11,8 @@
   <% for order in @orders %>
     <tr>
       <td><%=h order.number %></td>
-      <td><%=h order.billing_contact.first_name %></td>
-      <td><%=h order.billing_contact.last_name %></td>
+      <td><%=h order.first_name %></td>
+      <td><%=h order.last_name %></td>
       <td><%=h order.status %></td>
       <td class="action_cell show_cell"><%= link_to t('gmcommerce.common.show'), admin_order_path(order), :class=>"show_link" %></td>
       <td class="action_cell"><%= link_to t('gmcommerce.common.edit'), edit_admin_order_path(order), :class=>"edit_link" %></td>
@@ -21,4 +21,4 @@
   <% end %>
 </table>
 <%= will_paginate @orders %>
-<p><%= link_to t('orders.new'), new_admin_order_path %></p>
+<p><%= link_to t('orders.new'), new_admin_order_path, :class=>"new_link" %></p>

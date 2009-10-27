@@ -7,6 +7,12 @@ pl:
     form:
       add_order_item: Dodaj przedmiot do zamówienia
       number_not_required: "Nie wymagany, będzie wygenerowany automatycznie (o ile pole pozostanie puste)"
+    status:
+      actions:
+        cancel: Anuluj
+        pay: Oznacz jako zapłacone
+        send: Oznacz jako wysłane
+        deliver: Oznacz jako dostarczone
   activerecord:
     attributes:
       order:
@@ -19,6 +25,14 @@ pl:
         shipment: Dostawa
         complete_value: Całkowita wartość zamówienia
         contacts: Kontakt
+        first_name: Imię
+        last_name: Nazwisko
+        street: Ulica
+        street_nr: Nr domu / mieszkania
+        city: Miasto
+        zip_code: Kod pocztowy
+        phone: Telefon
+        email: Email
     errors:
       models:
         order:

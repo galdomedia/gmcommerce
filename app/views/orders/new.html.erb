@@ -41,7 +41,7 @@
   <% @cart.items.each do |cart_item| %>
     <tr class="tr_produkt">
       <td class="td_item">
-        <p><%= h cart_item.name %><br /><small><%= h cart_item.variation %></small></p>
+        <p><%= h cart_item.name %><br /><small><%= h cart_item.product_variation %></small></p>
       </td>
       <td style="text-align:center;"><%= cart_item.product_price %> </td>
       <td style="text-align:center;"><%= cart_item.quantity %></td>
