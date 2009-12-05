@@ -1,0 +1,89 @@
+<div id="breadcrumbs">
+            	<span>Jesteś w:</span> Formularz kontaktowy
+            </div>
+        
+		</div>
+        <!-- end top -->
+
+           	
+		<div id="CONTAINER">
+        
+  			<div id="CONTENT">
+            	<h2>Kontakt</h2>
+                <div id="dane_teleadresowe-contact_box">
+                	<h4>Dane teleadresowe</h4>
+                    <h5><%= Setting.get(:company_name).untaint%></h5>
+
+                    <div id="left_address">
+                        <p><%= Setting.get(:contact_street).untaint%><br />
+                        <%= Setting.get(:contact_zip_code).untaint%> <%= Setting.get(:contact_city).untaint%></p>
+                        
+                        <p>tel. <%= Setting.get(:contact_phone).untaint%><br />
+                        fax. <%= Setting.get(:contact_fax).untaint%></p>
+                    </div>
+                    
+                    <div id="right_address">
+                        <p>e-mail: <%= mail_to Setting.get(:contact_email).untaint, Setting.get(:contact_email).untaint, :encode => "javascript"%><br />
+                        <a href="http://www.coconti.com">www.coconti.com</a></p>
+                        
+                        <p>NIP: <%= Setting.get(:contact_nip).untaint%><br />
+                        Regon: <%= Setting.get(:contact_regon).untaint%></p>
+                    </div>
+                </div>
+                <!-- end dane teleadredowe -->
+
+				<div id="doradca-box">
+                	<h4>Doradca</h4>
+                 	<%= image_tag "doradca-photo.jpg" %>
+                    <p>tel. <%= Setting.get(:support_phone).untaint%><br />
+                    e-mail: <%= mail_to Setting.get(:support_email).untaint, Setting.get(:support_email).untaint, :encode => "javascript"%></a></p>
+                    
+                    <p>Linia czynna: <%= Setting.get(:support_work_hours).untaint%></p>
+                    
+                    <p><%= Setting.get(:support_extra_info).untaint%></p>
+                </div>
+                
+                <div class="clearb"></div>
+                
+                <div class="form">
+                   
+                    <h4>Formularz kontaktowy</h4>
+                     <center><h3><%= h flash[:notice] %></h3></center>
+                    <% form_tag url_for(:controller=>"coconti", :action=>"contact_request"), :id=>"contact_form" do |f|%>
+                         <fieldset>
+                                 <legend>Formularz kontaktowy</legend>
+                                 <div id="left_form">
+                                        <div>
+                                            <label for="imie">Imię i nazwisko:</label>
+                                            <input id="imie" name="name" class="text" type="text" />
+                                        </div>
+    
+                                        <div>
+                                            <label for="email">E-mail:</label>
+                                            <input id="email" name="email" class="text" type="text" />
+                                        </div>
+                                        
+                                        <div>
+                                            <label for="telefon">Telefon:</label>
+                                            <input id="telefon" name="phone" class="text" type="text" />
+                                        </div>
+                                   </div>
+                                   
+                                   <div id="right_form">
+                                        <div>
+                                            <label id="tresc_label" for="tresc">Treść:</label>
+                                            <textarea id="tresc" name="content" cols="40" rows="10"></textarea>
+                                        </div>
+                            
+                                        <div id="buttons">
+                                            <input id="wyslij" type="submit" name="submit" value="Wyślij" />
+                                            <div class="clearb"></div>
+                                        </div>
+                                    </div>
+
+                                </fieldset>
+                                
+                            <% end %>
+                </div>
+            </div>
+            <!-- end Content -->

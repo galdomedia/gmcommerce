@@ -1,0 +1,63 @@
+<div id="breadcrumbs">
+            	<span>Jesteś w:</span> Linie
+            </div>
+        
+		</div>
+        <!-- end top -->
+
+           	
+		<div id="CONTAINER">
+        
+  			<div id="CONTENT">
+            	<h2>Mapa strony</h2>
+                
+                <div class="left_bracket"><div class="right_bracket">
+                
+                    <div class="sitemap1 sitemap_list">
+                        <h4>Strona główna</h4>
+                        <ul>
+                            <li><%= link_to "O nas", page_url("o-nas") %></li>
+                            <li><%= link_to "Wełna Coconti", property_types_path %></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="sitemap2 sitemap_list">
+                        <h4>Linie produktów</h4>
+                        <ul>
+                          <% @categories.each do |cat| %>
+                            <li><%= link_to h(cat.name), category_path(cat)%></li>
+                          <% end %>
+                        </ul>
+                    </div>
+                    
+                    <div class="sitemap3 sitemap_list">
+                        <h4>Produkty</h4>
+                        <ul>
+                          <% @categories.each do |cat| %>
+                            <li><%= link_to h(cat.name), category_path(cat)%>
+                              <ul>
+                                <% cat.products.each do |prod|%>
+                                <li><%= link_to h(prod.name), product_path(prod)%></li>
+                                <% end %>
+                              </ul>
+                            </li>
+                          <% end %>
+                        </ul>
+                    </div>
+                    
+                    <div class="sitemap4 sitemap_list">
+                        <h4>Pozostałe</h4>
+                        <ul>
+                            <li><%= link_to "Regulamin", page_url("regulamin") %></li>
+                            <li><%= link_to "Kontakt", url_for(:controller=>"coconti", :action=>"contact")%></li>
+                            <li><%= link_to "Koszyk", cart_url %></li>
+                            
+                        </ul>
+                    </div>
+                    
+                    <div class="clearb"></div>                    
+               </div></div>
+               <!-- end left and right bracket -->
+
+            </div>
+            <!-- end Content -->
