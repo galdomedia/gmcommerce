@@ -1,0 +1,9 @@
+<div class="setting textfield" id="setting=<%= setting.id %>">
+  <p>
+    <strong><%= label_tag "settings[#{setting.id}]", h(setting.label) %></strong><br />
+    <small><%=h setting.description %></small>
+  </p>
+  <p>
+    <%= select_tag "settings[#{setting.id}]", options_for_select([[nil, nil]] + Category.find(:all).map{|c| [c.name, c.id]}, setting.value.to_i) %>
+  </p>
+</div>

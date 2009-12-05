@@ -1,0 +1,37 @@
+<% title "Ustawienia" %>
+
+<% content_for :sidebar do -%>
+  <%#*<p>%>
+  <%#*These are site-wide settings. They will be used through-out your application.%>
+  <%#*</p>%>
+  <%#*<p>%>
+  <%#*To add new settings, simple create a migration (see migration #006 for an example), and add  your%>
+  <%#*settings code here to allow the administrator to edit it.%>
+  <%#*</p>%>
+<% end -%>
+
+<% form_tag admin_setting_path, :method => :put do %>
+
+  <h2>Ogólne</h2>
+
+
+  <%= settings_field(Setting.load(:site_name)) %>
+  <%= settings_field(Setting.load(:company_name)) %>
+
+  <h2>Dane kontaktowe</h2>
+
+  <%= settings_field(Setting.load(:contact_street)) %>
+  <%= settings_field(Setting.load(:contact_zip_code)) %>
+  <%= settings_field(Setting.load(:contact_city)) %>
+  
+  <%= settings_field(Setting.load(:contact_phone)) %>
+  <%= settings_field(Setting.load(:contact_fax)) %>
+  <%= settings_field(Setting.load(:contact_email)) %>
+  
+  <%= settings_field(Setting.load(:company_vat_code)) %>
+
+  <div id="submitbutton">
+    <p><%= submit_tag 'Zapisz ustawienia' %></p>
+  </div>
+
+<% end %>

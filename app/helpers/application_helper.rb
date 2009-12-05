@@ -35,6 +35,16 @@ module ApplicationHelper
   def generate_template(form_builder, method, options = {})
     escape_javascript generate_html(form_builder, method, options)
   end
+
+  def get_image_for_product(product, size)
+    p = Product.find(product)
+    p.images.first.attachment.url(size) unless p.images.empty?
+  end
+
+  def s(ident)
+    Setting.get(ident).untaint
+  end
+  
   
   
 end
