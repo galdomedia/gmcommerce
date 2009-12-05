@@ -1,3 +1,15 @@
 == gmCommerce
 
 gmCommerce is e-commerce sollution, which aims to be simple, secure and easy to configure. Yeah, right...
+
+
+Everything, what's implemented was requested by one of our clients - and we've decided to put everyting in master.
+Just in case someone else also needed them.
+
+Implemented payments gateways:
+- Platnosci.pl
+- eRaty Zagiel
+
+Soon:
+- Paypal
+- Google checkout?
