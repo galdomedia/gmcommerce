@@ -2,6 +2,7 @@
   <%= f.error_messages %>
   <%= f.input :author, :hint=>t('comments.form.author_will_replaced_if_user_present') %>
   <%= f.input :user, :hint=>t('comments.form.user_is_required_if_author_is_blank') %>
+  <%= f.input :title %>
   <%= f.input :comment, :input_html=>{:rows=>5} %>
   <%#= f.input :note %>
   <%= f.buttons %>

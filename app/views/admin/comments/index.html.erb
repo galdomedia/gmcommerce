@@ -7,11 +7,13 @@
 <table class="index">
   <tr>
     <th><%= t('activerecord.attributes.comment.author')%></th>
+    <th><%= t('activerecord.attributes.comment.title')%></th>
     <th><%= t('activerecord.attributes.comment.created_at')%></th>
   </tr>
   <% for comment in @comments %>
     <tr>
       <td><%=h comment.author %></td>
+      <td><%=h comment.title %></td>
       <td><%=h comment.created_at %></td>
       <td class="action_cell show_cell"><%= link_to t('gmcommerce.common.show'), admin_product_comment_path(@product, comment), :class=>"show_link" %></td>
       <td class="action_cell"><%= link_to t('gmcommerce.common.edit'), edit_admin_product_comment_path(@product, comment), :class=>"edit_link edit_comment_link" %></td>

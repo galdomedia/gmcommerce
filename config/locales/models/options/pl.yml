@@ -1,0 +1,10 @@
+pl:
+  options:
+    plural: Opcje
+    
+  activerecord:
+    attributes:
+      option:
+        name: Nazwa opcji
+        code: Kod indentyfikacyjny
+    

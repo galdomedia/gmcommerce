@@ -1,8 +1,11 @@
+
+
 <% semantic_form_for [:admin, @gift_discount] do |f| %>
   <%= f.error_messages %>
   <%= f.input :name %>
   <%= f.input :discount_value %>
   <%= f.input :from_cart_value %>
   <%= f.input :discounted_products_number %>
+  <%= f.input :only_for_products_that_gives_gifts %>
   <%= f.buttons %>
 <% end %>

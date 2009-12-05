@@ -96,3 +96,14 @@ shipment.name = "Post"
 shipment.cost = 15.0
 shipment.free_from_cart_value = 200.0
 shipment.save
+
+Setting.create({:label=>"Site name", :identifier=>"site_name", :description=>"Site name", :field_type=>"string", :value=>"GmcCmmerce"})
+Setting.create({:label=>"Company name", :identifier=>"company_name", :description=>"Company name", :field_type=>"string", :value=>"GaldoMedia"})
+Setting.create({:label=>"Street", :identifier=>"contact_street", :description=>"Street", :field_type=>"string", :value=>"5th Av."})
+Setting.create({:label=>"Zip Code", :identifier=>"contact_zip_code", :description=>"Zip Code", :field_type=>"string", :value=>"NY01"})
+Setting.create({:label=>"City", :identifier=>"contact_city", :description=>"City", :field_type=>"string", :value=>"NY"})
+Setting.create({:label=>"Phone", :identifier=>"contact_phone", :description=>"Phone", :field_type=>"string", :value=>"555-0991-12-1"})
+Setting.create({:label=>"Fax", :identifier=>"contact_fax", :description=>"Fax", :field_type=>"string", :value=>"555-0991-12-2"})
+Setting.create({:label=>"Email", :identifier=>"contact_email", :description=>"Email", :field_type=>"string", :value=>"contact@gmcommerceapp.com"})
+Setting.create({:label=>"Vat Code", :identifier=>"company_vat_code", :description=>"VatCode", :field_type=>"string", :value=>"US-878721112"})
+

@@ -2,21 +2,25 @@
 <table width="500" border="0" cellspacing="0" cellpadding="0">
   <tr style="height:28px; background-color: Green;">
     <td width="280" style="padding:0 0 0 20px;">Product name</td>
-    <td width="36" style="text-align:center;">Delete</td>
+    <td width="36" style="text-align:center;">Variation</td>
     <td width="62" style="text-align:center;">Price</td>
     <td width="40" style="text-align:center;">Quantity</td>
     <td width="82" style="text-align:center; border:none;">Value</td>
+    <td width="82" style="text-align:center; border:none;">Delete</td>
   </tr>
   <% @cart.items.each do |cart_item| %>
     <tr class="tr_produkt">
       <td class="td_item">
         <p><%= h cart_item.name %><br /><small><%= h cart_item.product_variation %></small></p>
       </td>
-      <td style="text-align:center;">
-        <% form_tag(delete_product_in_cart_path(:id => cart_item.id, :variation_id=>cart_item.variation_id)) do -%>
-          <%= submit_tag "X", :style=>"width: 30px; height: auto;"%>
-        <% end -%>
+      <td style="">
+        <% form_tag(change_variation_in_cart_path(:id=>cart_item.product.id), :method=>"post") do  %>
+          <%= hidden_field_tag :old_variation_id, cart_item.product_variation.id %>
+          <%= select_tag('new_variation_id', options_for_select(cart_item.product.product_variations.map{|pv| ["#{pv.options_name_str}: #{pv.price}", pv.id]}, cart_item.product_variation.id), :onchange=>"$(this).parent().submit(); return true;") if cart_item.product.have_variations?%>
+        <% end unless cart_item.product_variation.blank? %>
       </td>
+
+
       <td style="text-align:center;"><%= cart_item.product_price %> </td>
       <td style="text-align:center;">
         <% form_tag(set_product_quantity_in_cart_path(:id => cart_item.id, :variation_id=>cart_item.variation_id), :id=>'form_sub') do -%>
@@ -24,6 +28,16 @@
         <% end %>
       </td>
       <td style="text-align:center; border:none;"><%= cart_item.price %></td>
+      <td style="text-align:center;">
+        <% form_tag(delete_product_in_cart_path(:id => cart_item.id, :variation_id=>cart_item.variation_id)) do -%>
+          <%= submit_tag "X", :style=>"width: 30px; height: auto;"%>
+        <% end -%>
+      </td>
+      <td>
+        <% form_tag(product_wish_list_item_path(cart_item.product.id)) do  %>
+          <%= submit_tag "Add to wish list" %>
+        <% end %>
+      </td>
     </tr>
   <% end %>
   <% if @available_discount > 0.0 %>
@@ -47,4 +61,19 @@ Delivery method: <%=h @cart.shipment_name %> (<%=h @cart.shipment_cost %>)<br />
 <br />
 Total order value: <%= @cart.total_price_with_delivery %>
 <br /><br />
+
+<strong>Pay through:</strong>
+<% form_tag(set_gateway_for_cart_path(), :method=>"post") do  -%>
+  <% for gw in @gateways do -%>
+    <%= radio_button_tag 'gateway', h(gw.id), gw.ident==@cart.gateway.ident, :onclick => "$(this).parent().submit(); return true;" %>
+    <%= render :partial=>"/gateways/#{gw.ident}/payment_select", :locals=>{:gateway=>gw} %>
+  <% end %>
+<% end %>
+
 <%= link_to "Complete your order", new_order_path %>
+
+<% if current_user %>
+<h2>Your wish list</h2>
+<%= render :partial=>"/wish_list_items/wish_list_items" %>
+<% end %>
+

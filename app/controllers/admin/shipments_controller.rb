@@ -16,7 +16,7 @@ class Admin::ShipmentsController < Admin::AdminController
   def create
     @shipment = Shipment.new(params[:shipment])
     if @shipment.save
-      flash[:notice] = "Successfully created shipment."
+      flash[:notice] = t('shipments.created')
       redirect_to admin_shipment_url(@shipment)
     else
       render :action => 'new'
@@ -30,7 +30,7 @@ class Admin::ShipmentsController < Admin::AdminController
   def update
     @shipment = Shipment.find(params[:id])
     if @shipment.update_attributes(params[:shipment])
-      flash[:notice] = "Successfully updated shipment."
+      flash[:notice] = t('shipments.updated')
       redirect_to admin_shipment_url(@shipment)
     else
       render :action => 'edit'
@@ -40,7 +40,7 @@ class Admin::ShipmentsController < Admin::AdminController
   def destroy
     @shipment = Shipment.find(params[:id])
     @shipment.destroy
-    flash[:notice] = "Successfully destroyed shipment."
+    flash[:notice] = t('shipments.destroyed')
     redirect_to admin_shipments_url
   end
 end

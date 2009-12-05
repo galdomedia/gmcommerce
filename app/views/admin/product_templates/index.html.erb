@@ -4,13 +4,13 @@
 
 <% form_for @search do |f| %>
   <table>
-    <tr><td>Template name</td><td><%= f.text_field :template_name_like, :size => 13 %></td></tr>
+    <tr><td><%= t('activerecord.attributes.product_template.template_name')%></td><td><%= f.text_field :template_name_like, :size => 13 %></td></tr>
     <tr><td colspan="2"><%= f.submit "Find" %></td></tr>
   </table>
 <% end %>
 <table class="index">
   <tr>
-    <th><%= order @search, :by => :template_name %></th>
+    <th><%= order @search, :by => :template_name, :as=>t('activerecord.attributes.product_template.template_name') %></th>
   </tr>
   <% for product_template in @product_templates %>
     <tr>
@@ -22,4 +22,4 @@
   <% end %>
 </table>
 <%= will_paginate @product_templates %>
-<p><%= link_to "New Product Template", new_admin_product_template_path %></p>
+<p><%= link_to t('product_templates.new'), new_admin_product_template_path %></p>

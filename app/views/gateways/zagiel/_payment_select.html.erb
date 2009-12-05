@@ -1,0 +1,2 @@
+<label for="gateway_<%=h gateway.id %>"><%=h gateway.name %></label><br />
+<a href="http://zagiel.com.pl/kalkulator/index_smart.php?action=getklientdet_si_rata&amp;shopNo=<%=h @payments_settings[gateway.ident][:config][:shop_id] %>&amp;goodsValue=<%= @cart.total_price_with_delivery %>" class="iframe">Oblicz raty</a><br />

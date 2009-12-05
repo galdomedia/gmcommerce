@@ -4,11 +4,11 @@
   <%= link_to h(@option_group.name), admin_option_group_path(@option_group) %>
 <% end %>
 <p>
-  <strong>Name:</strong>
+  <strong><%= t('activerecord.attributes.option_group.name')%>:</strong>
   <%=h @option_group.name %>
 </p>
 <p>
-  <strong>Options:</strong>
+  <strong><%= t('options.plural')%>:</strong>
   <ul>
     <% for o in @option_group.options %>
     <li><%=h o.name %> (<%=h o.code %>)</li>

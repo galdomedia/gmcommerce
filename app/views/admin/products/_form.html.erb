@@ -24,11 +24,13 @@
 
   <%= f.error_messages %>
   <%= f.input :name %>
-  <%= f.input :producer %>
   <%= f.input :sku %>
   <%= f.input :price, :input_html=>{:size=>10, :class=>"price_field"} %>
   <%= f.input :is_gift %>
-  <%= f.input :description, :input_html=>{:rows=>5} %>
+  <%= f.input :short_description, :input_html=>{:rows=>4}%>
+  <%= f.input :description, :input_html=>{:rows=>7} %>
+  <%= f.input :is_promoted %>
+  <%= f.input :gives_gifts %>
   <%= f.input :meta_keywords, :hint=>"This tag should not contain no more than 30-35 words separated by comma [,] (e.g. house,home, etc.), use lower case for all keywords and pluralize all keywords id possible." %>
   <%= f.input :meta_description, :hint=>"The length of this tag should contain approx. 20-25 words and should not exceed more than 150-160 characters (including white spaces)." %>
   <%= f.input :categories, :collection=>options_for_category_tree(Category.roots), :as=>:select, :multiple=>true %>

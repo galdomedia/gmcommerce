@@ -4,22 +4,23 @@
 
 <% form_for @search do |f| %>
   <table>
-    <tr><td>Name</td><td><%= f.text_field :name_like, :size => 13 %></td></tr>
+    <tr><td><%= t('activerecord.attributes.option_group.name')%></td><td><%= f.text_field :name_like, :size => 13 %></td></tr>
     <tr><td colspan="2"><%= f.submit "Find" %></td></tr>
   </table>
 <% end %>
 <table class="index">
   <tr>
-    <th><%= order @search, :by => :name %></th>
+    <th><%= order @search, :by => :name, :as=>t('activerecord.attributes.option_group.name') %></th>
   </tr>
   <% for option_group in @option_groups %>
     <tr>
       <td><%=h option_group.name %></td>
       <td class="action_cell show_cell"><%= link_to t('gmcommerce.common.show'), admin_option_group_path(option_group), :class=>"show_link" %></td>
+      <td class="action_cell show_cell"><%= link_to t('option_groups.reorder'), reorder_admin_option_group_path(option_group), :class=>"icon_link reorder_link" %></td>
       <td class="action_cell"><%= link_to t('gmcommerce.common.edit'), edit_admin_option_group_path(option_group), :class=>"edit_link" %></td>
       <td class="action_cell"><%= link_to t('gmcommerce.common.destroy'), admin_option_group_path(option_group), :confirm => 'Are you sure?', :method => :delete, :class=>"destroy_link" %></td>
     </tr>
   <% end %>
 </table>
 <%= will_paginate @option_groups %>
-<p><%= link_to "New Option Group", new_admin_option_group_path %></p>
+<p><%= link_to t('option_groups.new'), new_admin_option_group_path %></p>

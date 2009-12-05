@@ -20,3 +20,7 @@
   <%= hidden_field_tag :variation_id %>
   <%= submit_tag "Add to cart" %>
 <% end %>
+
+<% form_tag(product_wish_list_item_path(@product.id)) do  %>
+  <%= submit_tag "Add to wish list" %>
+<% end %>

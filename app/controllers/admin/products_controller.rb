@@ -19,7 +19,7 @@ class Admin::ProductsController < Admin::AdminController
   def create
     @product = Product.new(params[:product])
     if @product.save
-      flash[:notice] = "Successfully created product."
+      flash[:notice] = t('products.created')
       redirect_to admin_product_url(@product)
     else
       render :action => 'new'
@@ -33,7 +33,7 @@ class Admin::ProductsController < Admin::AdminController
   def update
     @product = Product.find(params[:id])
     if @product.update_attributes(params[:product])
-      flash[:notice] = "Successfully updated product."
+      flash[:notice] = t('products.updated')
       redirect_to admin_product_url(@product)
     else
       render :action => 'edit'
@@ -43,7 +43,18 @@ class Admin::ProductsController < Admin::AdminController
   def destroy
     @product = Product.find(params[:id])
     @product.destroy
-    flash[:notice] = "Successfully destroyed product."
+    flash[:notice] = t('products.destroyed')
     redirect_to admin_products_url
+  end
+  
+  def reorder
+    @products = Product.all
+  end
+  
+  def sort
+    params[:products].each_with_index do |id, index|
+      Product.update_all(['position=?', index+1], ['id=?', id])
+    end
+    render :nothing=>true
   end
 end

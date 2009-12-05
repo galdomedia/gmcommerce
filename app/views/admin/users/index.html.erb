@@ -5,7 +5,7 @@
 
 <% content_for :sidebar do -%>
   <p>
-  <%= link_to 'New user', new_admin_user_path %>
+  <%= link_to t('users.new'), new_admin_user_path %>
 </p>
 <% end -%>
 
@@ -21,7 +21,7 @@
     <th><%= order @search, :by => :id %></th>
     <th><%= order @search, :by => :login %></th>
     <th><%= order @search, :by => :email %></th>
-    <th><%= order @search, :by => :created_at %></th>
+    <th><%= order @search, :by => :created_at, :as=>t('activerecord.attributes.user.created_at') %></th>
   </tr>
 
   <% # TODO: (base_app) Add some sort of search feature to easily find users %>

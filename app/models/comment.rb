@@ -9,7 +9,7 @@ class Comment < ActiveRecord::Base
   
   before_save :fill_in_author
   
-  attr_accessible :author, :comment, :note, :user_id
+  attr_accessible :author, :comment, :note, :user_id, :title
   
   def fill_in_author
     self.author = self.user.login unless self.user_id.blank?

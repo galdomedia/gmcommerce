@@ -7,6 +7,8 @@ class ApplicationController < ActionController::Base
 
   filter_parameter_logging :password, :password_confirmation
   helper_method :current_user_session, :current_user, :admin?
+  before_filter :find_cart, :except=>:destroy
+  before_filter :simulate_order_id
 
   private
 
@@ -50,6 +52,15 @@ class ApplicationController < ActionController::Base
       redirect_to(session[:return_to] || default)
       session[:return_to] = nil
     end
-
+    
+    def find_cart
+      @cart = (session[:cart] ||= Cart.new)
+      @cart.set_shipment(Shipment.active.first) if @cart.shipment.blank?
+      @cart.set_gateway(Gateway.active.first) if @cart.gateway.blank?
+    end
+    
+    def simulate_order_id
+      @simulated_order_id = (Order.maximum('id') || 0) + 1
+    end
 
 end

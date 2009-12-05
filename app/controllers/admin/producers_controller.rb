@@ -16,7 +16,7 @@ class Admin::ProducersController < Admin::AdminController
   def create
     @producer = Producer.new(params[:producer])
     if @producer.save
-      flash[:notice] = "Successfully created producer."
+      flash[:notice] = t('producers.created')
       redirect_to admin_producer_url(@producer)
     else
       render :action => 'new'
@@ -30,7 +30,7 @@ class Admin::ProducersController < Admin::AdminController
   def update
     @producer = Producer.find(params[:id])
     if @producer.update_attributes(params[:producer])
-      flash[:notice] = "Successfully updated producer."
+      flash[:notice] = t('producers.updated')
       redirect_to admin_producer_url(@producer)
     else
       render :action => 'edit'
@@ -40,7 +40,7 @@ class Admin::ProducersController < Admin::AdminController
   def destroy
     @producer = Producer.find(params[:id])
     @producer.destroy
-    flash[:notice] = "Successfully destroyed producer."
+    flash[:notice] = t('producers.destroyed')
     redirect_to admin_producers_url
   end
 end

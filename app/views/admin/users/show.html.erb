@@ -5,13 +5,13 @@
 <% end %>
 
 <% content_for :sidebar do -%>
-  <%= link_to "Reset password", reset_password_admin_user_path(@user) %>	
+  <%= link_to t('users.reset_password'), reset_password_admin_user_path(@user) %>	
 <% end -%>
 Login: <%=h(@user.login) %> <br />
 ID: <%=h(@user.id) %> <br />
 <br />
 Email: <%=h(@user.email) %><br />
-Password: ********<small><%=link_to "reset password", reset_password_admin_user_url(@user)%></small><br />
+Password: ********<small><%=link_to t('users.reset_password'), reset_password_admin_user_url(@user)%></small><br />
 <br />
 Created at:  <%=h @user.created_at.to_s(:long) %><br />
 Last changes:  <%=h @user.updated_at.to_s(:long) %><br />

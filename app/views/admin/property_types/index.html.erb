@@ -5,16 +5,16 @@
 
 <% form_for @search do |f| %>
   <table>
-    <tr><td>Name</td><td><%= f.text_field :name_like, :size => 13 %></td></tr>
+    <tr><td><%= t('activerecord.attributes.property_type.name')%></td><td><%= f.text_field :name_like, :size => 13 %></td></tr>
     <tr><td colspan="2"><%= f.submit "Find" %></td></tr>
   </table>
 <% end %>
 
 <table class="index">
   <tr>
-    <th><%= order @search, :by => :name %></th>
-    <th><%= order @search, :by => :identifier %></th>
-    <th>Field Type</th>
+    <th><%= order @search, :by => :name, :as=>t('activerecord.attributes.property_type.name') %></th>
+    <th><%= order @search, :by => :identifier, :as=>t('activerecord.attributes.property_type.identifier') %></th>
+    <th><%= t('activerecord.attributes.property_type.field_type') %></th>
   </tr>
   <% for property_type in @property_types %>
     <tr>
@@ -31,5 +31,5 @@
 
 <p>
   <%= link_to t('property_types.new'), new_admin_property_type_path, :class=>'new_link' %> |
-  <%= link_to t('property_types.reorder'), reorder_admin_property_types_path %>
+  <%= link_to t('property_types.reorder'), reorder_admin_property_types_path, :class=>"icon_link reorder_link" %>
 </p>

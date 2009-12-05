@@ -4,16 +4,16 @@
 
 <% form_for @search do |f| %>
   <table>
-    <tr><td>Name</td><td><%= f.text_field :name_like, :size => 13 %></td></tr>
+    <tr><td><%= t('activerecord.attributes.gift_discount.name') %></td><td><%= f.text_field :name_like, :size => 13 %></td></tr>
     <tr><td colspan="2"><%= f.submit "Find" %></td></tr>
   </table>
 <% end %>
 <table class="index">
   <tr>
-    <th><%= order @search, :by => :name %></th>
-    <th><%= order @search, :by => :discount_value %></th>
-    <th><%= order @search, :by => :from_cart_value %></th>
-    <th><%= order @search, :by => :discounted_products_number %></th>
+    <th><%= order @search, :by => :name, :as=>t('activerecord.attributes.gift_discount.name') %></th>
+    <th><%= order @search, :by => :discount_value, :as=>t('activerecord.attributes.gift_discount.discount_value') %></th>
+    <th><%= order @search, :by => :from_cart_value, :as=>t('activerecord.attributes.gift_discount.from_cart_value') %></th>
+    <th><%= order @search, :by => :discounted_products_number, :as=>t('activerecord.attributes.gift_discount.discounted_products_number') %></th>
   </tr>
   <% for gift_discount in @gift_discounts %>
     <tr>

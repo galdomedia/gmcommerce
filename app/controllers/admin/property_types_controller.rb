@@ -15,7 +15,7 @@ class Admin::PropertyTypesController < Admin::AdminController
   def create
     @property_type = PropertyType.new(params[:property_type])
     if @property_type.save
-      flash[:notice] = "Successfully created property type."
+      flash[:notice] = t('property_types.created')
       redirect_to admin_property_type_url(@property_type)
     else
       render :action => 'new'
@@ -29,7 +29,7 @@ class Admin::PropertyTypesController < Admin::AdminController
   def update
     @property_type = PropertyType.find(params[:id])
     if @property_type.update_attributes(params[:property_type])
-      flash[:notice] = "Successfully updated property type."
+      flash[:notice] = t('property_types.updated')
       redirect_to admin_property_type_url(@property_type)
     else
       render :action => 'edit'
@@ -39,7 +39,7 @@ class Admin::PropertyTypesController < Admin::AdminController
   def destroy
     @property_type = PropertyType.find(params[:id])
     @property_type.destroy
-    flash[:notice] = "Successfully destroyed property type."
+    flash[:notice] = t('property_types.destroyed')
     redirect_to admin_property_types_url
   end
   

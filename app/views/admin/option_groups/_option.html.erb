@@ -1,6 +1,6 @@
-<p>
+<li>
   <% unless f.object.new_record? %>
-    <%= f.check_box :_delete, :class=>"field checkbox" %> <%= f.label :_delete, 'Delete', :class=>"choice" %>
+    <%= f.check_box :_delete, :class=>"field checkbox" %> <%= f.label :_delete, t('gmcommerce.common.destroy'), :class=>"choice" %>
   <% end %>
   <%= f.inputs :name, :code %>
-</p>
+</li>

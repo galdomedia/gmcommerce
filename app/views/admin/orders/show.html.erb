@@ -10,7 +10,15 @@
 </p>
 <p>
   <strong><%= t('activerecord.attributes.order.status') %>:</strong>
-  <%=h @order.status %>
+  <%= t("orders.status.#{@order.status}") %>
+</p>
+<p>
+  <strong><%= t('activerecord.attributes.order.created_at') %>:</strong>
+  <%=l(@order.created_at, :format=>:short) %>
+</p>
+<p>
+  <strong><%= t('activerecord.attributes.order.updated_at') %>:</strong>
+  <%=l(@order.updated_at, :format=>:short) %>
 </p>
 <p>
   <strong><%= t('activerecord.attributes.order.order_value') %>:</strong>
@@ -51,6 +59,7 @@
       <th><%= t('activerecord.attributes.order_item.product') %></th>
       <th><%= t('activerecord.attributes.order_item.price') %></th>
       <th><%= t('activerecord.attributes.order_item.quantity') %></th>
+      <th><%= t('activerecord.attributes.order_item.discount_value') %></th>
       <th><%= t('activerecord.attributes.order_item.value') %></th>
     </tr>
     <% for oi in @order.order_items %>
@@ -58,7 +67,9 @@
       <td><%=h oi.product %> <%=h("- #{oi.product_variation}") if oi.product_variation %></td>
       <td><%=h oi.price %></td>
       <td><%=h oi.quantity %></td>
-      <td><%=h (oi.quantity*oi.price)%></td>
+      <td><%=h oi.discount_value%></td>
+      <td><%=h (oi.quantity*oi.price - oi.discount_value)%></td>
+
     </tr>
     <% end %>
   </table>
@@ -72,6 +83,8 @@
       <th><%= t('activerecord.attributes.contact.street') %></th>
       <th><%= t('activerecord.attributes.contact.city') %></th>
       <th><%= t('activerecord.attributes.contact.zip_code') %></th>
+      <th><%= t('activerecord.attributes.contact.phone') %></th>
+      <th><%= t('activerecord.attributes.contact.email') %></th>
     </tr>
     <% for c in @order.contacts %>
     <tr>
@@ -81,11 +94,38 @@
       <td><%=h c.city %>
       
       <td><%=h c.zip_code %></td>
+      <td><%=h c.phone %></td>
+      <td><%=h c.email %></td>
+      <% if c.is_company %>
+      </tr>
+      <tr>
+        <td colspan="7">
+          Firma: <%= h c.company_name %>, NIP: <%= h c.vat_code %>, REGON: <%= h c.regon %>
+        </td>
+      <% end %>
     </tr>
     <% end %>
   </table>
 </p>
-
+<p>
+  <strong><%= t('payments.plural') %></strong>
+  <table class="index">
+    <tr>
+      <th><%= t('activerecord.attributes.payment.status') %></th>
+      <th><%= t('activerecord.attributes.payment.transaction_id') %></th>
+      <th><%= t('activerecord.attributes.payment.transaction_status') %></th>
+      <th><%= t('activerecord.attributes.payment.created_at') %></th>
+    </tr>
+    <% for p in @order.payments %>
+    <tr>
+      <td><%= t("gmcommerce.gateways.platnosci_pl.status_codes.s#{p.status}") %></td>
+      <td><%=h p.transaction_id  %></td>
+      <td><%=h p.transaction_status %></td>
+      <td><%=h p.created_at %></td>
+    </tr>
+    <% end %>
+  </table>
+</p>
 <p>
   <%= link_to t('gmcommerce.common.edit'), edit_admin_order_path(@order), :class=>"edit_link" %> |
   <%= link_to t('gmcommerce.common.destroy'), admin_order_path(@order), :confirm => 'Are you sure?', :method => :delete, :class=>"destroy_link" %> |
@@ -97,9 +137,11 @@
   <% if @order.status == 'ordered' %>
   <%= link_to t('orders.status.actions.pay'), pay_admin_order_path(@order) %> <br />
   <% elsif @order.status == 'paid'%>
-  <%= link_to t('orders.status.actions.send'), send_order_admin_order_path(@order) %> <br />
+  <%= link_to t('orders.status.actions.send_order'), send_order_admin_order_path(@order) %> <br />
   <% elsif @order.status == 'sent'%>
   <%= link_to t('orders.status.actions.deliver'), deliver_admin_order_path(@order) %> <br />
   <% end %>
+  <% if @order.status != 'canceled' %>
   <%= link_to t('orders.status.actions.cancel'), cancel_admin_order_path(@order) %> <br />
+  <% end %>
 <% end %>

@@ -1,11 +1,25 @@
 <% content_for :header do %>
   <%= link_to t('orders.plural'), admin_orders_path %>
 <% end %>
+
+<% form_for @search do |f| %>
+  <table>
+    <tr><td><%= t('activerecord.attributes.order.first_name')%></td><td><%= f.text_field :first_name_like, :size => 13 %></td></tr>
+    <tr><td><%= t('activerecord.attributes.order.last_name')%></td><td><%= f.text_field :last_name_like, :size=>13%></td></tr>
+    <tr><td><%= t('activerecord.attributes.order.email')%></td><td><%= f.text_field :email_like, :size=>13%></td></tr>
+    <tr><td><%= t('activerecord.attributes.order.number')%> =</td><td><%= f.text_field :number_eq, :size=>3%></td></tr>
+    <tr><td><%= t('activerecord.attributes.order.number')%> &gt;</td><td><%= f.text_field :number_gt, :size=>3%></td></tr>
+    <tr><td><%= t('activerecord.attributes.order.number')%> &lt;</td><td><%= f.text_field :number_lt, :size=>3%></td></tr>
+    <tr><td colspan="2"><%= f.submit "Znajdź" %></td></tr>
+  </table>
+<% end %>
+
 <table class="index">
   <tr>
-    <th><%= t('activerecord.attributes.order.number') %></th>
-    <th><%= t('activerecord.attributes.contact.first_name') %></th>
-    <th><%= t('activerecord.attributes.contact.last_name') %></th>
+    <th><%= order @search, :by => :number, :as=>t('activerecord.attributes.order.number') %></th>
+    <th><%= order @search, :by => :first_name, :as=>t('activerecord.attributes.contact.first_name') %></th>
+    <th><%= order @search, :by => :last_name, :as=>t('activerecord.attributes.contact.last_name') %></th>
+    <th><%= order @search, :by => :created_at, :as=>t('activerecord.attributes.order.created_at') %></th>
     <th><%= t('activerecord.attributes.order.status') %></th>
   </tr>
   <% for order in @orders %>
@@ -13,7 +27,8 @@
       <td><%=h order.number %></td>
       <td><%=h order.first_name %></td>
       <td><%=h order.last_name %></td>
-      <td><%=h order.status %></td>
+      <td><%=l(order.created_at, :format=>:short) %></td>
+      <td><%=t("orders.status.#{order.status}") %></td>
       <td class="action_cell show_cell"><%= link_to t('gmcommerce.common.show'), admin_order_path(order), :class=>"show_link" %></td>
       <td class="action_cell"><%= link_to t('gmcommerce.common.edit'), edit_admin_order_path(order), :class=>"edit_link" %></td>
       <td class="action_cell"><%= link_to t('gmcommerce.common.destroy'), admin_order_path(order), :confirm => 'Are you sure?', :method => :delete, :class=>"destroy_link" %></td>
@@ -21,4 +36,3 @@
   <% end %>
 </table>
 <%= will_paginate @orders %>
-<p><%= link_to t('orders.new'), new_admin_order_path, :class=>"new_link" %></p>

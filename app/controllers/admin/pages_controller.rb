@@ -16,7 +16,7 @@ class Admin::PagesController < Admin::AdminController
   def create
     @page = Page.new(params[:page])
     if @page.save
-      flash[:notice] = "Successfully created page."
+      flash[:notice] = t('pages.created')
       redirect_to admin_page_url(@page)
     else
       render :action => 'new'
@@ -30,7 +30,7 @@ class Admin::PagesController < Admin::AdminController
   def update
     @page = Page.find(params[:id])
     if @page.update_attributes(params[:page])
-      flash[:notice] = "Successfully updated page."
+      flash[:notice] = t('pages.updated')
       redirect_to admin_page_url(@page)
     else
       render :action => 'edit'
@@ -39,8 +39,12 @@ class Admin::PagesController < Admin::AdminController
   
   def destroy
     @page = Page.find(params[:id])
-    @page.destroy
-    flash[:notice] = "Successfully destroyed page."
+    unless @page.is_undeleteable?
+      @page.destroy
+      flash[:notice] = t('pages.destroyed')
+    else
+      flash[:notice] = t('pages.cant_destroy')
+    end
     redirect_to admin_pages_url
   end
 end

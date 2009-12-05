@@ -2,11 +2,19 @@
   <%= f.error_messages %>
   <%= f.input :first_name %>
   <%= f.input :last_name %>
-  <%= f.inputs :street, :steet_nr %>
+  <%= f.input :phone %>
+  <%= f.input :email %>
+  <%= f.input :city %>
+  <%= f.input :street %>
+  <%= f.input :street_nr %>
   <%= f.input :zip_code %>
   <%= f.input :city %>
-  <%= f.input :country %>
-  <%= f.inputs :is_billing, :is_shipping %>
+  <%= f.input :is_company %>
+  <%= f.input :company_name %>
+  <%= f.input :vat_code %>
+  <%= f.input :regon %>
+  
+  <%#= f.inputs :is_billing, :is_shipping %>
   <%= f.buttons %>
 
 <% end %>

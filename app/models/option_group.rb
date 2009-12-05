@@ -7,4 +7,8 @@ class OptionGroup < ActiveRecord::Base
 
   attr_accessible :name, :options_attributes
   accepts_nested_attributes_for :options, :allow_destroy => true, :reject_if => proc { |o| o['code'].blank? }
+  
+  def to_s
+    self.name
+  end
 end

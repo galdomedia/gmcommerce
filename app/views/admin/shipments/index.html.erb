@@ -5,17 +5,17 @@
 
 <% form_for @search do |f| %>
   <table>
-    <tr><td>Name</td><td><%= f.text_field :name_like, :size => 13 %></td></tr>
+    <tr><td><%= t('activerecord.attributes.shipment.name') %></td><td><%= f.text_field :name_like, :size => 13 %></td></tr>
     <tr><td colspan="2"><%= f.submit "Find" %></td></tr>
   </table>
 <% end %>
 
 <table class="index">
   <tr>
-    <th><%= order @search, :by => :name %></th>
-    <th><%= order @search, :by => :cost %></th>
-    <th><%= order @search, :by => :active %></th>
-    <th><%= order @search, :by => :free_from_cart_value %></th>
+    <th><%= order @search, :by => :name, :as=>t('activerecord.attributes.shipment.name') %></th>
+    <th><%= order @search, :by => :cost, :as=>t('activerecord.attributes.shipment.cost') %></th>
+    <th><%= order @search, :by => :active, :as=>t('activerecord.attributes.shipment.active') %></th>
+    <th><%= order @search, :by => :free_from_cart_value, :as=>t('activerecord.attributes.shipment.free_from_cart_value') %></th>
   </tr>
   <% for shipment in @shipments %>
     <tr>

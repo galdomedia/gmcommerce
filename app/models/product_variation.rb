@@ -1,5 +1,8 @@
 class ProductVariation < ActiveRecord::Base
 
+
+  default_scope :include=>[:options], :order=>['options.position']
+  
   has_and_belongs_to_many :options
   belongs_to :product
   belongs_to :option
@@ -15,5 +18,8 @@ class ProductVariation < ActiveRecord::Base
   def options_code_str
     self.options.map{|o| "#{o.code}"}.join ", "
   end
-
+  
+  def options_name_str
+    self.options.map{|o| "#{o.name}"}.join ", "
+  end
 end

@@ -44,7 +44,7 @@ class Admin::UsersController < Admin::AdminController
         @user.is_admin = params[:user][:is_admin] if admin?
         @user.is_staff = params[:user][:is_staff]
         @user.save
-        flash[:notice] = "User was successfully created."
+        flash[:notice] = t('users.created')
         format.html { redirect_to(admin_user_url(@user)) }
         format.xml  { render :xml => @user, :status => :created, :location => @user }
       else
@@ -64,7 +64,7 @@ class Admin::UsersController < Admin::AdminController
       @user.is_admin = params[:user][:is_admin] if admin?
       @user.is_staff = params[:user][:is_staff]
       @user.save
-      flash[:notice] = "Successfully updated user."
+      flash[:notice] = t('users.updated')
       redirect_to admin_user_url(@user)
     else
       render :action => 'edit'
@@ -74,7 +74,7 @@ class Admin::UsersController < Admin::AdminController
   def reset_password
     @user = User.find(params[:id])
     @user.deliver_password_reset_instructions!
-    flash[:notice] = "A new password has been sent to the user by email."
+    flash[:notice] = t('users.password_sent')
     redirect_to admin_user_path(@user)
   end
 
@@ -82,8 +82,8 @@ class Admin::UsersController < Admin::AdminController
   # DELETE /admin_users/1.xml
   def destroy
     @user = User.find(params[:id])
-    @user.delete!
-
+    @user.delete
+    flash[:notice] = t('users.destroyed')
     redirect_to admin_users_url
   end
 end

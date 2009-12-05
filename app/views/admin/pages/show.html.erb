@@ -8,16 +8,12 @@
   <%=h @page.title %>
 </p>
 <p>
-  <strong>Identifier:</strong>
-  <%=h @page.identifier %>
-</p>
-<p>
   <strong>Body:</strong>
   <%=h @page.body %>
 </p>
 
 <p>
   <%= link_to t('gmcommerce.common.edit'), edit_admin_page_path(@page), :class=>"edit_link" %> |
-  <%= link_to t('gmcommerce.common.destroy'), admin_page_url(@page), :confirm => 'Are you sure?', :method => :delete, :class=>"destroy_link" %> |
+  <%= link_to t('gmcommerce.common.destroy'), admin_page_url(@page), :confirm => 'Are you sure?', :method => :delete, :class=>"destroy_link" unless @page.is_undeleteable? %> |
   <%= link_to t('gmcommerce.common.view_all'), admin_pages_path, :class=>"view_all_link" %>
 </p>

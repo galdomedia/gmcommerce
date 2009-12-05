@@ -16,7 +16,7 @@ class Admin::OptionGroupsController < Admin::AdminController
   def create
     @option_group = OptionGroup.new(params[:option_group])
     if @option_group.save
-      flash[:notice] = "Successfully created option group."
+      flash[:notice] = t('option_groups.created')
       redirect_to admin_option_group_url(@option_group)
     else
       render :action => 'new'
@@ -30,7 +30,7 @@ class Admin::OptionGroupsController < Admin::AdminController
   def update
     @option_group = OptionGroup.find(params[:id])
     if @option_group.update_attributes(params[:option_group])
-      flash[:notice] = "Successfully updated option group."
+      flash[:notice] = t('option_groups.updated')
       redirect_to admin_option_group_url(@option_group)
     else
       render :action => 'edit'
@@ -40,7 +40,19 @@ class Admin::OptionGroupsController < Admin::AdminController
   def destroy
     @option_group = OptionGroup.find(params[:id])
     @option_group.destroy
-    flash[:notice] = "Successfully destroyed option group."
+    flash[:notice] = t('option_groups.destroyed')
     redirect_to admin_option_groups_url
+  end
+  
+  def reorder
+    @option_group = OptionGroup.find(params[:id])
+  end
+  
+  def sort
+    @option_group = OptionGroup.find(params[:id])
+    params[:options].each_with_index do |id, index|
+      Option.update_all(['position=?', index+1], ['id=? and option_group_id=?', id, @option_group.id])
+    end
+    render :nothing=>true
   end
 end

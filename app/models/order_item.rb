@@ -10,4 +10,8 @@ class OrderItem < ActiveRecord::Base
   validates_presence_of :order_id
   
   
+  def price
+    return self.attributes['price']
+  end
+  
 end

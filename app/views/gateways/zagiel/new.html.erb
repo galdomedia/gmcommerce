@@ -1,0 +1,77 @@
+<% content_for :head do %>
+<script language="javascript"> <!-- function nowe_okno() { window.open('https://www.zagiel.com.pl/kalkulator/jak_kupic.html', 'nowe_okno', 'width=600,height=500,directories=no,location=no,menubar=no,resizable=yes,scrollbars=yes,s tatus=no,toolbar=no');
+}
+function validate_Zagiel() { if (document.payform.raty_zgoda.checked==false){ alert ("Zanim złożysz zamówienie, zapoznaj się z procedurą udzielenia kredytu ratalnego eKredyt Żagiel."); return false; } else { return true; } } //--> </script>
+
+<% end %>
+<div id="breadcrumbs" class="less_margin">
+            	<span>Jesteś w:</span> Zamówienie | <span> Płatność ratalna </span>
+            </div>
+        
+		</div>
+        <!-- end top -->
+  	
+		<div id="CONTAINER">
+        	<div id="order_info-box">
+            	<a class="passed" id="wybor_prezentu" href="#"><span>Wybór prezentu</span></a>
+                <a class="passed" id="dane_teleadresowe" href="#"><span>Dane teleadresowe</span></a>
+                <a class="passed" id="platnosc" href="#"><span>Płatność</span></a>
+                <a id="dziekujemy" href="#"><span>Dziękujemy</span></a>
+                <div class="clearb"></div>
+            </div>
+            
+  			<div id="CONTENT">
+            <%= @page.body.untaint if @page and @page.is_active? %>
+            	<!-- just for presentation -->
+            	<div style="text-align:center">
+                    <p style="line-height: 400px;">
+                      
+                      <form action="https://www.zagiel.com.pl/kalkulator/index_smart.php" method="POST" name="payform" id="payform" onsubmit="return validate_Zagiel();">
+                        <% id1=id2=1 %>
+                        <% for oi in @order.order_items do -%>
+                          <% 1.upto(oi.quantity) do |c| -%>
+                            <input name="goodsId<%= id2 %>" readonly="readonly" type="hidden" value="<%= h oi.product_id %>" />
+                            <input name="goodsName<%= id2 %>" readonly="readonly" type="hidden" value="<%= h oi.product.name %>" />
+                            <input name="goodsValue<%= id2 %>" readonly="readonly" type="hidden" value="<%= h oi.price %>" />
+                            <% id2+=1 %>
+                          <% end %>
+                          <% id1+=1 %>
+                        <% end %>
+                        <input name="goodsId<%= id2 %>" readonly="readonly" type="hidden" value="KosztPrzesylki" />
+                        <input name="goodsName<%= id2 %>" readonly="readonly" type="hidden" value="Koszt Przesyłki" />
+                        <input name="goodsValue<%= id2 %>" readonly="readonly" type="hidden" value="<%=h @order.shipment_cost %>" />
+                        
+                        <input name="IDZamowienieSklep" type="hidden" value="<%= @order.number %>" />
+                        
+                        <input type="hidden" name="ImieSklep" value="<%=h @contact.first_name %>">
+                        <input type="hidden" name="NazwiskoSklep" value="<%=h @contact.last_name %>">
+                        <input name="EmailSklep" type="hidden" value="<%= h @contact.email %>" />
+                        <input name="TelKontaktSklep" type="hidden" value="<%= h @contact.phone %>" />
+                        <input name="UlicaSklep" type="hidden" value="<%= "#{h @contact.street} #{h @contact.street_nr}" %>" />
+                        <input name="MiejscowoscSklep" type="hidden" value="<%= h @contact.city %>" />
+                        <input name="KodPocztowySklep" type="hidden" value="<%= h @contact.zip_code %>" />
+                        <input name="wniosekZapisany" type="hidden" value="<%= url_for(:controller=>"gateways/zagiel/", :action=>"success", :key=>@order.secret, :zamowienie_id=>'', :host=>request.host)%>" />
+                        <input name="wniosekAnulowany" type="hidden" value="<%= url_for(:controller=>"gateways/zagiel/", :action=>"failed",  :key=>@order.secret, :zamowienie_id=>'', :host=>request.host)%>" />
+                        <input name="action" type="hidden" value="getklientdet_si" />
+                        <input name="shopNo" type="hidden" value="<%= @config[:shop_id] %>" />
+                        <input name="shopName" type="hidden" value="<%= s(:site_name) %>" />
+                        <input name="shopHttp" type="hidden" value="http://<%= request.host %>" />
+                        <input name="goodsNo " type="hidden" value="<%= id2 %>" />
+                        <input name="shopMailAddress" type="hidden" value="<%= s(:contact_email) %>" />
+                        <input name="shopPhone" type="hidden" value="<%= s(:contact_phone) %>" />
+
+                        <h3> Imię i nazwisko: <%=h(@contact.first_name + " " + @contact.last_name)%> </h3>
+                        <h3>Kwota: <%= @order.order_value %> PLN </h3>
+                        Zapoznałem się <a OnClick="nowe_okno();" style="cursor: pointer;"><b><u>z procedurą udzielenia kredytu ratalnego eKredyt Żagiel</u></b></a> <input type="checkbox" id="raty_zgoda" /><br /><br />
+                        <input type="submit" value="Skorzystaj z systemu ratalnego Żagiel">
+                      </form>                   
+                      
+                    </p>
+                </div>
+            	<!-- just for presentation -->
+			
+                
+          </div>
+            <!-- end Content -->
+            
+

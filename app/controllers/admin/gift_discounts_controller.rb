@@ -16,7 +16,7 @@ class Admin::GiftDiscountsController < Admin::AdminController
   def create
     @gift_discount = GiftDiscount.new(params[:gift_discount])
     if @gift_discount.save
-      flash[:notice] = "Successfully created gift discount."
+      flash[:notice] = t('gift_discounts.created')
       redirect_to admin_gift_discount_url(@gift_discount)
     else
       render :action => 'new'
@@ -30,7 +30,7 @@ class Admin::GiftDiscountsController < Admin::AdminController
   def update
     @gift_discount = GiftDiscount.find(params[:id])
     if @gift_discount.update_attributes(params[:gift_discount])
-      flash[:notice] = "Successfully updated gift discount."
+      flash[:notice] = t('gift_discounts.updated')
       redirect_to admin_gift_discount_url(@gift_discount)
     else
       render :action => 'edit'
@@ -40,7 +40,7 @@ class Admin::GiftDiscountsController < Admin::AdminController
   def destroy
     @gift_discount = GiftDiscount.find(params[:id])
     @gift_discount.destroy
-    flash[:notice] = "Successfully destroyed gift discount."
+    flash[:notice] = t('gift_discounts.destroyed')
     redirect_to admin_gift_discounts_url
   end
 end

@@ -3,7 +3,7 @@
   <%= f.input :name %>
   <%= f.input :parent %>
   <% unless f.object.new_record? %>
-    <% unless f.object.icon.blank? %>
+    <% unless f.object.icon_file_name.blank? %>
       <li>
         <label><%= t('categories.form.current_icon')%></label>
         <%= image_tag(f.object.icon.url(:icon)) %>
@@ -11,7 +11,27 @@
     <% end %>
   <% end %>
   <%= f.input :icon, :as=>:file%>
+  <% unless f.object.new_record? %>
+    <% unless f.object.wide_icon_file_name.blank? %>
+      <li>
+        <label><%= t('categories.form.current_wide_icon')%></label>
+        <%= image_tag(f.object.wide_icon.url(:wide)) %>
+      </li>
+    <% end %>
+  <% end %>
+  <%= f.input :wide_icon, :as=>:file%>
+  <% unless f.object.new_record? %>
+    <% unless f.object.animation_file_name.blank? %>
+      <li>
+        <label><%= t('categories.form.current_animation')%></label>
+        <%=h f.object.animation_file_name %>
+      </li>
+    <% end %>
+  <% end %>
+  <%= f.input :animation, :as=>:file%>
   <%= f.input :short_description, :input_html=>{:rows=>3}%>
   <%= f.input :description, :input_html=>{:rows=>7}%>
+  <%= f.input :position, :hint=>"Kolejność" %>
+  <%= f.input :is_promoted, :hint=>"Pokazywany na stronie głównej"%>
   <%= f.buttons %>
 <% end %>

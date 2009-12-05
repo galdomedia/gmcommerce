@@ -3,6 +3,7 @@
   <%= f.input :product %>
   <%= f.input :price%>
   <%= f.input :quantity %>
+  <%= f.input :discount_value %>
   <% unless f.object.new_record? %>
     <%= f.check_box :_delete, :class=>"field checkbox" %> <%= f.label :_delete, t('gmcommerce.common.destroy'), :class=>"choice" %>
   <% end %>

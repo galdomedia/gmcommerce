@@ -16,7 +16,7 @@ class Admin::OrdersController < Admin::AdminController
   def create
     @order = Order.new(params[:order])
     if @order.save
-      flash[:notice] = "Successfully created order."
+      flash[:notice] = t('orders.created')
       redirect_to admin_order_url(@order)
     else
       render :action => 'new'
@@ -30,7 +30,7 @@ class Admin::OrdersController < Admin::AdminController
   def update
     @order = Order.find(params[:id])
     if @order.update_attributes(params[:order])
-      flash[:notice] = "Successfully updated order."
+      flash[:notice] = t('orders.updated')
       redirect_to admin_order_url(@order)
     else
       render :action => 'edit'
@@ -40,7 +40,7 @@ class Admin::OrdersController < Admin::AdminController
   def destroy
     @order = Order.find(params[:id])
     @order.destroy
-    flash[:notice] = "Successfully destroyed order."
+    flash[:notice] = t('orders.destroyed')
     redirect_to admin_orders_url
   end
   

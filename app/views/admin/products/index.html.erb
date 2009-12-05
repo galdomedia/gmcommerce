@@ -7,7 +7,7 @@
   <table>
     <tr><td><%= t('activerecord.attributes.product.name')%></td><td><%= f.text_field :name_like, :size => 13 %></td></tr>
     <tr><td><%= t('activerecord.attributes.product.sku')%></td><td><%= f.text_field :sku_like, :size=>13%></td></tr>
-    <tr><td colspan="2"><%= f.submit "Find" %></td></tr>
+    <tr><td colspan="2"><%= f.submit "Znajdź" %></td></tr>
   </table>
 <% end %>
 
@@ -31,15 +31,17 @@
   <% end %>
 </table>
 <%= will_paginate @products %>
-
-<p><%= link_to t('products.new'), new_admin_product_path %></p>
+<p>
+  <%= link_to t('products.new'), new_admin_product_path, :class=>"new_link" %> |
+  <%= link_to t('products.reorder'), reorder_admin_products_path, :class=>"icon_link reorder_link" %>
+</p>
 
 <% content_for :sidebar do %>
   <%= link_to t('property_types.index'), admin_property_types_path %> <br />
   <%= link_to t('product_templates.index'), admin_product_templates_path %> <br />
   <%= link_to t('option_groups.index'), admin_option_groups_path %> <br />
     <br />
-  <strong>Create product from template:</strong>
+  <strong><%= t('products.new_from_template')%></strong>
   <ul>
     <% # I know, that below line is evil, but it can be like this for a while %>
     <% for pt in ProductTemplate.all %>

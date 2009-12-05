@@ -1,5 +1,4 @@
 class OrdersController < ApplicationController
-  before_filter :find_cart
   
   def show
     @order = Order.find(params[:id])
@@ -16,6 +15,7 @@ class OrdersController < ApplicationController
     @order.contacts << billing
     @order.contacts << shipping
 
+    @available_discount = GiftDiscount.get_discount_for_cart_value(@cart.total_value_without_gifts)
   end
   
   def create
@@ -23,7 +23,7 @@ class OrdersController < ApplicationController
     if @order.valid?
       Order.create_new(@order, @cart)
       flash[:notice] = "Successfully created order."
-      session[:cart] = nil
+      
       session[:order_number] = @order.number
       redirect_to new_payment_url(:key=>@order.secret, :number=>@order.number)
     else
@@ -35,11 +35,5 @@ class OrdersController < ApplicationController
     @order = Order.find_by_number_and_secret(params[:id], params[:key])
   end
 
-  private
-    def find_cart
-      @cart = (session[:cart] ||= Cart.new)
-      @cart.set_shipment(Shipment.active.first) if @cart.shipment.blank?
-      @available_discount = GiftDiscount.get_discount_for_cart_value(@cart.total_value_without_gifts)
-    end
   
 end

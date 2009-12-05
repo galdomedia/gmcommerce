@@ -1,0 +1,11 @@
+pl:
+  roles:
+    categories: Zarządzanie kategoriami
+    pages: Zarządzanie stronami statycznymi
+    users: Zarządzanie użytkownikami
+    products: Zarządzanie produktami
+    product_templates: Zarządzanie szablonami produktów
+    property_types: Zarządzanie właściwościami produktów
+    orders: Zarządzanie zamówieniami
+    gift_discounts: Zarządzanie zniżkami
+    shipments: Zarządzanie dostawami (firmami kurierskimi)

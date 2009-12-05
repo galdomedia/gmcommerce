@@ -20,10 +20,7 @@
     <label><%= t('activerecord.attributes.order.secret')%>:</label>
     <%=h @order.secret %>
   </li>
-  <li>
-    <label><%= t('activerecord.attributes.order.status') %>: </label>
-    <%=h @order.status %>
-  </li>
+    <%= f.input :status, :as=>:select, :collection=>Order::STATUSES.map{|s| [t("orders.status.#{s}"), s]}, :include_blank=>false %>
   <%= f.input :order_value %>
   <%= f.input :shipment_cost %>
   <%= f.input :comment, :input_html=>{:rows=>5} %>

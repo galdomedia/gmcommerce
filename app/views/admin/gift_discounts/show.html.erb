@@ -4,19 +4,19 @@
   <%= link_to h(@gift_discount.name), admin_gift_discount_path(@gift_discount) %>
 <% end %>
 <p>
-  <strong>Name:</strong>
+  <strong><%= t('activerecord.attributes.gift_discount.name') %>:</strong>
   <%=h @gift_discount.name %>
 </p>
 <p>
-  <strong>Discount Value:</strong>
+  <strong><%= t('activerecord.attributes.gift_discount.discount_value') %>:</strong>
   <%=h @gift_discount.discount_value %>
 </p>
 <p>
-  <strong>From Cart Value:</strong>
+  <strong><%= t('activerecord.attributes.gift_discount.from_cart_value') %>:</strong>
   <%=h @gift_discount.from_cart_value %>
 </p>
 <p>
-  <strong>discounted_products_number:</strong>
+  <strong><%= t('activerecord.attributes.gift_discount.discounted_products_number') %>:</strong>
   <%=h @gift_discount.discounted_products_number %>
 </p>
 

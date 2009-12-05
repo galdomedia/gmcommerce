@@ -1,13 +1,14 @@
 class Order < ActiveRecord::Base
   include AASM
 
-  
+  STATUSES = %w{temporary ordered paid sent delivered canceled}
   belongs_to :shipment
   has_and_belongs_to_many :contacts
-  #has_many :payments
+  has_many :payments
   has_many :order_items
   has_many :items, :class_name => "order_item", :foreign_key => "order_id"
-
+  
+  
   validates_associated :contacts
   validate :validates_contacts_number
   
@@ -37,7 +38,7 @@ class Order < ActiveRecord::Base
   end
 
   aasm_event :pay do
-    transitions :to => :paid, :from => [:ordered]
+    transitions :to => :paid, :from => [:ordered, :paid]
   end
 
   aasm_event :send_order do
@@ -54,7 +55,7 @@ class Order < ActiveRecord::Base
 
 
   def self.generate_number
-    Order.all.length + 1
+    Order.maximum('number') + 1
   end
 
   def generate_secret

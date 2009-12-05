@@ -3,7 +3,7 @@ class Page < ActiveRecord::Base
   
   validates_presence_of :title
 
-  attr_accessible :title, :body
+  attr_accessible :title, :body, :is_active
   
   def to_s
     self.title

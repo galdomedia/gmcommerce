@@ -1,0 +1,12 @@
+<% content_for :header do %>
+  <%= link_to t('products.plural'), admin_products_path %>
+  &raquo;
+  <%= t('products.reorder') %>
+<% end %>
+
+<ul id="products">
+<% for p in @products %>
+  <li id="product_<%= p.id %>"><span class="drag">[<%=t('gmcommerce.common.drag')%>]</span> <%=h p.name%></li>
+<% end %>
+</ul>
+<%= sortable_element "products", :url=>sort_admin_products_path, :handle=>"drag"%>

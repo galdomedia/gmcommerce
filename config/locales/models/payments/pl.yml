@@ -1,0 +1,11 @@
+pl:
+  payments:
+    plural: Statusy płatności
+    
+  activerecord:
+    attributes:
+      payment:
+        status: Status
+        transaction_id: ID transakcji
+        transaction_status: Status transakcji
+        created_at: Data utworzenia

@@ -13,7 +13,7 @@ class CartItem
 
   def set_quantity(quantity)
     begin
-      @quantity = quantity.to_i if quantity.to_i > 0
+      @quantity = quantity.to_i if quantity.to_i > 0 and quantity.to_i < 10
     rescue
     end
   end

@@ -8,7 +8,7 @@ class Product < ActiveRecord::Base
   has_many :product_variations
   has_many :comments
   
-
+  default_scope :order=>['position ASC']
   named_scope :available, :conditions=>['is_gift=?', false]
   named_scope :gifts, :conditions=>['is_gift=?', true]
 
@@ -17,7 +17,7 @@ class Product < ActiveRecord::Base
   validates_length_of :meta_description, :within=>0..255, :allow_nil=>true, :allow_blank=>true
   validates_length_of :meta_keywords, :within=>0..255, :allow_nil=>true, :allow_blank=>true
 
-  attr_accessible :name, :sku, :price, :description, :meta_keywords, :meta_description, :producer_id, :category_ids, :images_attributes, :properties_attributes, :option_group_ids, :product_variations_attributes, :is_gift
+  attr_accessible :name, :sku, :price, :description, :meta_keywords, :meta_description, :producer_id, :category_ids, :images_attributes, :properties_attributes, :option_group_ids, :product_variations_attributes, :is_gift, :is_promoted, :short_description, :gives_gifts
   accepts_nested_attributes_for :images, :allow_destroy => true, :reject_if => proc { |a| a['attachment'].blank? }
   accepts_nested_attributes_for :properties, :allow_destroy => true
   accepts_nested_attributes_for :product_variations, :allow_destroy => true, :reject_if => proc { |pv| pv['price'].blank? }
@@ -25,7 +25,7 @@ class Product < ActiveRecord::Base
 
 
   def to_s
-    self.name
+    "#{self.name} - #{self.sku}"
   end
   
   def to_param
@@ -90,7 +90,7 @@ class Product < ActiveRecord::Base
       nil
     end
   end
-
+  
   def have_variations?
     not self.product_variations.empty?
   end
