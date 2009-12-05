@@ -1,0 +1,18 @@
+<table>
+  <tr>
+    <th>Product</th>
+  </tr>
+  <% for wish_list_item in @wish_list_items %>
+    <tr>
+      <td><%=h wish_list_item.product %></td>
+      <td><%= link_to "Destroy", product_wish_list_item_url(wish_list_item.product), :confirm => 'Are you sure?', :method => :delete %></td>
+      <td>
+        <% form_tag(add_product_to_cart_path(:id=>wish_list_item.product_id)) do  %>
+          <%= hidden_field_tag :variation_id %>
+          <%= submit_tag "Add to cart" %>
+        <% end %>
+      </td>
+
+    </tr>
+  <% end %>
+</table>
