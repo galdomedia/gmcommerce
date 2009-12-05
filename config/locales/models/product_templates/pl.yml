@@ -5,3 +5,17 @@ pl:
     editing: Edytujesz szablon
     plural: Szablony produktów
     singular: Szablon produktu
+    created: Pomyślnie utworzono szablon
+    updated: Pomyślnie zaktualizowano szablon
+    destroyed: Pomyślnie usunięto szablon
+  activerecord:
+    attributes:
+      product_template:
+        template_name: Nazwa szablonu
+        name: Nazwa
+        sku: SKU
+        price: Cena
+        description: Opis
+        meta_description: Meta Description
+        meta_keywords: Meta Keywords
+        property_types: Właściwości

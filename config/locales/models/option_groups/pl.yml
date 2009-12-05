@@ -1,7 +1,15 @@
 pl:
   option_groups:
+    reorder: Kolejność opcji
     new: Dodaj nowa grupę
     index: Opcje produktów
     singular: Grupa opcji
     plural: Grupy opcji
     editing: Edytujesz grupę opcji
+    created: Pomyślnie utworzono grupę
+    updated: Pomyślnie zaktualizowano grupę
+    destroyed: Pomyślnie usunięto grupę
+  activerecord:
+    attributes:
+      option_group:
+        name: Nazwa grupy opcji

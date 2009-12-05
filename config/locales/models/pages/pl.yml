@@ -4,8 +4,12 @@ pl:
     plural: Strony statyczne
     singular: Strona statyczna
     editing: Edytujesz stronę
+    created: Pomyślnie utworzono stronę statyczną
+    updated: Pomyślnie zaktualizowano stronę
+    destroyed: Pomyślnie usunięto stronę statyczną
   activerecord:
     attributes:
       page:
         title: Tytuł
         body: Treść
+        is_active: Jest aktywna

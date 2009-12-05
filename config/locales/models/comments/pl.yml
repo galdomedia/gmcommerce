@@ -4,12 +4,16 @@ pl:
     singular: 'Komentarz'
     new: 'Dodaj nowy komentarz'
     editing: 'Edytujesz komentarz'
+    created: Pomyślnie utworzono komentarz
+    updated: Pomyślnie zaktualizowano komentarz
+    destroyed: Pomyślnie usunięto komentarz
     form:
       author_will_replaced_if_user_present: "Pole autor zostanie zastąpione loginem użytkownika, jeśli taki zostanie ustawiony"
       user_is_required_if_author_is_blank: "Pole jest wymagane, jeśli nie uzupełniono pola 'autor komentarza'"
   activerecord:
     attributes:
       comment:
+        title: Tytuł
         author: Autor komentarza
         user: Dodający użytkownik
         comment: Treść komentarza

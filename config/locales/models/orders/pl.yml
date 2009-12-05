@@ -4,14 +4,23 @@ pl:
     singular: Zamówienie
     plural: Zamówienia
     editing: Edytujesz zamówienie
+    created: Pomyślnie utworzono zamówienie
+    updated: Pomyślnie zaktualizowano zamówienie
+    destroyed: Pomyślnie usunięto zamówienie
     form:
       add_order_item: Dodaj przedmiot do zamówienia
       number_not_required: "Nie wymagany, będzie wygenerowany automatycznie (o ile pole pozostanie puste)"
     status:
+      temporary: Tymczasowy
+      canceled: Anulowany
+      ordered: Zamówiony
+      paid: Zapłacony
+      sent: Wysłany
+      delivered: Dostarczony
       actions:
         cancel: Anuluj
         pay: Oznacz jako zapłacone
-        send: Oznacz jako wysłane
+        send_order: Oznacz jako wysłane
         deliver: Oznacz jako dostarczone
   activerecord:
     attributes:
@@ -33,6 +42,8 @@ pl:
         zip_code: Kod pocztowy
         phone: Telefon
         email: Email
+        created_at: Data utworzenia
+        updated_at: Data ostatniej zmiany
     errors:
       models:
         order:

@@ -9,3 +9,4 @@ pl:
         price: Cena jednostkowa
         quantity: Ilość
         value: Wartość
+        discount_value: Zniżka

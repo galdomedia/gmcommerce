@@ -5,9 +5,14 @@ pl:
     singular: Zniżka na prezenty
     plural: Zniżki na prezenty
     editing: Edytujesz zniżkę
+    created: Pomyślnie utworzono zniżkę
+    updated: Pomyślnie zaktualizowano zniżkę
+    destroyed: Pomyślnie usunięto zniżkę
   activerecord:
     attributes:
       gift_discount:
         name: Nazwa
         discount_value: Wartość zniżki
         from_cart_value: Zniżka przyznawana od kwoty (wartości koszyka)
+        discounted_products_number: Liczba gratisowych produktów
+        only_for_products_that_gives_gifts: Dotyczy tylko produktów przyznających gratisy

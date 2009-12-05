@@ -4,6 +4,9 @@ pl:
     singular: Sposób dostawy
     editing: Edytujesz dostawę
     new: Dodan nowy sposób dostawy
+    created: Pomyślnie utworzono sposób dostawy
+    updated: Pomyślnie zaktualizowano sposób dostawy
+    destroyed: Pomyślnie usunięto sposób dostawy
   activerecord:
     attributes:
       shipment:

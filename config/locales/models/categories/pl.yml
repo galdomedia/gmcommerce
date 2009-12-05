@@ -4,6 +4,9 @@ pl:
     plural: Kategorie
     singular: Kategoria
     editing: Edytujesz kategorię
+    created: Pomyślnie utworzono kategorię
+    updated: Pomyślnie zaktualizowano kategorię
+    destroyed: Pomyślnie usunięto kategorię
     errors:
       not_found: Kategoria nie istnieje
     form:
@@ -17,3 +20,6 @@ pl:
         icon: Ikona
         short_description: Opis krótki
         description: Opis
+        wide_icon: Ikona szeroka
+        animation: Animacja
+        is_promoted: Kategoria promowana

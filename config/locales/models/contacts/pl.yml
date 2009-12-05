@@ -4,6 +4,9 @@ pl:
     editing: Edytujesz kontakt
     plural: Kontakty
     singular: Kontakt
+    created: Pomyślnie utworzono kontakt
+    updated: Pomyślnie zaktualizowano kontakt
+    destroyed: Pomyślnie usunięto kontakt
   activerecord:
     attributes:
       contact:
@@ -16,6 +19,10 @@ pl:
         country: Kraj
         email: Email
         phone: Telefon
+        is_company: Jest firmą
+        company_name: Nazwa firmy
+        vat_code: NIP
+        regon: REGON
         contacts_first_name: Imię
         contacts_last_name: Nazwisko
         contacts_street: Ulica
@@ -25,5 +32,8 @@ pl:
         contacts_country: Kraj
         contacts_email: Email
         contacts_phone: Telefon
+        contacts_company_name: Firma
+        contacts_vat_code: NIP
+        contacts_regon: REGON
     models:
       contact: Kontakt

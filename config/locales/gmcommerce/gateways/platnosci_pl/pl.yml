@@ -2,6 +2,15 @@ pl:
   gmcommerce:
     gateways:
       platnosci_pl:
+        status_codes:
+          s1: nowa
+          s2: anulowana
+          s3: odrzucona
+          s4: rozpoczęta
+          s5: oczekuje na odbiór
+          s7: płatność odrzucona
+          s99: płatność odebrana - zakończona
+          s888: błędny status - prosimy o kontakt
         error_codes:
           e100: brak lub błędna wartosc parametru pos_id
           e101: brak parametru session_id

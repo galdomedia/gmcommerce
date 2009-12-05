@@ -4,7 +4,12 @@ pl:
       not_found: "Produkt nie istnieje"
     plural: "Produkty"
     new: "Nowy product"
+    new_from_template: "Utwórz produkt z szablonu"
     editing: "Edytujesz produkt"
+    reorder: Zmień kolejność produktów
+    created: Pomyślnie utworzono produkt
+    updated: Pomyślnie zaktualizowano produkt
+    destroyed: Pomyślnie usunięto produkt
     form:
       add_variation: Dodaj nowa wariacje
       add_image: Dodaj obrazek / zdjęcie
@@ -25,5 +30,11 @@ pl:
         description: Opis
         meta_keywords: Meta Keywords
         meta_description: Meta Description
+        is_promoted: Produkt promowany
+        is_gift: Produkt jest prezentem
+        short_description: Opis skrócony
+        gives_gifts: Do produktu przyznawane są prezenty
+        categories: Kategorie produktu
+        option_groups: Grupy opcji
 
 

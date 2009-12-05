@@ -49,7 +49,7 @@ pl:
   time:
     formats:
       default: "%a, %d %b %Y, %H:%M:%S %z"
-      short: "%d.%m.%yr.&nbsp;%H:%M"
+      short: "%d.%m.%y&nbsp;%H:%M"
       long: "%d %B %Y, %H:%M"
     am: "przed południem"
     pm: "po południu"

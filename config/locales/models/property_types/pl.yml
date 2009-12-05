@@ -6,6 +6,9 @@ pl:
     plural: Właściwości produktów
     singular: Właściwość produktu
     reorder: Zmień kolejność elementów
+    created: Pomyślnie utworzono właściwość
+    updated: Pomyślnie zaktualizowano właściwość
+    destroyed: Pomyślnie usunięto właściwość
     form:
       current_icon: Obecna ikona
   activerecord:
