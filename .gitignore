@@ -6,3 +6,4 @@ config/gateways/*
 tmp/
 db/schema.rb
 public/attachments/
+public/system/attachments/
