@@ -1,0 +1,10 @@
+<li>
+    <%= javascript_include_tag "audio-player" %>
+    <object type="application/x-shockwave-flash" data="/swf/player.swf" id="audioplayer<%=h property.id %>" height="24" width="290">
+    <param name="movie" value="/swf/player.swf">
+    <param name="FlashVars" value="playerID=audioplayer<%=h property.id %>&soundFile=<%=h property.attachment.url %>">
+    <param name="quality" value="high">
+    <param name="menu" value="false">
+    <param name="wmode" value="transparent">
+    </object>
+</li>

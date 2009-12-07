@@ -1,0 +1,33 @@
+<% content_for :header do %>
+  <%= link_to t('product_sets.plural'), admin_product_sets_path %>
+<% end %>
+
+
+<% form_for @search do |f| %>
+  <table>
+    <tr><td><%= t('activerecord.attributes.product_set.name')%></td><td><%= f.text_field :name_like, :size => 13 %></td></tr>
+    <tr><td><%= t('activerecord.attributes.product_set.sku')%></td><td><%= f.text_field :sku_like, :size=>13%></td></tr>
+    <tr><td colspan="2"><%= f.submit t('gmcommerce.common.find') %></td></tr>
+  </table>
+<% end %>
+
+
+<table class="index">
+  <tr>
+    <th><%= order @search, :by => :name, :as=>t('activerecord.attributes.product.name') %></th>
+    <th><%= order @search, :by => :sku, :as=>t('activerecord.attributes.product.sku') %></th>
+    <th><%= order @search, :by => :price, :as=>t('activerecord.attributes.product.price') %></th>
+  </tr>
+  <% for product_set in @product_sets %>
+    <tr>
+      <td><%=h product_set.name %></td>
+      <td><%=h product_set.sku %></td>
+      <td><%=h product_set.price %></td>
+      <td class="action_cell show_cell"><%= link_to t('gmcommerce.common.show'), admin_product_set_path(product_set), :class=>"show_link" %></td>
+      <td class="action_cell"><%= link_to t('gmcommerce.common.edit'), edit_admin_product_set_path(product_set), :class=>"edit_link" %></td>
+      <td class="action_cell"><%= link_to t('gmcommerce.common.destroy'), admin_product_set_path(product_set), :confirm => 'Are you sure?', :method => :delete, :class=>"destroy_link" %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to t('product_sets.new'), new_admin_product_set_path, :class=>"new_link" %></p>

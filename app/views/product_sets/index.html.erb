@@ -1,0 +1,22 @@
+<% title "Product Sets" %>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Sku</th>
+    <th>Price</th>
+    <th>Short Description</th>
+    <th>Description</th>
+  </tr>
+  <% for product_set in @product_sets %>
+    <tr>
+      <td><%=h product_set.name %></td>
+      <td><%=h product_set.sku %></td>
+      <td><%=h product_set.price %></td>
+      <td><%=h product_set.short_description %></td>
+      <td><%=h product_set.description %></td>
+      <td><%= link_to "Show", product_set %></td>
+    </tr>
+  <% end %>
+</table>
+

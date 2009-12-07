@@ -1,0 +1,25 @@
+pl:
+  product_sets:
+    errors:
+      not_found: "Zestaw nie istnieje"
+    plural: "Zestawy"
+    new: "Nowy zestaw"
+    editing: "Edytujesz zestaw"
+    created: Pomyślnie utworzono zestaw
+    updated: Pomyślnie zaktualizowano zestaw
+    destroyed: Pomyślnie usunięto zestaw
+    form:
+      images: Zdjęcia zestawu
+      products: Produkty wchodzace w skład zestawu
+  activerecord:
+    models:
+      product: Zestaw
+    attributes:
+      product_set:
+        name: Nazwa produktu
+        producer: Producent
+        sku: SKU
+        price: Cena
+        description: Opis
+        short_description: Opis skrócony
+

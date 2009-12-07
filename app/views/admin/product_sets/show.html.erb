@@ -1,0 +1,49 @@
+<% content_for :header do %>
+  <%= link_to t('product_sets.plural'), admin_product_sets_path %>
+    &raquo;
+  <%= link_to h(@product_set.name), admin_product_sets_path(@product_set) %>
+<% end %>
+
+
+<p>
+  <strong><%= t('activerecord.attributes.product_set.name')%>:</strong>
+  <%=h @product_set.name %>
+</p>
+<p>
+  <strong><%= t('activerecord.attributes.product_set.sku')%>:</strong>
+  <%=h @product_set.sku %>
+</p>
+<p>
+  <strong><%= t('activerecord.attributes.product_set.price')%>:</strong>
+  <%=h @product_set.price %>
+</p>
+<p>
+  <strong><%= t('activerecord.attributes.product_set.description')%>:</strong>
+  <%=h @product_set.description %>
+</p>
+<p>
+  <strong><%= t('product_sets.form.products') %>:</strong>
+  <% unless @product_set.products.empty? %>
+    <ul>
+    <% for p in @product_set.products %>
+      <li><%= h p.name %></li>
+    <% end %>
+    </ul>
+  <% end %>
+</p>
+<p>
+  <strong><%= t('product_sets.form.images')%>:</strong>
+  <% unless @product_set.images.empty? %>
+    <ul>
+    <% for i in @product_set.images %>
+      <li><%= image_tag i.attachment.url(:list) %> <%=h i.attachment_file_name %></li>
+    <% end %>
+    </ul>
+  <% end %>
+</p>
+
+<p>
+  <%= link_to t('gmcommerce.common.edit'), edit_admin_product_set_path(@product_set), :class=>"edit_link" %> |
+  <%= link_to t('gmcommerce.common.destroy'), admin_product_set_path(@product_set), :confirm => 'Are you sure?', :method => :delete, :class=>"destroy_link" %> |
+  <%= link_to t('gmcommerce.common.view_all'), admin_product_sets_path, :class=>"view_all_link" %>
+</p>

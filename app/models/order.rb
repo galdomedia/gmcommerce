@@ -85,8 +85,12 @@ class Order < ActiveRecord::Base
       order.save
       for item in cart.items
         oi = OrderItem.new
-        oi.product = item.product
-        oi.product_variation = item.product_variation
+        if item.product.is_a? Product
+          oi.product = item.product
+          oi.product_variation = item.product_variation
+        elsif item.product.is_a? ProductSet
+          oi.product_set = item.product
+        end
         oi.price = item.product_price
         oi.quantity = item.quantity
         oi.discount_value = item.discount_value

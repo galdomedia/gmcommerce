@@ -32,4 +32,13 @@ class GmcommerceController < ApplicationController
     redirect_to root_url
   end
 
+  def markdown
+    unless params[:data].blank?
+      doc = BlueCloth::new(params[:data])
+    else
+      doc = ''
+    end
+    render :text=>doc.to_html, :layout=>false
+  end
+
 end

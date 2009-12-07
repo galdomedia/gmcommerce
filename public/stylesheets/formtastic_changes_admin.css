@@ -37,7 +37,7 @@ form.formtastic fieldset ol {
 padding: 1em 1em 0 1em;  
 list-style: none;  
 }  
-form.formtastic li {    
+form.formtastic > li {    
 float: left;    
 clear: left;    
 width: 100%;    
@@ -62,11 +62,11 @@ form.formtastic fieldset.buttons{
     font-size: 0.8em;
 }
 
-div.product_variation li.delete{
+div.product_variation > ul > li.delete{
   margin-bottom: 20px;
   float: left;
 }
-.product_variation li, #properties li, #order_items_fieldset li{
+.product_variation > ul >li, #properties > ul > li, #order_items_fieldset > ul > li{
   clear: left;
   padding-bottom: 0px !important;
   margin-bottom: 0px !important;
@@ -127,4 +127,8 @@ form.formtastic li.numeric input{
 }
 .reorder_link{
   background-image:url('../images/icons/arrow_switch.png') !important;
+}
+
+.markItUpContainer textarea{
+    margin-left: 185px !important; 
 }

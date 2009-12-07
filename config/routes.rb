@@ -1,4 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :product_sets
+
+  map.resources :product_sets
+
   map.resources :wish_list_items, :only=>[:index]
 
 
@@ -25,6 +29,7 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :orders, :member=>{:cancel=>:get, :pay=>:get, :send_order=>:get, :deliver=>:get}
     admin.resources :pages
     admin.resources :producers
+    admin.resources :product_sets
     admin.resources :products, :collection=>{:reorder=>:get, :sort=>:post} do |product|
       product.resources :comments
     end

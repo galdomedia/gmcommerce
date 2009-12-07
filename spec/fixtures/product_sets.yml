@@ -1,0 +1,13 @@
+one:
+  name: MyString
+  sku: MyString
+  price: 1.5
+  short_description: MyText
+  description: MyText
+
+two:
+  name: MyString
+  sku: MyString
+  price: 1.5
+  short_description: MyText
+  description: MyText

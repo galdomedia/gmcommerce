@@ -16,6 +16,13 @@
   <% end %>
 <% end %>
 
+<ul>
+  <legend>Properties</legend>
+  <% for p in @product.properties %>
+   <%= render :partial=>"property_#{h p.property_type.field_type}", :locals=>{:property=>p} if not p.property_value.blank? or not p.attachment_file_name.blank? %>
+  <% end %>
+</ul>
+
 <% form_tag(add_product_to_cart_path(:id=>@product.id)) do  %>
   <%= hidden_field_tag :variation_id %>
   <%= submit_tag "Add to cart" %>

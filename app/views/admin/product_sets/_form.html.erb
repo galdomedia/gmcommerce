@@ -1,0 +1,40 @@
+<% semantic_form_for [:admin, @product_set], :html=>{:multipart=>true} do |f| %>
+
+    <% content_for :head do %>
+     <script type="text/javascript">
+       var nested_forms = new Array();
+       $(document).ready(function(){
+         <%= "nested_forms['image'] = '#{generate_template(f, :images)}';" %>
+
+         $('.add_nested_item').click(function(){
+           var app = nested_forms[this.rel];
+           app = replace_ids(app, this.rel);
+           $('#'+this.rel+'s_fields').append(app);
+           return false;
+         });
+
+       });
+     </script>
+  <% end %>
+
+  <%= f.error_messages %>
+    <%= f.input :name %>
+    <%= f.input :sku %>
+    <%= f.input :price, :input_html=>{:size=>10, :class=>"price_field"}  %>
+    <%= f.input :short_description, :input_html=>{:rows=>4} %>
+    <%= f.input :description, :input_html=>{:rows=>7} %>
+    <li><label for="product_set_product_ids"><%= t('product_sets.form.products') %></label></li>
+    <br style="clear: both;">
+    <%= f.select :product_ids,  options_for_select(Product.all.map{|p|[p.name, p.id]}, @product_set.products.all.map{|p| p.id}), {}, {:class=>"multiselect", :multiple=>true} %>
+    <hr />
+    <% f.inputs :name => t('products.form.images'), :id => "images" do %>
+    <div id="images_fields">
+     <% f.semantic_fields_for :images do |fp| %>
+         <%= render :partial=>"image", :locals=>{:f=>fp}%>
+     <% end %>
+    </div>
+    <a name="image"></a>
+    <%= link_to t('products.form.add_image'), '#image', :class => "add_nested_item", :rel => "image" %><br />
+    <% end %>
+    <%= f.buttons %>
+<% end %>

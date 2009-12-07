@@ -1,15 +1,14 @@
 class PropertyType < ActiveRecord::Base
 
-  FIELD_TYPES = ['string', 'boolean', 'text']
-  
-  GROUPS = ['zdrowie', 'uroda']
-  
+  FIELD_TYPES = ['string', 'boolean', 'text', 'file', 'audio']
+
   has_many :properties
   has_many :products, :through => :properties
   
   default_scope :order=>['position ASC']
   
   has_attached_file :icon, :styles=>{:icon=>"24x24#", :small=>"100x100#", :medium=>"250x250#", :min=>"50x40#", :list=>"115x90#"}
+  
   validates_presence_of :name
   validates_uniqueness_of :identifier
   validates_inclusion_of :field_type, :allow_nil=>false, :in=>PropertyType::FIELD_TYPES

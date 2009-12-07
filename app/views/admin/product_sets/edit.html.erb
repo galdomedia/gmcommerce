@@ -1,0 +1,12 @@
+<% content_for :header do %>
+  <%= link_to t('product_sets.plural'), admin_product_sets_path %>
+    &raquo; <%= t('product_sets.editing') %>
+  <%=  h(@product_set.name) %>
+<% end %>
+
+<%= render :partial => 'form' %>
+
+<p>
+  <%= link_to t('gmcommerce.common.show'), admin_product_set_path(@product_set), :class=>"show_link" %> |
+  <%= link_to t('gmcommerce.common.view_all'), admin_product_sets_path, :class=>"view_all_link" %>
+</p>

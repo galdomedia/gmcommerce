@@ -15,6 +15,7 @@ pl:
         shipments: "Dostawy"
         producers: "Producenci"
         menu: "Menu"
+        product_sets: Zestawy produktów
     errors:
       invalid_call: "Błędne wywołanie"
     common:
@@ -24,3 +25,4 @@ pl:
       view_all: "Pokaż wszystkie"
       back_to_list: Powrót do listy
       drag: Przenieś
+      find: Znajdź

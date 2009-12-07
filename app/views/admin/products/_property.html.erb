@@ -1,4 +1,10 @@
 <li>
   <%= f.input :property_type_id, :as=>:hidden %>
-  <%= f.input :property_value, :as=>f.object.property_type.field_type.to_sym, :label=>h(f.object.property_type.name), :input_html=>{:rows=>5} %>
+  <% if %w{audio file}.member? f.object.property_type.field_type %>
+      <%= f.input :attachment, :as=>:file, :label=>h(f.object.property_type.name), :input_html=>{}, :hint=>h(f.object.attachment_file_name) %> 
+  <% elsif %w{text}.member? f.object.property_type.field_type%>
+      <%= f.input :property_value, :as=>:text, :label=>h(f.object.property_type.name), :input_html=>{:rows=>5, :class=>"markdown"} %>      
+  <% else %>
+      <%= f.input :property_value, :as=>f.object.property_type.field_type.to_sym, :label=>h(f.object.property_type.name) %>
+  <% end %>
 </li>

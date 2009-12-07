@@ -21,6 +21,9 @@
     <script type="text/javascript">
        $(document).ready(function(){
          <%= yield :body_onload || '' %>
+         $('.multiselect').multiselect({'sortable': false});
+         $('.markdown').markItUp(mySettings);
+
          $(".category").hover(function(){
            $(this).children(".subcategories").show(500);
          }, function() {

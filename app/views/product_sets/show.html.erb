@@ -1,0 +1,26 @@
+<% title "Product Set" %>
+
+<p>
+  <strong>Name:</strong>
+  <%=h @product_set.name %>
+</p>
+<p>
+  <strong>Sku:</strong>
+  <%=h @product_set.sku %>
+</p>
+<p>
+  <strong>Price:</strong>
+  <%=h @product_set.price %>
+</p>
+<p>
+  <strong>Short Description:</strong>
+  <%=h @product_set.short_description %>
+</p>
+<p>
+  <strong>Description:</strong>
+  <%=h @product_set.description %>
+</p>
+
+<p>
+  <%= link_to "View All", product_sets_path %>
+</p>

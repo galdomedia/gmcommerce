@@ -6,8 +6,11 @@ javascripts:
   - application
 - admin:
   - jquery
-  - jquery-ui
+  - jquery-ui-1.7.2.custom.min.js
+  - ui.multiselect.js
   - jrails
+  - "markitup/jquery.markitup.pack.js"
+  - "markitup/sets/markdown/set.js"
   - admin
 stylesheets:
 - base:
@@ -17,4 +20,8 @@ stylesheets:
   - admin
   - formtastic
   - formtastic_changes_admin
+  - jquery-ui-1.7.2.custom.css
+  - ui.multiselect.css
+  - "markitup/skins/simple/style.css"
+  - "markitup/sets/markdown/style.css"
 
